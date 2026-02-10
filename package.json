@@ -1,8 +1,8 @@
 {
-    "name": "vds-monorepo",
-    "private": true,
-    "workspaces": [
-        "packages/*",
-        "apps/*"
-    ]
+  "name": "vds-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
 }
