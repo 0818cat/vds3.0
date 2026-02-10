@@ -1,0 +1,9 @@
+{
+  "name": "@dayokang/vds-ui",
+  "version": "1.0.0",
+  "description": "Premium UI components for VDS 3.0",
+  "main": "components.scss",
+  "peerDependencies": {
+    "@dayokang/vds-system": "*"
+  }
+}

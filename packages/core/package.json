@@ -1,0 +1,31 @@
+{
+  "name": "@dayokang/vds-system",
+  "version": "1.0.1",
+  "description": "VDS 3.0 Design System tokens and mixins",
+  "main": "_vds3.0.scss",
+  "files": [
+    "_vds3.0.scss"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scss",
+    "design-system",
+    "vds"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "detect-libc": "^2.1.2",
+    "immutable": "^5.1.4",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "node-addon-api": "^7.1.1",
+    "picomatch": "^4.0.3",
+    "readdirp": "^4.1.2",
+    "sass": "^1.97.3",
+    "source-map-js": "^1.2.1"
+  }
+}

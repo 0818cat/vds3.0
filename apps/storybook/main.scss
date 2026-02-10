@@ -1,0 +1,101 @@
+@import "@dayokang/vds-system/vds3.0";
+@import "@dayokang/vds-ui/components";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: var(--fill-background-primary);
+    color: var(--label-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.storybook-header {
+    height: 60px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line-secondary);
+    background-color: var(--fill-surface-primary);
+}
+
+.logo {
+    @include title-18-sb();
+    color: var(--label-primary);
+}
+
+.storybook-main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.component-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    @include title-18-sb();
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.section-desc {
+    @include body-16-r();
+    color: var(--label-tertiary);
+    margin-bottom: 24px;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+    background-color: var(--fill-surface-primary);
+    border-radius: 16px;
+    border: 1px solid var(--line-secondary);
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.item-label {
+    @include caption-12-r();
+    color: var(--label-quaternary);
+    text-transform: uppercase;
+}
+
+.token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.token-swatch {
+    height: 100px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include caption-12-r();
+    font-weight: 600;
+    border: 1px solid var(--line-secondary);
+}
+
+.btn-theme-toggle {
+    background: none;
+    border: 1px solid var(--line-primary);
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 18px;
+
+    &:hover {
+        background-color: var(--fill-background-secondary);
+    }
+}
