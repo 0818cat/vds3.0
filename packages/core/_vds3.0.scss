@@ -907,3 +907,61 @@ $text-label-10-r-lh: 12px;
 @mixin elevation-20() {
     @include effect-style-elevation-20();
 }
+
+@mixin label-15-sb() {
+    @include text-style-label-label-15-sb();
+}
+
+@mixin label-13-sb() {
+    @include text-style-label-label-13-sb();
+}
+
+@mixin label-12-sb() {
+    @include text-style-label-lable-12-sb();
+}
+
+@mixin title-24-b() {
+    @include text-style-title-title-24-b();
+}
+
+@mixin body-15-r() {
+    @include text-style-body-body-15-r();
+}
+
+// Note: typo lable in original? checking line 815
+/* Interaction Mixins */
+@mixin interaction-overlay($color, $level: 'light') {
+    $hover-opacity: 0.04;
+    $active-opacity: 0.08;
+
+    @if $level =='normal' {
+        $hover-opacity: 0.08;
+        $active-opacity: 0.12;
+    }
+
+    @else if $level =='strong' {
+        $hover-opacity: 0.10;
+        $active-opacity: 0.14;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background-color: $color;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+    }
+
+    &:hover:not(:disabled)::after {
+        background-color: $color;
+        opacity: $hover-opacity;
+    }
+
+    &:active:not(:disabled)::after {
+        background-color: $color;
+        opacity: $active-opacity;
+    }
+}

@@ -4,5 +4,11 @@
   "workspaces": [
     "packages/*",
     "apps/*"
-  ]
+  ],
+  "scripts": {
+    "dev": "sass --watch --load-path=node_modules --load-path=packages apps/storybook/main.scss:apps/storybook/main.css"
+  },
+  "dependencies": {
+    "lottie-web": "^5.13.0"
+  }
 }

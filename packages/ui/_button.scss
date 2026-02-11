@@ -1,69 +1,341 @@
-@import "@dayokang/vds-system/vds3.0";
+@import "../core/vds3.0";
 
-.vds-btn {
+
+
+// --- 기본 버튼 스타일 (Base Styles) ---
+// Placeholder Selector를 사용하여 중복 코드를 방지하고 명시적으로 상속합니다.
+// --- 기본 버튼 스타일 (Base Styles) ---
+// Mixin을 사용하여 중복 코드를 방지하고 명시적으로 포함합니다.
+@mixin btn-base {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0 24px;
-    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none;
-    gap: 6px;
-    @include text-style-label-label-15-sb();
+    border: none; // 기본 테두리 초기화
+    outline: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    user-select: none;
+    font-family: Pretendard;
+
+    // Interaction Overlay (Base default: Light)
+    position: relative;
+    overflow: hidden;
+    @include interaction-overlay(var(--interaction-surface), 'light');
+}
+
+// --- Interaction Variants ---
+
+@mixin filled-interaction {
+    @include interaction-overlay(var(--interaction-surface), 'normal');
+}
+
+@mixin primary-interaction {
+    @include interaction-overlay(var(--static-primary), 'light');
+}
+
+@mixin negative-interaction {
+    @include interaction-overlay(var(--status-negative), 'light');
+}
 
 
-    &:active {
-        transform: scale(0.98);
-    }
 
-    &--primary {
-        background-color: var(--static-primary);
-        color: var(--static-white);
-        @include elevation-20();
 
-        &:hover {
-            filter: brightness(1.1);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 110, 255, 0.4);
-        }
-    }
 
-    &--secondary {
-        background-color: transparent;
-        color: var(--label-primary);
-        border: 1px solid var(--line-primary);
 
-        &:hover {
-            background-color: var(--fill-background-secondary);
-            transform: translateY(-2px);
-        }
-    }
 
-    &--ghost {
-        background-color: transparent;
-        color: var(--label-tertiary);
 
-        &:hover {
-            background-color: var(--fill-background-secondary);
-            color: var(--label-primary);
-        }
-    }
 
-    // Size variants
+.btn {
+    @include btn-base;
+
+    // --- 크기 (Sizes) ---
     &--large {
         height: 48px;
-        padding: 0 24px;
+        padding: 0 18px;
+        border-radius: $radius-large;
+        gap: 6px;
+        min-width: 84px;
+        @include label-15-sb();
+
+        .btn__leading-icon,
+        .btn__trailing-icon {
+            width: 18px;
+            height: 18px;
+        }
     }
 
     &--medium {
         height: 40px;
-        padding: 0 20px;
+        padding: 0 14px;
+        border-radius: $radius-medium;
+        gap: 6px;
+        min-width: 70px;
+        @include label-14-sb();
+
+        .btn__leading-icon,
+        .btn__trailing-icon {
+            width: 17px;
+            height: 17px;
+        }
     }
 
     &--small {
         height: 32px;
-        padding: 0 16px;
-        @include text-style-label-label-13-sb();
+        padding: 0 10px;
+        border-radius: $radius-small;
+        gap: 4px;
+        min-width: 56px;
+        @include label-13-sb();
+
+        .btn__leading-icon,
+        .btn__trailing-icon {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+
+
+    // --- 타입 & 색상 (Types & Colors) ---
+
+    // 1. 채움 (Filled - 기본)
+    &--primary {
+        @include filled-interaction;
+        background-color: var(--refine-accent);
+        color: var(--static-white);
+        @include elevation-20();
+    }
+
+    &--secondary {
+        background-color: var(--refine-senary);
+        color: var(--label-primary);
+    }
+
+    &--tertiary {
+        @include filled-interaction;
+        background-color: var(--refine-primary);
+        color: var(--static-white);
+    }
+
+    &--negative {
+        @include filled-interaction;
+        background-color: var(--status-negative);
+        color: var(--static-white);
+    }
+
+    // 명시적 Filled 수식어
+    &--filled {
+        // 색상 클래스에서 기본적으로 처리됨
+    }
+
+
+
+
+
+
+
+
+
+    // 2. 토널 (Tonal - 밝은 배경)
+    &--tonal {
+        &.btn--primary {
+            background-color: var(--colors-blue-25);
+            color: var(--static-primary);
+            box-shadow: none; // 그림자(elevation) 초기화
+            @include primary-interaction;
+        }
+
+
+
+        &.btn--negative {
+            background-color: var(--colors-red-25);
+            color: var(--status-negative);
+            @include negative-interaction;
+        }
+    }
+
+
+
+
+
+
+    // 3. 아웃라인 (Outlined - 테두리)
+    &--outlined {
+        background-color: transparent;
+        border: 1px solid currentColor;
+        box-shadow: none;
+
+        &.btn--primary {
+            color: var(--static-primary);
+            border-color: var(--static-primary);
+            @include primary-interaction;
+        }
+
+        &.btn--secondary {
+            color: var(--label-primary);
+            border-color: var(--line-secondary);
+        }
+
+        &.btn--negative {
+            color: var(--status-negative);
+            border-color: var(--status-negative);
+            @include negative-interaction;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    // 4. 고스트 (Ghost - 투명)
+    &--ghost {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+
+        &.btn--primary {
+            color: var(--static-primary);
+            @include primary-interaction;
+        }
+
+        &.btn--secondary {
+            color: var(--label-primary);
+        }
+
+        &.btn--negative {
+            color: var(--status-negative);
+            @include negative-interaction;
+        }
+    }
+
+
+
+
+
+
+
+
+    // --- 상태 (States) ---
+    // 1. 기본 비활성화 공통 속성
+    &:disabled,
+    &--disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 1; // 투명도 대신 지정된 토큰 색상 사용
+        box-shadow: none !important;
+
+        &::before,
+        &::after {
+            display: none !important;
+        }
+
+        // Overlay 제거
+    }
+
+    // 2. 타입별 비활성화 스타일 (전용 토큰 적용)
+    // Filled & Tonal
+    &--filled,
+    &--tonal,
+    &--primary,
+    &--secondary,
+    &--tertiary,
+    &--negative {
+
+        &:disabled,
+        &.btn--disabled {
+            background-color: var(--interaction-disabled) !important;
+            color: var(--label-quinary) !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    // Outlined
+    &--outlined {
+
+        &:disabled,
+        &.btn--disabled {
+            background-color: transparent !important;
+            border: 1px solid var(--interaction-disabled) !important;
+            color: var(--label-quinary) !important;
+        }
+    }
+
+    // Ghost
+    &--ghost {
+
+        &:disabled,
+        &.btn--disabled {
+            background-color: transparent !important;
+            color: var(--label-quinary) !important;
+            border: none !important;
+        }
+    }
+
+    &--loading {
+        cursor: wait;
+        pointer-events: none;
+        position: relative;
+        color: transparent !important;
+        box-shadow: none !important;
+
+        // Lottie 애니메이션 컨테이너 (기본 Large 사이즈)
+        .btn__loading-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            z-index: 1;
+        }
+
+        // Medium 사이즈
+        &.btn--medium .btn__loading-animation {
+            width: 17px;
+            height: 17px;
+        }
+
+        // Small 사이즈
+        &.btn--small .btn__loading-animation {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+
+
+
+
+    // --- 아이콘 (Icons) ---
+    &__leading-icon,
+    &__trailing-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        svg,
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            fill: currentColor; // 색상 상속
+        }
     }
 }
+
+@keyframes btn-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* test comment */

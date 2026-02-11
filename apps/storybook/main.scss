@@ -1,23 +1,33 @@
-@import "@dayokang/vds-system/vds3.0";
-@import "@dayokang/vds-ui/components";
+@import "../../packages/core/vds3.0";
+@import "../../packages/ui/components";
+
+:root {
+    --sidebar-width: 240px;
+    --header-height: 60px;
+}
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Pretendard', sans-serif;
-    background-color: var(--fill-background-primary);
+    @include body-16-r();
+    background-color: var(--static-white);
     color: var(--label-primary);
     transition: background-color 0.3s, color 0.3s;
 }
 
 .storybook-header {
-    height: 60px;
-    padding: 0 40px;
+    height: var(--header-height);
+    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--line-secondary);
     background-color: var(--fill-surface-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -25,36 +35,307 @@ body {
     color: var(--label-primary);
 }
 
+.app-container {
+    display: flex;
+    padding-top: var(--header-height);
+    min-height: 100vh;
+}
+
+// --- Sidebar ---
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: var(--header-height);
+    bottom: 0;
+    left: 0;
+    background-color: var(--static-white);
+    border-right: 1px solid var(--line-secondary);
+    overflow-y: auto;
+    z-index: 90;
+}
+
+.sidebar-nav {
+    padding: 24px 0;
+}
+
+.sidebar-title {
+    padding: 0 24px 8px;
+    @include label-12-sb();
+    color: var(--label-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px 24px;
+    @include text-style-body-body-14-r(); // Corrected mixin name
+    color: var(--label-secondary);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+
+    &:hover {
+        color: var(--label-primary);
+        background-color: var(--fill-background-tertiary);
+    }
+
+    &.active {
+        color: var(--primary-500);
+        background-color: var(--primary-50);
+        border-right: 3px solid var(--primary-500);
+        border-left: none;
+        font-weight: 600;
+    }
+}
+
+// --- Main Content ---
 .storybook-main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 40px;
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 32px 40px;
+    max-width: 1400px;
+}
+
+.content-wrapper {
+    // Removed, redundant
 }
 
 .component-section {
-    margin-bottom: 60px;
+    background-color: transparent; // Make transparent to match white body
+    // border-radius: 12px; // Removed border radius
+    box-shadow: none; // Removed shadow
+    padding: 32px 0; // Removed horizontal padding, kept vertical
+    margin-bottom: 32px;
+    border: none; // Removed border
+    border-bottom: 1px solid var(--line-tertiary); // Keep separator
+    scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 .section-title {
-    @include title-18-sb();
-    font-size: 24px;
+    @include title-24-b();
     margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-tertiary);
 }
 
 .section-desc {
-    @include body-16-r();
-    color: var(--label-tertiary);
+    @include body-15-r();
+    color: var(--label-secondary);
+    margin: 16px 0 32px;
+    max-width: 800px;
+}
+
+// --- Playground Styles ---
+.playground-section {
+    // Inherits .component-section styles (transparent bg, no shadow)
+}
+
+.playground-container {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    border: 1px solid var(--line-tertiary);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--static-white);
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.preview-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--fill-background-secondary); // Slight grey for contrast
+    background-image: radial-gradient(var(--line-tertiary) 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height: 300px;
+    padding: 40px;
+    border-right: 1px solid var(--line-tertiary);
+
+    @media (max-width: 768px) {
+        border-right: none;
+        border-bottom: 1px solid var(--line-tertiary);
+    }
+}
+
+.controls-area {
+    width: 300px;
+    padding: 24px;
+    background-color: var(--static-white);
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.control-group {
     margin-bottom: 24px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.control-label {
+    display: block;
+    @include label-12-sb();
+    color: var(--label-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+// Toggle Group (Custom segmented control)
+.toggle-group {
+    display: flex;
+    background-color: var(--fill-background-tertiary);
+    padding: 4px;
+    border-radius: 8px;
+    gap: 2px;
+}
+
+.toggle-btn {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    @include label-12-sb();
+    color: var(--label-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        color: var(--label-primary);
+    }
+
+    &.active {
+        background-color: var(--static-white);
+        color: var(--label-primary);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+}
+
+// Variant Toggles (Grid layout for variants)
+#variant-toggles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    background: none;
+    padding: 0;
+
+    .toggle-btn {
+        background-color: var(--static-white);
+        border: 1px solid var(--line-tertiary);
+        padding: 8px;
+
+        &.active {
+            border-color: var(--primary-500);
+            color: var(--primary-500);
+            background-color: var(--primary-50);
+        }
+    }
+}
+
+// Select
+.select-wrapper {
+    position: relative;
+}
+
+.control-select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line-tertiary);
+    @include text-style-body-body-14-r();
+    color: var(--label-primary);
+    background-color: var(--static-white);
+    appearance: none;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+        border-color: var(--primary-500);
+        box-shadow: 0 0 0 3px var(--primary-50);
+    }
+}
+
+// Checkbox Group
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @include text-style-body-body-14-r();
+    color: var(--label-primary);
+    cursor: pointer;
+
+    input {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--primary-500);
+    }
+}
+
+// Code Viewer
+.code-viewer {
+    margin-top: 16px;
+    background-color: var(--static-black); // Dark theme for code
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    color: var(--colors-grey-100);
+    @include text-style-mono-mono-14-r();
+    overflow-x: auto;
+
+    code {
+        font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    }
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--static-white);
+    transition: background 0.2s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
 }
 
 .gallery-grid {
+    // Basic styles, overridden by inline styles for specific grids
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
-    padding: 40px;
-    background-color: var(--fill-surface-primary);
-    border-radius: 16px;
-    border: 1px solid var(--line-secondary);
 }
 
 .gallery-item {
@@ -82,9 +363,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    @include caption-12-r();
-    font-weight: 600;
+    @include label-12-sb();
     border: 1px solid var(--line-secondary);
+}
+
+.grid-header {
+    @include label-14-sb();
+    text-align: center;
+    color: var(--label-secondary);
+}
+
+.grid-side-label {
+    @include label-14-sb();
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: var(--label-primary);
 }
 
 .btn-theme-toggle {
