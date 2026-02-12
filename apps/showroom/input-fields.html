@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - Input Fields</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link active">Input Fields</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">다양한 옵션을 조합하여 인풋 필드를 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas">
+                            <div id="playground-input-container" class="input-field input-field--large"
+                                style="max-width: 400px;">
+                                <div class="input-field__container">
+                                    <input type="text" class="input-field__input" placeholder="Placeholder Text"
+                                        id="pg-input">
+                                </div>
+                                <p class="input-field__helper-text" id="pg-helper">Helper text goes here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="input-field--large">L (48)</button>
+                                <button class="toggle-btn" data-value="input-field--medium">M (40)</button>
+                                <button class="toggle-btn" data-value="input-field--small">S (32)</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Status</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-disabled"> Disabled
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-error"> Error
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-success"> Success
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-icon"> Leading Icon
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-clear" checked> Clear Icon
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Content</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <input type="text" id="input-placeholder" class="control-select"
+                                    placeholder="Placeholder Text" value="Placeholder Text" style="padding: 8px;">
+                                <input type="text" id="input-helper" class="control-select" placeholder="Helper Text"
+                                    value="Helper text goes here" style="padding: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code"></code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="component-section" id="all-variants">
+                <h2 class="section-title">Input Field Components</h2>
+                <p class="section-desc">VDS의 텍스트 입력 시스템입니다.</p>
+
+                <div class="gallery-grid"
+                    style="display: grid; grid-template-columns: 100px 1fr 1fr 1fr; gap: 40px; align-items: start;">
+                    <!-- Header -->
+                    <div></div>
+                    <div class="grid-header">Large (48px)</div>
+                    <div class="grid-header">Medium (40px)</div>
+                    <div class="grid-header">Small (32px)</div>
+
+                    <!-- Normal State -->
+                    <div class="grid-side-label">Normal</div>
+                    <div class="input-field input-field--large">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" placeholder="Placeholder">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--medium">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" placeholder="Placeholder">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--small">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" placeholder="Placeholder">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+
+                    <!-- With Icon -->
+                    <div class="grid-side-label">With Icon</div>
+                    <div class="input-field input-field--large">
+                        <div class="input-field__container">
+                            <div class="input-field__icon">
+                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </div>
+                            <input type="text" class="input-field__input" placeholder="Search...">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--medium">
+                        <div class="input-field__container">
+                            <div class="input-field__icon">
+                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </div>
+                            <input type="text" class="input-field__input" placeholder="Search...">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--small">
+                        <div class="input-field__container">
+                            <div class="input-field__icon">
+                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </div>
+                            <input type="text" class="input-field__input" placeholder="Search...">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+
+                    <!-- With Clear Icon -->
+                    <div class="grid-side-label">Clear Icon</div>
+                    <div class="input-field input-field--large">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Text to clear">
+                            <div class="input-field__clear-icon">
+                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--medium">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Text to clear">
+                            <div class="input-field__clear-icon">
+                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--small">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Text to clear">
+                            <div class="input-field__clear-icon">
+                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div class="grid-side-label">Error</div>
+                    <div class="input-field input-field--large input-field--error">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Invalid text">
+                        </div>
+                        <p class="input-field__helper-text">Error message here</p>
+                    </div>
+                    <div class="input-field input-field--medium input-field--error">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Invalid text">
+                        </div>
+                        <p class="input-field__helper-text">Error message here</p>
+                    </div>
+                    <div class="input-field input-field--small input-field--error">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Invalid text">
+                        </div>
+                        <p class="input-field__helper-text">Error message here</p>
+                    </div>
+
+                    <!-- Success State -->
+                    <div class="grid-side-label">Success</div>
+                    <div class="input-field input-field--large input-field--success">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Valid text">
+                        </div>
+                        <p class="input-field__helper-text">Success message here</p>
+                    </div>
+                    <div class="input-field input-field--medium input-field--success">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Valid text">
+                        </div>
+                        <p class="input-field__helper-text">Success message here</p>
+                    </div>
+                    <div class="input-field input-field--small input-field--success">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" value="Valid text">
+                        </div>
+                        <p class="input-field__helper-text">Success message here</p>
+                    </div>
+
+                    <!-- Disabled State -->
+                    <div class="grid-side-label">Disabled</div>
+                    <div class="input-field input-field--large input-field--disabled">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" disabled value="Disabled content">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--medium input-field--disabled">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" disabled value="Disabled content">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                    <div class="input-field input-field--small input-field--disabled">
+                        <div class="input-field__container">
+                            <input type="text" class="input-field__input" disabled value="Disabled content">
+                        </div>
+                        <p class="input-field__helper-text">Helper text</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            body.classList.add('dark-theme');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+
+        // Global Event Listener to toggle .has-content class
+        function toggleHasContent(input) {
+            const container = input.closest('.input-field');
+            if (container) {
+                if (input.value.length > 0) {
+                    container.classList.add('has-content');
+                } else {
+                    container.classList.remove('has-content');
+                }
+            }
+        }
+
+        document.addEventListener('input', (e) => {
+            if (e.target.matches('.input-field__input')) {
+                toggleHasContent(e.target);
+            }
+        });
+
+        // Global Event Listener for Clear Icon
+        document.addEventListener('click', (e) => {
+            const clearBtn = e.target.closest('.input-field__clear-icon');
+            if (clearBtn) {
+                // Find reference to input within the same container
+                const container = clearBtn.closest('.input-field__container');
+                if (container) {
+                    const input = container.querySelector('.input-field__input');
+                    if (input) {
+                        input.value = '';
+                        input.focus();
+                        toggleHasContent(input); // Update class
+                    }
+                }
+            }
+        });
+
+        // Initialize has-content class on load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.input-field__input').forEach(toggleHasContent);
+            initPlayground(); // Call original init
+        });
+
+        // Playground Logic
+        function initPlayground() {
+            const container = document.getElementById('playground-input-container');
+            // const input = document.getElementById('pg-input'); // Re-queried in updateUI
+            const helperEl = document.getElementById('pg-helper');
+
+            const sizeToggles = document.getElementById('size-toggles');
+            const stateDisabled = document.getElementById('state-disabled');
+            const stateError = document.getElementById('state-error');
+            const stateSuccess = document.getElementById('state-success');
+            const optIcon = document.getElementById('opt-icon');
+            const optClear = document.getElementById('opt-clear');
+
+            const inputPlaceholder = document.getElementById('input-placeholder');
+            const inputHelper = document.getElementById('input-helper');
+
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
+
+            let state = {
+                size: 'input-field--large',
+                disabled: false,
+                error: false,
+                success: false,
+                icon: false,
+                clear: true,
+                placeholder: 'Placeholder Text',
+                helper: 'Helper text goes here'
+            };
+
+            function updateUI() {
+                // Determine content presence
+                const hasContent = state.placeholder.length > 0 || (document.getElementById('pg-input') && document.getElementById('pg-input').value.length > 0);
+                // Note: Playground input value might not be captured in state directly, but we can check the element or just rely on global listener. 
+                // However, for the initial render or class string construction:
+
+                // Classes
+                let classes = `input-field ${state.size}`;
+                if (state.error) classes += ' input-field--error';
+                if (state.success) classes += ' input-field--success';
+                if (state.disabled) classes += ' input-field--disabled';
+                // We let the global listener handle has-content for the preview element to avoid state sync issues, 
+                // BUT we need it for the code snippet.
+
+                container.className = classes;
+
+                // HTML Structure Construction
+                let innerHTML = '';
+                innerHTML += `<div class="input-field__container">`;
+
+                if (state.icon) {
+                    innerHTML += `
+                        <div class="input-field__icon">
+                            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>`;
+                }
+
+                innerHTML += `<input type="text" class="input-field__input" placeholder="${state.placeholder}" id="pg-input" ${state.disabled ? 'disabled' : ''}>`;
+
+                if (state.clear) {
+                    innerHTML += `
+                        <div class="input-field__clear-icon">
+                            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z" fill="currentColor"/>
+                            </svg>
+                        </div>`;
+                }
+
+                innerHTML += `</div>`;
+                innerHTML += `<p class="input-field__helper-text" id="pg-helper">${state.helper}</p>`;
+
+                container.innerHTML = innerHTML;
+
+                // Re-bind input event if needed, or rely on bubble? 
+                // We need to re-bind if we want to track value for something? 
+                // No, just visual test.
+
+                // Code Generation
+                let code = `<div class="input-field ${state.size}${state.error ? ' input-field--error' : ''}${state.success ? ' input-field--success' : ''}${state.disabled ? ' input-field--disabled' : ''}">\n`;
+                code += `    <div class="input-field__container">\n`;
+                if (state.icon) {
+                    code += `        <div class="input-field__icon">\n`;
+                    code += `            <!-- Icon SVG -->\n`;
+                    code += `        </div>\n`;
+                }
+                code += `        <input type="text" class="input-field__input" placeholder="${state.placeholder}"${state.disabled ? ' disabled' : ''}>\n`;
+                if (state.clear) {
+                    code += `        <div class="input-field__clear-icon">\n`;
+                    code += `            <!-- Clear Icon SVG -->\n`;
+                    code += `        </div>\n`;
+                }
+                code += `    </div>\n`;
+                code += `    <p class="input-field__helper-text">${state.helper}</p>\n`;
+                code += `</div>`;
+
+                generatedCode.innerText = code;
+            }
+
+            sizeToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    sizeToggles.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.size = e.target.dataset.value;
+                    updateUI();
+                }
+            });
+
+            stateDisabled.addEventListener('change', (e) => {
+                state.disabled = e.target.checked;
+                updateUI();
+            });
+
+            stateError.addEventListener('change', (e) => {
+                state.error = e.target.checked;
+                if (state.error) {
+                    state.success = false;
+                    stateSuccess.checked = false;
+                }
+                updateUI();
+            });
+
+            stateSuccess.addEventListener('change', (e) => {
+                state.success = e.target.checked;
+                if (state.success) {
+                    state.error = false;
+                    stateError.checked = false;
+                }
+                updateUI();
+            });
+
+            optIcon.addEventListener('change', (e) => {
+                state.icon = e.target.checked;
+                updateUI();
+            });
+
+            optClear.addEventListener('change', (e) => {
+                state.clear = e.target.checked;
+                updateUI();
+            });
+
+            inputPlaceholder.addEventListener('input', (e) => {
+                state.placeholder = e.target.value;
+                updateUI();
+            });
+
+            inputHelper.addEventListener('input', (e) => {
+                state.helper = e.target.value;
+                updateUI();
+            });
+
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    setTimeout(() => copyBtn.innerHTML = originalHTML, 1500);
+                });
+            });
+
+            updateUI();
+        }
+
+        document.addEventListener('DOMContentLoaded', initPlayground);
+    </script>
+</body>
+
+</html>

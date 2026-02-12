@@ -2,7 +2,7 @@
   "name": "vds-showroom",
   "version": "1.0.0",
   "description": "Component Showroom for VDS 3.0",
-  "main": "showroom.html",
+  "main": "buttons.html",
   "dependencies": {
     "@dayokang/vds-system": "*",
     "@dayokang/vds-ui": "*"

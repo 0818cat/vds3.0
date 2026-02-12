@@ -928,7 +928,13 @@ $text-label-10-r-lh: 12px;
     @include text-style-body-body-15-r();
 }
 
+@mixin body-14-r() {
+    @include text-style-body-body-14-r();
+}
 
+@mixin body-13-r() {
+    @include text-style-body-body-13-r();
+}
 
 
 

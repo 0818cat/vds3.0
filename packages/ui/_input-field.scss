@@ -1,0 +1,250 @@
+// Input Field 스타일 정의
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: var(--fill-surface-secondary);
+        border: 1px solid var(--line-secondary);
+        border-radius: $radius-medium;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+
+        &:hover {
+            border-color: var(--line-primary);
+        }
+
+        &:focus-within {
+            border-color: var(--line-accent);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
+            z-index: 1;
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--label-quaternary);
+        z-index: 1;
+    }
+
+    &__clear-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--label-quaternary);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        z-index: 2;
+
+        .input-field.has-content & {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    }
+
+    &__input {
+        flex: 1;
+        min-width: 0;
+        width: 100%;
+        border: none;
+        background: transparent;
+        color: var(--label-primary);
+        @include body-15-r();
+        padding: 0 16px;
+        box-sizing: border-box;
+        outline: none;
+        caret-color: var(--static-primary);
+
+        &::placeholder {
+            color: var(--label-quaternary);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: var(--label-quinary);
+        }
+
+        // Logic moved to .has-content class in &__clear-icon
+        // :has() selector removed for safe browser support
+    }
+
+    // 크기 (Sizes)
+    &--large {
+        $side-padding: 18px;
+        gap: 6px;
+
+        .input-field__container {
+            gap: 8px;
+        }
+
+        .input-field__input {
+            height: 48px;
+            padding: 0 $side-padding;
+        }
+
+        .input-field__icon,
+        .input-field__clear-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .input-field__clear-icon {
+            margin-right: 14px;
+        }
+
+        .input-field__icon+.input-field__input {
+            padding-left: 0;
+        }
+
+        .input-field__icon {
+            margin-left: $side-padding - 1px; // border 1px 보정
+        }
+
+        .input-field__helper-text {
+            margin-left: $side-padding;
+        }
+    }
+
+    &--medium {
+        $side-padding: 14px;
+        gap: 4px;
+
+        .input-field__container {
+            gap: 6px;
+        }
+
+        .input-field__input {
+            height: 40px;
+            @include body-14-r();
+            padding: 0 $side-padding;
+        }
+
+        .input-field__icon,
+        .input-field__clear-icon {
+            width: 17px;
+            height: 17px;
+        }
+
+        .input-field__clear-icon {
+            margin-right: 12px;
+        }
+
+        .input-field__icon+.input-field__input {
+            padding-left: 0;
+        }
+
+        .input-field__icon {
+            margin-left: $side-padding - 1px; // border 1px 보정
+        }
+
+        .input-field__helper-text {
+            margin-left: $side-padding;
+        }
+    }
+
+    &--small {
+        $side-padding: 10px;
+        gap: 4px;
+
+        .input-field__container {
+            border-radius: $radius-small;
+            gap: 4px;
+        }
+
+        .input-field__input {
+            height: 32px;
+            @include body-13-r();
+            padding: 0 $side-padding;
+        }
+
+        .input-field__icon,
+        .input-field__clear-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .input-field__icon {
+            margin-left: $side-padding - 1px; // border 1px 보정
+        }
+
+        .input-field__clear-icon {
+            margin-right: 8px;
+        }
+
+        .input-field__icon+.input-field__input {
+            padding-left: 0;
+        }
+
+        .input-field__helper-text {
+            margin-left: $side-padding;
+        }
+    }
+
+    // 상태 (States)
+    &--error &__container {
+        border-color: var(--status-negative);
+
+        &:hover {
+            border-color: var(--status-negative);
+        }
+
+        &:focus-within {
+            border-color: var(--status-negative);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-negative), transparent 90%);
+        }
+    }
+
+    &--success &__container {
+        border-color: var(--static-primary);
+
+        &:hover {
+            border-color: var(--static-primary);
+        }
+
+        &:focus-within {
+            border-color: var(--static-primary);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--static-primary), transparent 90%);
+        }
+    }
+
+    &--disabled,
+    &:has(.input-field__input:disabled) {
+        .input-field__container {
+            background-color: var(--interaction-disabled);
+            border-color: var(--line-tertiary);
+            cursor: not-allowed;
+
+            &:hover,
+            &:focus-within {
+                border-color: var(--line-tertiary);
+                box-shadow: none;
+            }
+        }
+    }
+
+    &__helper-text {
+        @include caption-12-r();
+        color: var(--label-tertiary);
+        margin: 0;
+
+        .input-field--error & {
+            color: var(--status-negative);
+        }
+
+        .input-field--success & {
+            color: var(--static-primary);
+        }
+    }
+}
