@@ -9,6 +9,11 @@ $radius-xxlarge: 16px;
 $radius-xxxlarge: 20px;
 $radius-full: 999999px;
 
+/* z-index tokens */
+$z-index-dropdown: 1000;
+$z-index-modal: 2000;
+$z-index-toast: 3000;
+
 
 /* Theme Tokens (CSS Variables for dynamic switching) */
 :root {
@@ -871,6 +876,10 @@ $text-label-10-r-lh: 12px;
     box-shadow: 0px 6px 10px -1px var(--elevation-30-color), 0px 8px 10px rgba(0, 0, 0, 0.060);
 }
 
+@mixin effect-style-elevation-40() {
+    box-shadow: 0px 8px 12px -1px var(--elevation-40-color), 0px 10px 12px rgba(0, 0, 0, 0.080);
+}
+
 @mixin effect-style-elevation-ambient() {
     box-shadow: 0px 0px 8px -1px var(--colors-grey-100), 0px 0px 8px rgba(0, 0, 0, 0.040);
 }
@@ -908,6 +917,10 @@ $text-label-10-r-lh: 12px;
     @include effect-style-elevation-20();
 }
 
+@mixin elevation-40() {
+    @include effect-style-elevation-40();
+}
+
 @mixin label-15-sb() {
     @include text-style-label-label-15-sb();
 }
@@ -930,6 +943,10 @@ $text-label-10-r-lh: 12px;
 
 @mixin body-14-r() {
     @include text-style-body-body-14-r();
+}
+
+@mixin body-14-sb() {
+    @include text-style-body-body-14-sb();
 }
 
 @mixin body-13-r() {

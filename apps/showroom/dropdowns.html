@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Gallery - Dropdowns</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <style>
+        .dropdown-playground {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 320px;
+        }
+
+        /* 메뉴가 절대 좌표이므로 컨테이너 높이 확보 */
+        .preview-canvas {
+            min-height: 300px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link active">Dropdowns</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">다양한 옵션을 조합하여 드롭다운을 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas">
+                            <div class="vds-dropdown vds-dropdown--large" id="playground-dropdown">
+                                <div class="vds-dropdown__trigger">
+                                    <span class="vds-dropdown__label">옵션을 선택하세요</span>
+                                    <div class="vds-dropdown__arrow">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M7 10l5 5 5-5z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="vds-menu" id="playground-menu">
+                                    <div class="vds-menu__item" data-value="1">
+                                        <div class="vds-menu__icon">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                            </svg>
+                                        </div>
+                                        <span class="vds-menu__text">Menu Item One</span>
+                                        <span class="vds-menu__badge">NEW</span>
+                                    </div>
+                                    <div class="vds-menu__item vds-menu__item--selected" data-value="2">
+                                        <span class="vds-menu__text">Selected Item Two</span>
+                                    </div>
+                                    <div class="vds-menu__divider"></div>
+                                    <div class="vds-menu__item vds-menu__item--disabled" data-value="3">
+                                        <span class="vds-menu__text">Disabled Item Three</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="vds-dropdown--large">L</button>
+                                <button class="toggle-btn" data-value="vds-dropdown--medium">M</button>
+                                <button class="toggle-btn" data-value="vds-dropdown--small">S</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">State</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-disabled"> Disabled
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="component-section">
+                <h2 class="section-title">Dropdown Gallery</h2>
+                <p class="section-desc">사이즈별 드롭다운 구성 예시입니다.</p>
+
+                <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="vds-dropdown vds-dropdown--large">
+                        <div class="vds-dropdown__trigger">
+                            <span class="vds-dropdown__label">Large Dropdown</span>
+                            <div class="vds-dropdown__arrow"><svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="vds-dropdown vds-dropdown--medium">
+                        <div class="vds-dropdown__trigger">
+                            <span class="vds-dropdown__label">Medium Dropdown</span>
+                            <div class="vds-dropdown__arrow"><svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="vds-dropdown vds-dropdown--small">
+                        <div class="vds-dropdown__trigger">
+                            <span class="vds-dropdown__label">Small Dropdown</span>
+                            <div class="vds-dropdown__arrow"><svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z" />
+                                </svg></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 테마 토글
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('vds-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+
+        // 드롭다운 인터랙션
+        const dropdown = document.getElementById('playground-dropdown');
+        const trigger = dropdown.querySelector('.vds-dropdown__trigger');
+        const menu = document.getElementById('playground-menu');
+
+        trigger.addEventListener('click', (e) => {
+            if (trigger.disabled) return;
+            const isOpen = trigger.classList.toggle('is-open');
+            menu.classList.toggle('is-open', isOpen);
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', () => {
+            trigger.classList.remove('is-open');
+            menu.classList.remove('is-open');
+        });
+
+        // 사이즈 토글
+        const sizeToggles = document.getElementById('size-toggles').querySelectorAll('.toggle-btn');
+        sizeToggles.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeToggles.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                dropdown.classList.remove('vds-dropdown--large', 'vds-dropdown--medium', 'vds-dropdown--small');
+                dropdown.classList.add(btn.dataset.value);
+            });
+        });
+
+        // 비활성화 토글
+        const disabledCheck = document.getElementById('state-disabled');
+        disabledCheck.addEventListener('change', () => {
+            trigger.disabled = disabledCheck.checked;
+            if (disabledCheck.checked) {
+                trigger.classList.remove('is-open');
+                menu.classList.remove('is-open');
+            }
+        });
+
+        // 메뉴 아이템 선택
+        menu.querySelectorAll('.vds-menu__item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (item.classList.contains('vds-menu__item--disabled')) return;
+
+                menu.querySelectorAll('.vds-menu__item').forEach(i => i.classList.remove('vds-menu__item--selected'));
+                item.classList.add('vds-menu__item--selected');
+
+                const label = item.querySelector('.vds-menu__text').textContent;
+                dropdown.querySelector('.vds-dropdown__label').textContent = label;
+
+                trigger.classList.remove('is-open');
+                menu.classList.remove('is-open');
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+
+</html>

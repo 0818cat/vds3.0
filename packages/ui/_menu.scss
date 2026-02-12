@@ -1,0 +1,98 @@
+@import "../core/vds3.0";
+// Menu 컴포넌트 스타일 (Dropdown 및 Context Menu용)
+// VDS 3.0 디자인 가이드라인 기준
+
+.vds-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    min-width: 160px;
+    background-color: var(--fill-surface-primary);
+    border: 1px solid var(--line-secondary);
+    border-radius: $radius-medium;
+    @include elevation-40();
+    z-index: $z-index-dropdown;
+    padding: 6px;
+    box-sizing: border-box;
+    display: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    &.is-open {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: $radius-small;
+        cursor: pointer;
+        gap: 10px;
+        color: var(--label-primary);
+        @include body-14-r();
+        transition: all 0.2s ease;
+        overflow: hidden;
+
+        @include interaction-overlay(var(--label-primary), 'light');
+
+        &:hover:not(&--disabled) {
+            background-color: var(--fill-background-secondary);
+        }
+
+        &--selected {
+            color: var(--static-primary);
+            @include body-14-sb();
+            background-color: color-mix(in srgb, var(--static-primary), transparent 94%);
+        }
+
+        &--disabled {
+            cursor: not-allowed;
+            color: var(--label-quinary);
+            pointer-events: none;
+        }
+    }
+
+    &__divider {
+        height: 1px;
+        background-color: var(--line-secondary);
+        margin: 6px 4px;
+    }
+
+    &__icon {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: inherit;
+        flex-shrink: 0;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+    }
+
+    &__text {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__badge {
+        font-size: 11px;
+        padding: 2px 6px;
+        background-color: var(--fill-background-secondary);
+        border-radius: 4px;
+        color: var(--label-secondary);
+    }
+}

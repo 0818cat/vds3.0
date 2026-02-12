@@ -19,6 +19,8 @@ $btn-configs: (
         ghost: (bg: transparent, text: var(--status-negative), overlay: (var(--status-negative), 'light')))
 );
 
+
+
 // --- 기본 버튼 스타일 ---
 @mixin btn-base {
     display: inline-flex;

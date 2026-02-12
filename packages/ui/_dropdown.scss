@@ -1,0 +1,129 @@
+@import "../core/vds3.0";
+// Dropdown 컴포넌트 스타일
+// VDS 3.0 디자인 가이드라인 기준
+
+.vds-dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+
+    &__trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background-color: var(--fill-surface-secondary);
+        border: 1px solid var(--line-secondary);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-sizing: border-box;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover:not(:disabled) {
+            border-color: var(--line-primary);
+        }
+
+        &:focus-within:not(:disabled),
+        &.is-open {
+            border-color: var(--line-accent);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
+            z-index: 1;
+        }
+
+        &:disabled {
+            background-color: var(--interaction-disabled);
+            border-color: var(--line-tertiary);
+            cursor: not-allowed;
+            color: var(--label-quinary);
+
+            .vds-dropdown__label,
+            .vds-dropdown__arrow {
+                color: inherit;
+            }
+        }
+    }
+
+    &__label {
+        color: var(--label-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+        text-align: left;
+    }
+
+    &__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--label-quaternary);
+        transition: transform 0.2s ease;
+
+        .vds-dropdown__trigger.is-open & {
+            transform: rotate(180deg);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+    }
+
+    // --- 사이즈 (Sizes) ---
+    &--large {
+        .vds-dropdown__trigger {
+            height: 48px;
+            padding: 0 18px;
+            border-radius: $radius-medium;
+            gap: 8px;
+        }
+
+        .vds-dropdown__label {
+            @include label-15-sb();
+        }
+
+        .vds-dropdown__arrow {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &--medium {
+        .vds-dropdown__trigger {
+            height: 40px;
+            padding: 0 14px;
+            border-radius: $radius-medium;
+            gap: 6px;
+        }
+
+        .vds-dropdown__label {
+            @include label-14-sb();
+        }
+
+        .vds-dropdown__arrow {
+            width: 17px;
+            height: 17px;
+        }
+    }
+
+    &--small {
+        .vds-dropdown__trigger {
+            height: 32px;
+            padding: 0 10px;
+            border-radius: $radius-small;
+            gap: 4px;
+        }
+
+        .vds-dropdown__label {
+            @include label-13-sb();
+        }
+
+        .vds-dropdown__arrow {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
