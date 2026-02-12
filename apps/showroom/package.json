@@ -1,8 +1,8 @@
 {
-  "name": "vds-storybook",
+  "name": "vds-showroom",
   "version": "1.0.0",
-  "description": "Component Showcase for VDS 3.0",
-  "main": "index.html",
+  "description": "Component Showroom for VDS 3.0",
+  "main": "showroom.html",
   "dependencies": {
     "@dayokang/vds-system": "*",
     "@dayokang/vds-ui": "*"

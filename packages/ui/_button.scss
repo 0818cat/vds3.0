@@ -2,9 +2,8 @@
 
 
 
-// --- 기본 버튼 스타일 (Base Styles) ---
+// --- 기본 버튼 스타일 ---
 // Placeholder Selector를 사용하여 중복 코드를 방지하고 명시적으로 상속합니다.
-// --- 기본 버튼 스타일 (Base Styles) ---
 // Mixin을 사용하여 중복 코드를 방지하고 명시적으로 포함합니다.
 @mixin btn-base {
     display: inline-flex;
@@ -19,7 +18,7 @@
     user-select: none;
     font-family: Pretendard;
 
-    // Interaction Overlay (Base default: Light)
+    // 인터랙션 오버레이 (기본: Light)
     position: relative;
     overflow: hidden;
     @include interaction-overlay(var(--interaction-surface), 'light');
@@ -32,7 +31,7 @@
 .btn {
     @include btn-base;
 
-    // --- 크기 (Sizes) ---
+    // --- 크기 ---
     &--large {
         height: 48px;
         padding: 0 18px;
@@ -80,11 +79,11 @@
 
 
 
-    // --- 타입 & 색상 (Types & Colors) ---
+    // --- 타입 & 색상 ---
 
     // 1. 채움 (Filled - 기본)
     &--primary {
-        @include interaction-overlay(var(--interaction-surface), 'normal'); // Inlined filled-interaction
+        @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
         background-color: var(--refine-accent);
         color: var(--static-white);
         @include elevation-20();
@@ -96,13 +95,13 @@
     }
 
     &--tertiary {
-        @include interaction-overlay(var(--interaction-surface), 'normal'); // Inlined filled-interaction
+        @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
         background-color: var(--refine-primary);
         color: var(--static-white);
     }
 
     &--negative {
-        @include interaction-overlay(var(--interaction-surface), 'normal'); // Inlined filled-interaction
+        @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
         background-color: var(--status-negative);
         color: var(--static-white);
     }
@@ -126,7 +125,7 @@
             background-color: var(--colors-blue-25);
             color: var(--static-primary);
             box-shadow: none; // 그림자(elevation) 초기화
-            @include interaction-overlay(var(--static-primary), 'light'); // Inlined primary-interaction
+            @include interaction-overlay(var(--static-primary), 'light'); // Primary 인터랙션 인라인 적용
         }
 
 
@@ -134,7 +133,7 @@
         &.btn--negative {
             background-color: var(--colors-red-25);
             color: var(--status-negative);
-            @include interaction-overlay(var(--status-negative), 'light'); // Inlined negative-interaction
+            @include interaction-overlay(var(--status-negative), 'light'); // Negative 인터랙션 인라인 적용
         }
     }
 
@@ -152,7 +151,7 @@
         &.btn--primary {
             color: var(--static-primary);
             border-color: var(--static-primary);
-            @include interaction-overlay(var(--static-primary), 'light'); // Inlined primary-interaction
+            @include interaction-overlay(var(--static-primary), 'light'); // Primary 인터랙션 인라인 적용
         }
 
         &.btn--secondary {
@@ -163,7 +162,7 @@
         &.btn--negative {
             color: var(--status-negative);
             border-color: var(--status-negative);
-            @include interaction-overlay(var(--status-negative), 'light'); // Inlined negative-interaction
+            @include interaction-overlay(var(--status-negative), 'light'); // Negative 인터랙션 인라인 적용
         }
     }
 
@@ -184,7 +183,7 @@
 
         &.btn--primary {
             color: var(--static-primary);
-            @include interaction-overlay(var(--static-primary), 'light'); // Inlined primary-interaction
+            @include interaction-overlay(var(--static-primary), 'light'); // Primary 인터랙션 인라인 적용
         }
 
         &.btn--secondary {
@@ -193,7 +192,7 @@
 
         &.btn--negative {
             color: var(--status-negative);
-            @include interaction-overlay(var(--status-negative), 'light'); // Inlined negative-interaction
+            @include interaction-overlay(var(--status-negative), 'light'); // Negative 인터랙션 인라인 적용
         }
     }
 
@@ -204,7 +203,7 @@
 
 
 
-    // --- 상태 (States) ---
+    // --- 상태 ---
     // 1. 기본 비활성화 공통 속성
     &:disabled,
     &--disabled {
@@ -296,7 +295,7 @@
 
 
 
-    // --- 아이콘 (Icons) ---
+    // --- 아이콘 ---
     &__leading-icon,
     &__trailing-icon {
         display: inline-flex;
@@ -320,4 +319,4 @@
     }
 }
 
-/* test comment */
+/* 테스트 주석 */

@@ -1,7 +1,7 @@
 {
-  "name": "new_project",
+  "name": "vds-landing-page",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "landing.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
