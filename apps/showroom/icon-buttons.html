@@ -94,12 +94,7 @@
                                 <label class="checkbox-label">
                                     <input type="checkbox" id="state-loading"> Loading
                                 </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="icon-leading"> Leading Icon
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="icon-trailing"> Trailing Icon
-                                </label>
+
                             </div>
                         </div>
                     </div>
@@ -535,8 +530,7 @@
             // 상태 체크박스
             const stateDisabled = document.getElementById('state-disabled');
             const stateLoading = document.getElementById('state-loading');
-            const iconLeading = document.getElementById('icon-leading');
-            const iconTrailing = document.getElementById('icon-trailing');
+
 
             // 초기 상태
             let state = {
@@ -545,16 +539,8 @@
                 size: 'btn--large',
                 shape: '',
                 disabled: false,
-                loading: false,
-                leadingIcon: false,
-                trailingIcon: false
+                loading: false
             };
-
-            // Leading 아이콘 SVG
-            const starIcon = `<span class="btn__leading-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/></svg></span>`;
-
-            // Trailing Icon SVG (Arrow Right)
-            const arrowIcon = `<span class="btn__trailing-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
 
             const plusIcon = `<svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></svg>`;
 
