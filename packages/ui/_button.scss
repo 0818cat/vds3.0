@@ -25,24 +25,6 @@
     @include interaction-overlay(var(--interaction-surface), 'light');
 }
 
-// --- Interaction Variants ---
-
-@mixin filled-interaction {
-    @include interaction-overlay(var(--interaction-surface), 'normal');
-}
-
-@mixin primary-interaction {
-    @include interaction-overlay(var(--static-primary), 'light');
-}
-
-@mixin negative-interaction {
-    @include interaction-overlay(var(--status-negative), 'light');
-}
-
-
-
-
-
 
 
 
@@ -54,7 +36,7 @@
     &--large {
         height: 48px;
         padding: 0 18px;
-        border-radius: $radius-large;
+        border-radius: $radius-medium;
         gap: 6px;
         min-width: 84px;
         @include label-15-sb();
@@ -102,7 +84,7 @@
 
     // 1. 채움 (Filled - 기본)
     &--primary {
-        @include filled-interaction;
+        @include interaction-overlay(var(--interaction-surface), 'normal'); // Inlined filled-interaction
         background-color: var(--refine-accent);
         color: var(--static-white);
         @include elevation-20();
@@ -114,13 +96,13 @@
     }
 
     &--tertiary {
-        @include filled-interaction;
+        @include interaction-overlay(var(--interaction-surface), 'normal'); // Inlined filled-interaction
         background-color: var(--refine-primary);
         color: var(--static-white);
     }
 
     &--negative {
-        @include filled-interaction;
+        @include interaction-overlay(var(--interaction-surface), 'normal'); // Inlined filled-interaction
         background-color: var(--status-negative);
         color: var(--static-white);
     }
@@ -144,7 +126,7 @@
             background-color: var(--colors-blue-25);
             color: var(--static-primary);
             box-shadow: none; // 그림자(elevation) 초기화
-            @include primary-interaction;
+            @include interaction-overlay(var(--static-primary), 'light'); // Inlined primary-interaction
         }
 
 
@@ -152,7 +134,7 @@
         &.btn--negative {
             background-color: var(--colors-red-25);
             color: var(--status-negative);
-            @include negative-interaction;
+            @include interaction-overlay(var(--status-negative), 'light'); // Inlined negative-interaction
         }
     }
 
@@ -170,7 +152,7 @@
         &.btn--primary {
             color: var(--static-primary);
             border-color: var(--static-primary);
-            @include primary-interaction;
+            @include interaction-overlay(var(--static-primary), 'light'); // Inlined primary-interaction
         }
 
         &.btn--secondary {
@@ -181,7 +163,7 @@
         &.btn--negative {
             color: var(--status-negative);
             border-color: var(--status-negative);
-            @include negative-interaction;
+            @include interaction-overlay(var(--status-negative), 'light'); // Inlined negative-interaction
         }
     }
 
@@ -202,7 +184,7 @@
 
         &.btn--primary {
             color: var(--static-primary);
-            @include primary-interaction;
+            @include interaction-overlay(var(--static-primary), 'light'); // Inlined primary-interaction
         }
 
         &.btn--secondary {
@@ -211,7 +193,7 @@
 
         &.btn--negative {
             color: var(--status-negative);
-            @include negative-interaction;
+            @include interaction-overlay(var(--status-negative), 'light'); // Inlined negative-interaction
         }
     }
 
