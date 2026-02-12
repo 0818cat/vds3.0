@@ -1,7 +1,18 @@
+@use "sass:map";
+
 // 아이콘 버튼 스타일
 // VDS 3.0 디자인 가이드라인 기준
 // 색상과 인터랙션은 _button.scss의 스타일을 상속받습니다.
 
+// 아이콘 버튼 사이즈 토큰 정의
+$icon-btn-sizes: (
+    "large": ("btn": 48px,
+        "icon": 24px),
+    "medium": ("btn": 40px,
+        "icon": 20px),
+    "small": ("btn": 32px,
+        "icon": 16px)
+);
 
 .btn.btn--icon {
     display: inline-flex;
@@ -10,45 +21,40 @@
     padding: 0;
     box-sizing: border-box;
     border-radius: $radius-medium;
-    flex-shrink: 0;
-    flex: 0 0 auto;
+    flex: 0 0 auto; // flex-shrink: 0 포함
     align-self: center;
-    overflow: hidden;
     min-width: 0; // 기본 버튼의 min-width 초기화
 
-
-    // 크기 및 Radius 
-    &.btn--large {
-        width: 48px;
-        height: 48px;
-
-        svg,
-        .btn__loading-animation {
-            width: 24px;
-            height: 24px;
-        }
+    // 키보드 접근성 (Keyboard Accessibility)
+    &:focus-visible {
+        outline: 2px solid var(--line-accent);
+        outline-offset: 2px;
     }
 
-    &.btn--medium {
-        width: 40px;
-        height: 40px;
-
-        svg,
-        .btn__loading-animation {
-            width: 20px;
-            height: 20px;
-        }
+    // 원형 버튼 모드 (Round Modifier)
+    &.btn--round {
+        border-radius: 50%;
     }
 
-    &.btn--small {
-        width: 32px;
-        height: 32px;
-        border-radius: $radius-small;
+    // 사이즈별 스타일 생성
+    @each $size, $values in $icon-btn-sizes {
+        &.btn--#{$size} {
+            width: map.get($values, "btn");
+            height: map.get($values, "btn");
 
-        svg,
-        .btn__loading-animation {
-            width: 16px;
-            height: 16px;
+            @if $size =="small" {
+                border-radius: $radius-small;
+
+                &.btn--round {
+                    border-radius: 50%;
+                }
+            }
+
+            svg,
+            .btn__loading-animation {
+                width: map.get($values, "icon");
+                height: map.get($values, "icon");
+            }
         }
     }
 }

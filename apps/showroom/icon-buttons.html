@@ -78,6 +78,14 @@
                         </div>
 
                         <div class="control-group">
+                            <label class="control-label">Shape</label>
+                            <div class="toggle-group" id="shape-toggles">
+                                <button class="toggle-btn active" data-value="">Square</button>
+                                <button class="toggle-btn" data-value="btn--round">Round</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
                             <label class="control-label">State & Icons</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-label">
@@ -403,6 +411,46 @@
 
                 </div>
             </section>
+
+            <!-- 라운드 아이콘 버튼 섹션 -->
+            <section class="component-section" id="round-icon-button-gallery" style="margin-top: 60px;">
+                <h2 class="section-title">Round Icon Buttons</h2>
+                <p class="section-desc">`.btn--round` 클래스를 추가하여 원형 버튼을 사용할 수 있습니다. (접근성을 위한 aria-label 적용 예시)</p>
+
+                <div
+                    style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; background: var(--fill-surface-secondary); padding: 30px; border-radius: 12px;">
+                    <button class="btn btn--icon btn--filled btn--primary btn--large btn--round" aria-label="추가"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
+                        </svg></button>
+                    <button class="btn btn--icon btn--tonal btn--primary btn--medium btn--round" aria-label="추가"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
+                        </svg></button>
+                    <button class="btn btn--icon btn--outlined btn--primary btn--small btn--round" aria-label="추가"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
+                        </svg></button>
+
+                    <div style="width: 1px; height: 40px; background: var(--line-tertiary); margin: 0 10px;"></div>
+
+                    <button class="btn btn--icon btn--filled btn--negative btn--large btn--round" aria-label="삭제"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                                fill="currentColor" />
+                        </svg></button>
+                    <button class="btn btn--icon btn--tonal btn--negative btn--medium btn--round" aria-label="삭제"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                                fill="currentColor" />
+                        </svg></button>
+                    <button class="btn btn--icon btn--outlined btn--negative btn--small btn--round" aria-label="삭제"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                                fill="currentColor" />
+                        </svg></button>
+                </div>
+            </section>
         </main>
     </div> <!-- .app-container -->
 
@@ -495,6 +543,7 @@
                 variant: 'btn--primary',
                 style: 'btn--filled',
                 size: 'btn--large',
+                shape: '',
                 disabled: false,
                 loading: false,
                 leadingIcon: false,
@@ -512,6 +561,7 @@
             function updateButton() {
                 // 기본 클래스
                 let classes = ['btn', 'btn--icon', state.style, state.variant, state.size];
+                if (state.shape) classes.push(state.shape);
 
                 // 상태 클래스
                 if (state.loading) classes.push('btn--loading');
@@ -519,6 +569,7 @@
                 // 클래스 적용
                 playgroundBtn.className = classes.join(' ');
                 playgroundBtn.disabled = state.disabled;
+                playgroundBtn.setAttribute('aria-label', '아이콘 버튼');
 
                 // 내부 HTML 업데이트
                 playgroundBtn.innerHTML = plusIcon;
@@ -531,7 +582,7 @@
                 }
 
                 // 코드 블록 업데이트
-                let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}>\n    ${plusIcon}\n</button>`;
+                let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''} aria-label="아이콘 버튼">\n    ${plusIcon}\n</button>`;
                 generatedCode.innerText = codeStr;
             }
 
@@ -553,6 +604,17 @@
                     sizeToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
                     e.target.classList.add('active');
                     state.size = e.target.dataset.value;
+                    updateButton();
+                }
+            });
+
+            // 이벤트 리스너: Shape 토글
+            const shapeToggles = document.getElementById('shape-toggles');
+            shapeToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    shapeToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.shape = e.target.dataset.value;
                     updateButton();
                 }
             });
