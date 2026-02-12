@@ -1,10 +1,25 @@
+@use "sass:map";
+@use "sass:list";
 @import "../core/vds3.0";
 
-
+// --- 버튼 아키텍처 설정 (Advanced DS Configuration) ---
+$btn-configs: (
+    primary: (filled: (bg: var(--refine-accent), text: var(--static-white), overlay: (var(--interaction-surface), 'normal')),
+        tonal: (bg: var(--colors-blue-25), text: var(--static-primary), overlay: (var(--static-primary), 'light')),
+        outlined: (bg: transparent, text: var(--static-primary), border: var(--static-primary), overlay: (var(--static-primary), 'light')),
+        ghost: (bg: transparent, text: var(--static-primary), overlay: (var(--static-primary), 'light'))),
+    secondary: (filled: (bg: var(--refine-senary), text: var(--label-primary), overlay: (var(--interaction-surface), 'light')),
+        outlined: (bg: transparent, text: var(--label-primary), border: var(--line-secondary), overlay: (var(--label-primary), 'light')),
+        ghost: (bg: transparent, text: var(--label-primary), overlay: (var(--label-primary), 'light'))),
+    tertiary: (filled: (bg: var(--refine-primary), text: var(--static-white), overlay: (var(--interaction-surface), 'normal')),
+        ghost: (bg: transparent, text: var(--label-primary), overlay: (var(--label-primary), 'light'))),
+    negative: (filled: (bg: var(--status-negative), text: var(--static-white), overlay: (var(--interaction-surface), 'normal')),
+        tonal: (bg: var(--colors-red-25), text: var(--status-negative), overlay: (var(--status-negative), 'light')),
+        outlined: (bg: transparent, text: var(--status-negative), border: var(--status-negative), overlay: (var(--status-negative), 'light')),
+        ghost: (bg: transparent, text: var(--status-negative), overlay: (var(--status-negative), 'light')))
+);
 
 // --- 기본 버튼 스타일 ---
-// Placeholder Selector를 사용하여 중복 코드를 방지하고 명시적으로 상속합니다.
-// Mixin을 사용하여 중복 코드를 방지하고 명시적으로 포함합니다.
 @mixin btn-base {
     display: inline-flex;
     align-items: center;
@@ -17,38 +32,33 @@
         box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
         border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
         opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none; // 기본 테두리 초기화
+    border: none;
     outline: none;
     box-sizing: border-box;
     white-space: nowrap;
     user-select: none;
-    font-family: var(--font-family-base); // 토큰화 적용
+    font-family: var(--font-family-base);
 
-    // 인터랙션 오버레이 (기본: Light)
     position: relative;
     overflow: hidden;
     @include interaction-overlay(var(--interaction-surface), 'light');
 }
 
-// --- 비활성화 스타일 Mixin ---
+// --- 비활성화 스타일 Mixin (Specificity 기반) ---
 @mixin btn-disabled($bg: transparent, $border: none) {
     cursor: not-allowed;
     pointer-events: none;
     opacity: 1;
-    background-color: $bg !important;
-    color: var(--label-quinary) !important;
-    border: $border !important;
-    box-shadow: none !important;
+    background-color: $bg;
+    color: var(--label-quinary);
+    border: $border;
+    box-shadow: none;
 
     &::before,
     &::after {
-        display: none !important;
+        display: none;
     }
 }
-
-
-
-
 
 .btn {
     @include btn-base;
@@ -99,165 +109,86 @@
         }
     }
 
+    // --- 타입 & 색상 (Declarative Generation) ---
+    @each $variant, $styles in $btn-configs {
+        &--#{$variant} {
+            $filled: map.get($styles, filled);
 
+            // 1. 기본 스타일 (Filled)
+            background-color: map.get($filled, bg);
+            color: map.get($filled, text);
 
-    // --- 타입 & 색상 ---
+            $overlay: map.get($filled, overlay);
+            @include interaction-overlay(list.nth($overlay, 1), list.nth($overlay, 2));
 
-    // 1. 채움 (Filled - 기본)
-    &--primary {
-        @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
-        background-color: var(--refine-accent);
-        color: var(--static-white);
-        @include elevation-20();
-    }
+            @if $variant ==primary {
+                @include elevation-20();
+            }
 
-    &--secondary {
-        background-color: var(--refine-senary);
-        color: var(--label-primary);
-    }
+            // 2. 다른 타입들 (Tonal, Outlined, Ghost)
+            @each $type in (tonal, outlined, ghost) {
+                $config: map.get($styles, $type);
 
-    &--tertiary {
-        @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
-        background-color: var(--refine-primary);
-        color: var(--static-white);
-    }
+                @if $config {
+                    &.btn--#{$type} {
+                        background-color: map.get($config, bg);
+                        color: map.get($config, text);
+                        box-shadow: none;
 
-    &--negative {
-        @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
-        background-color: var(--status-negative);
-        color: var(--static-white);
-    }
+                        @if map.has-key($config, border) {
+                            border: 1px solid map.get($config, border);
+                        }
 
+                        @else {
+                            border: 1px solid transparent; // Specifcity 유지를 위해 투명 테두리 유지 가능
+                            border: none;
+                        }
 
+                        $t-overlay: map.get($config, overlay);
+                        @include interaction-overlay(list.nth($t-overlay, 1), list.nth($t-overlay, 2));
+                    }
+                }
+            }
 
+            // 3. 변형별 상태 관리 (Specificity Optimized)
+            // .btn.btn--primary:disabled 형태로 선택자를 강화하여 !important 제거
+            &.btn:disabled,
+            &.btn.btn--disabled {
+                @include btn-disabled(var(--interaction-disabled));
 
+                @each $type in (tonal, outlined, ghost) {
+                    $config: map.get($styles, $type);
 
+                    @if $config {
+                        &.btn--#{$type} {
+                            @if $type ==outlined {
+                                @include btn-disabled(transparent, 1px solid var(--interaction-disabled));
+                            }
 
-
-
-
-    // 2. 토널 (Tonal - 밝은 배경)
-    &--tonal {
-        &.btn--primary {
-            background-color: var(--colors-blue-25);
-            color: var(--static-primary);
-            box-shadow: none; // 그림자(elevation) 초기화
-            @include interaction-overlay(var(--static-primary), 'light'); // Primary 인터랙션 인라인 적용
-        }
-
-
-
-        &.btn--negative {
-            background-color: var(--colors-red-25);
-            color: var(--status-negative);
-            @include interaction-overlay(var(--status-negative), 'light'); // Negative 인터랙션 인라인 적용
-        }
-    }
-
-
-
-
-
-
-    // 3. 아웃라인 (Outlined - 테두리)
-    &--outlined {
-        background-color: transparent;
-        border: 1px solid currentColor;
-        box-shadow: none;
-
-        &.btn--primary {
-            color: var(--static-primary);
-            border-color: var(--static-primary);
-            @include interaction-overlay(var(--static-primary), 'light'); // Primary 인터랙션 인라인 적용
-        }
-
-        &.btn--secondary {
-            color: var(--label-primary);
-            border-color: var(--line-secondary);
-        }
-
-        &.btn--negative {
-            color: var(--status-negative);
-            border-color: var(--status-negative);
-            @include interaction-overlay(var(--status-negative), 'light'); // Negative 인터랙션 인라인 적용
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-    // 4. 고스트 (Ghost - 투명)
-    &--ghost {
-        background-color: transparent;
-        border: none;
-        box-shadow: none;
-
-        &.btn--primary {
-            color: var(--static-primary);
-            @include interaction-overlay(var(--static-primary), 'light'); // Primary 인터랙션 인라인 적용
-        }
-
-        &.btn--secondary {
-            color: var(--label-primary);
-        }
-
-        &.btn--negative {
-            color: var(--status-negative);
-            @include interaction-overlay(var(--status-negative), 'light'); // Negative 인터랙션 인라인 적용
-        }
-    }
-
-
-
-
-
-
-
-
-    // --- 상태 ---
-    // 1. 공통 비활성화 제어
-    &:disabled,
-    &.btn--disabled {
-        // 기본적으로 Filled/Tonal/Variant 통합 대응
-        @include btn-disabled(var(--interaction-disabled));
-    }
-
-    // 2. 아웃라인 전용 비활성화
-    &--outlined {
-
-        &:disabled,
-        &.btn--disabled {
-            @include btn-disabled(transparent, 1px solid var(--interaction-disabled));
-        }
-    }
-
-    // 3. 고스트 전용 비활성화
-    &--ghost {
-
-        &:disabled,
-        &.btn--disabled {
-            @include btn-disabled(transparent, none);
+                            @else {
+                                @include btn-disabled(transparent, none);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
     // --- 로딩 ---
     &--loading,
     &[aria-busy="true"] {
-        cursor: wait;
-        pointer-events: none;
-        position: relative;
-        color: transparent !important;
-        box-shadow: none !important;
+        &.btn {
+            cursor: wait;
+            pointer-events: none;
+            position: relative;
+            color: transparent;
+            box-shadow: none;
 
-        &::before,
-        &::after {
-            display: none !important; // 로딩 중 인터랙션 방지
+            &::before,
+            &::after {
+                display: none; // 로딩 중 인터랙션 방지
+            }
         }
 
         // 로딩 애니메이션 컨테이너
@@ -296,7 +227,7 @@
             width: 100%;
             height: 100%;
             display: block;
-            fill: currentColor; // 색상 상속
+            fill: currentColor;
         }
     }
 }
@@ -306,5 +237,3 @@
         transform: rotate(360deg);
     }
 }
-
-/* 테스트 주석 */

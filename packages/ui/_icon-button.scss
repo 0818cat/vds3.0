@@ -51,6 +51,6 @@ $icon-btn-sizes: (
     // 원형 버튼 모드 (Round Modifier / Override)
     // 사이즈별 radius 설정을 덮어쓰기 위해 최하단에 배치합니다.
     &.btn--round {
-        border-radius: 50% !important; // 명시적 우선순위 확보
+        border-radius: 50%;
     }
 }
