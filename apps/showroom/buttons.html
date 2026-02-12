@@ -466,7 +466,10 @@
                                                         }
 
                                                         // Filled 버튼 (Primary, Tertiary, Negative)은 흰색
-                                                        if (button.classList.contains('btn--filled')) {
+                                                        // Tonal, Outlined, Ghost가 아니면 Filled로 간주
+                                                        if (!button.classList.contains('btn--tonal') &&
+                                                            !button.classList.contains('btn--outlined') &&
+                                                            !button.classList.contains('btn--ghost')) {
                                                             return [1, 1, 1]; // 흰색
                                                         }
 
@@ -482,7 +485,7 @@
                                                     }
 
                                                     function initLoadingButtons() {
-                                                        const loadingButtons = document.querySelectorAll('.btn--loading');
+                                                        const loadingButtons = document.querySelectorAll('.btn--loading, .btn[aria-busy="true"]');
                                                         loadingButtons.forEach((button) => {
                                                             if (button.querySelector('.btn__loading-animation')) return;
 
@@ -552,6 +555,13 @@
                                                             playgroundBtn.className = classes.join(' ');
                                                             playgroundBtn.disabled = state.disabled;
 
+                                                            // 접근성: aria-busy 적용
+                                                            if (state.loading) {
+                                                                playgroundBtn.setAttribute('aria-busy', 'true');
+                                                            } else {
+                                                                playgroundBtn.removeAttribute('aria-busy');
+                                                            }
+
                                                             // 내부 HTML 업데이트
                                                             let innerHTML = 'BUTTON';
                                                             if (state.leadingIcon) innerHTML = starIcon + innerHTML;
@@ -568,7 +578,8 @@
                                                             }
 
                                                             // 코드 블록 업데이트
-                                                            let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}>` +
+                                                            const ariaBusyAttr = state.loading ? ' aria-busy="true"' : '';
+                                                            let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr}>` +
                                                                 (state.leadingIcon ? '\n    <span class="btn__leading-icon">...</span>' : '') +
                                                                 '\n    BUTTON' +
                                                                 (state.trailingIcon ? '\n    <span class="btn__trailing-icon">...</span>' : '') +
@@ -576,7 +587,7 @@
 
                                                             // 기본형을 위한 간단한 한 줄
                                                             if (!state.leadingIcon && !state.trailingIcon) {
-                                                                codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}>BUTTON</button>`;
+                                                                codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr}>BUTTON</button>`;
                                                             }
 
                                                             generatedCode.innerText = codeStr;

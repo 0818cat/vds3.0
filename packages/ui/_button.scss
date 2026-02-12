@@ -10,18 +10,40 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    // 성능 최적화: 필요한 속성만 transition 적용
+    transition:
+        background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border: none; // 기본 테두리 초기화
     outline: none;
     box-sizing: border-box;
     white-space: nowrap;
     user-select: none;
-    font-family: Pretendard;
+    font-family: var(--font-family-base); // 토큰화 적용
 
     // 인터랙션 오버레이 (기본: Light)
     position: relative;
     overflow: hidden;
     @include interaction-overlay(var(--interaction-surface), 'light');
+}
+
+// --- 비활성화 스타일 Mixin ---
+@mixin btn-disabled($bg: transparent, $border: none) {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 1;
+    background-color: $bg !important;
+    color: var(--label-quinary) !important;
+    border: $border !important;
+    box-shadow: none !important;
+
+    &::before,
+    &::after {
+        display: none !important;
+    }
 }
 
 
@@ -104,11 +126,6 @@
         @include interaction-overlay(var(--interaction-surface), 'normal'); // Filled 인터랙션 인라인 적용
         background-color: var(--status-negative);
         color: var(--static-white);
-    }
-
-    // 명시적 Filled 수식어
-    &--filled {
-        // 색상 클래스에서 기본적으로 처리됨
     }
 
 
@@ -204,70 +221,46 @@
 
 
     // --- 상태 ---
-    // 1. 기본 비활성화 공통 속성
+    // 1. 공통 비활성화 제어
     &:disabled,
-    &--disabled {
-        cursor: not-allowed;
-        pointer-events: none;
-        opacity: 1; // 투명도 대신 지정된 토큰 색상 사용
-        box-shadow: none !important;
-
-        &::before,
-        &::after {
-            display: none !important;
-        }
-
-        // Overlay 제거
+    &.btn--disabled {
+        // 기본적으로 Filled/Tonal/Variant 통합 대응
+        @include btn-disabled(var(--interaction-disabled));
     }
 
-    // 2. 타입별 비활성화 스타일 (전용 토큰 적용)
-    // Filled & Tonal
-    &--filled,
-    &--tonal,
-    &--primary,
-    &--secondary,
-    &--tertiary,
-    &--negative {
-
-        &:disabled,
-        &.btn--disabled {
-            background-color: var(--interaction-disabled) !important;
-            color: var(--label-quinary) !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-    }
-
-    // Outlined
+    // 2. 아웃라인 전용 비활성화
     &--outlined {
 
         &:disabled,
         &.btn--disabled {
-            background-color: transparent !important;
-            border: 1px solid var(--interaction-disabled) !important;
-            color: var(--label-quinary) !important;
+            @include btn-disabled(transparent, 1px solid var(--interaction-disabled));
         }
     }
 
-    // Ghost
+    // 3. 고스트 전용 비활성화
     &--ghost {
 
         &:disabled,
         &.btn--disabled {
-            background-color: transparent !important;
-            color: var(--label-quinary) !important;
-            border: none !important;
+            @include btn-disabled(transparent, none);
         }
     }
 
-    &--loading {
+    // --- 로딩 ---
+    &--loading,
+    &[aria-busy="true"] {
         cursor: wait;
         pointer-events: none;
         position: relative;
         color: transparent !important;
         box-shadow: none !important;
 
-        // Lottie 애니메이션 컨테이너 (기본 Large 사이즈)
+        &::before,
+        &::after {
+            display: none !important; // 로딩 중 인터랙션 방지
+        }
+
+        // 로딩 애니메이션 컨테이너
         .btn__loading-animation {
             position: absolute;
             top: 50%;
@@ -278,22 +271,17 @@
             z-index: 1;
         }
 
-        // Medium 사이즈
+        // 사이즈별 로딩 애니메이션 크기 조정
         &.btn--medium .btn__loading-animation {
             width: 17px;
             height: 17px;
         }
 
-        // Small 사이즈
         &.btn--small .btn__loading-animation {
             width: 16px;
             height: 16px;
         }
     }
-
-
-
-
 
     // --- 아이콘 ---
     &__leading-icon,
