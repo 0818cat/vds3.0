@@ -6,7 +6,8 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "sass --watch --load-path=node_modules --load-path=packages apps/showroom/showroom.scss:apps/showroom/showroom.css",
+    "build": "sass packages/ui/components.scss packages/ui/dist/components.css && sass apps/showroom/showroom.scss apps/showroom/showroom.css",
+    "dev": "sass --watch --load-path=node_modules --load-path=packages apps/showroom/showroom.scss:apps/showroom/showroom.css packages/ui/components.scss:packages/ui/dist/components.css",
     "dev:landing": "sass --watch --load-path=node_modules --load-path=packages apps/landing-page/landing.scss:apps/landing-page/landing.css"
   },
   "dependencies": {

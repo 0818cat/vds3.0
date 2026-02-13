@@ -9,20 +9,22 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
     <style>
-        .dropdown-playground {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 320px;
-        }
-
-        /* 메뉴가 절대 좌표이므로 컨테이너 높이 확보 */
         .preview-canvas {
-            min-height: 300px;
+            min-height: 480px;
             display: flex;
             align-items: flex-start;
             justify-content: center;
             padding-top: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .vds-dropdown {
+            max-width: 320px;
         }
     </style>
 </head>
@@ -51,162 +53,127 @@
         </aside>
 
         <main class="showroom-main">
-            <section class="component-section playground-section">
-                <h2 class="section-title">Interactive Playground</h2>
-                <p class="section-desc">다양한 옵션을 조합하여 드롭다운을 테스트해보세요.</p>
-
-                <div class="playground-container">
-                    <div class="preview-area">
-                        <div class="preview-canvas">
-                            <div class="vds-dropdown vds-dropdown--large" id="playground-dropdown">
-                                <div class="vds-dropdown__trigger">
-                                    <span class="vds-dropdown__label">옵션을 선택하세요</span>
-                                    <div class="vds-dropdown__arrow">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M7 10l5 5 5-5z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="vds-menu" id="playground-menu">
-                                    <div class="vds-menu__item" data-value="1">
-                                        <div class="vds-menu__icon">
-                                            <svg viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                                            </svg>
-                                        </div>
-                                        <span class="vds-menu__text">Menu Item One</span>
-                                        <span class="vds-menu__badge">NEW</span>
-                                    </div>
-                                    <div class="vds-menu__item vds-menu__item--selected" data-value="2">
-                                        <span class="vds-menu__text">Selected Item Two</span>
-                                    </div>
-                                    <div class="vds-menu__divider"></div>
-                                    <div class="vds-menu__item vds-menu__item--disabled" data-value="3">
-                                        <span class="vds-menu__text">Disabled Item Three</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="controls-area">
-                        <div class="control-group">
-                            <label class="control-label">Size</label>
-                            <div class="toggle-group" id="size-toggles">
-                                <button class="toggle-btn active" data-value="vds-dropdown--large">L</button>
-                                <button class="toggle-btn" data-value="vds-dropdown--medium">M</button>
-                                <button class="toggle-btn" data-value="vds-dropdown--small">S</button>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label">State</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="state-disabled"> Disabled
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="component-section">
-                <h2 class="section-title">Dropdown Gallery</h2>
-                <p class="section-desc">사이즈별 드롭다운 구성 예시입니다.</p>
+                <h2 class="section-title">Dropdown Variations</h2>
+                <p class="section-desc">VDS 3.0 피그마 디자인을 반영한 드롭다운의 다양한 변체입니다.</p>
 
-                <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div class="gallery-grid">
+                    <!-- Case 1: Large -->
                     <div class="vds-dropdown vds-dropdown--large">
                         <div class="vds-dropdown__trigger">
-                            <span class="vds-dropdown__label">Large Dropdown</span>
-                            <div class="vds-dropdown__arrow"><svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z" />
-                                </svg></div>
+                            <span class="vds-dropdown__label">Select an option</span>
+                            <span class="vds-dropdown__caption">Caption</span>
+                            <div class="vds-dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="vds-menu">
+                            <div class="vds-menu__item" data-value="1">
+                                <span class="vds-menu__text">Menu Item One</span>
+                            </div>
+                            <div class="vds-menu__item vds-menu__item--selected" data-value="2">
+                                <span class="vds-menu__text">Selected Item Two</span>
+                            </div>
+                            <div class="vds-menu__divider"></div>
+                            <div class="vds-menu__item" data-value="3">
+                                <span class="vds-menu__text">Menu Item Three</span>
+                                <span class="vds-menu__badge">NEW</span>
+                            </div>
+                        </div>
+                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
                     </div>
+
+                    <!-- Case 2: Medium with Leading Icon -->
                     <div class="vds-dropdown vds-dropdown--medium">
                         <div class="vds-dropdown__trigger">
-                            <span class="vds-dropdown__label">Medium Dropdown</span>
-                            <div class="vds-dropdown__arrow"><svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z" />
-                                </svg></div>
+                            <div class="vds-dropdown__leading-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M9.64062 3C10.7477 3 11.7803 3.55787 12.3877 4.4834L13.2842 5.84863C13.5219 6.21061 13.9263 6.42871 14.3594 6.42871H18.7139C20.5284 6.42871 21.9998 7.89941 22 9.71387V17.7139C22 19.5285 20.5285 21 18.7139 21H5.28613C3.47148 21 2 19.5285 2 17.7139V6.28613C2 4.47148 3.47148 3 5.28613 3H9.64062ZM14.25 8.42871H4V17.7139C4 18.4239 4.57605 19 5.28613 19H18.7139C19.4239 19 20 18.4239 20 17.7139V9.71387C19.9998 9.00398 19.4238 8.42871 18.7139 8.42871H14.3594C14.3228 8.42871 14.2864 8.42602 14.25 8.4248V8.42871ZM5.28613 5C4.57605 5 4 5.57605 4 6.28613V6.42871H11.2734L10.7158 5.58008C10.4781 5.21805 10.0737 5 9.64062 5H5.28613Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                            <span class="vds-dropdown__label">Icon Dropdown</span>
+                            <span class="vds-dropdown__caption">Caption</span>
+                            <div class="vds-dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="vds-menu">
+                            <div class="vds-menu__item" data-value="a">
+                                <div class="vds-menu__icon"><svg viewBox="0 0 24 24">
+                                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                                    </svg></div>
+                                <span class="vds-menu__text">Home</span>
+                            </div>
+                            <div class="vds-menu__item" data-value="b">
+                                <div class="vds-menu__icon"><svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg></div>
+                                <span class="vds-menu__text">Profile</span>
+                            </div>
+                        </div>
+                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
                     </div>
-                    <div class="vds-dropdown vds-dropdown--small">
+
+                    <!-- Case 3: Small Negative (Error) State -->
+                    <div class="vds-dropdown vds-dropdown--small vds-dropdown--negative">
                         <div class="vds-dropdown__trigger">
-                            <span class="vds-dropdown__label">Small Dropdown</span>
-                            <div class="vds-dropdown__arrow"><svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z" />
-                                </svg></div>
+                            <span class="vds-dropdown__label">Error State</span>
+                            <span class="vds-dropdown__caption">Caption</span>
+                            <div class="vds-dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
                         </div>
+                        <div class="vds-menu vds-menu--small">
+                            <div class="vds-menu__item" data-value="err1"><span class="vds-menu__text">Fix me</span>
+                            </div>
+                            <div class="vds-menu__item" data-value="err2"><span class="vds-menu__text">Double
+                                    check</span></div>
+                        </div>
+                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
+                    </div>
+
+                    <!-- Case 4: Medium Disabled State -->
+                    <div class="vds-dropdown vds-dropdown--medium">
+                        <div class="vds-dropdown__trigger" disabled>
+                            <span class="vds-dropdown__label">Disabled Dropdown</span>
+                            <span class="vds-dropdown__caption">Caption</span>
+                            <div class="vds-dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/dropdown.js"></script>
     <script>
-        // 테마 토글
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            localStorage.setItem('vds-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        });
-
-        // 드롭다운 인터랙션
-        const dropdown = document.getElementById('playground-dropdown');
-        const trigger = dropdown.querySelector('.vds-dropdown__trigger');
-        const menu = document.getElementById('playground-menu');
-
-        trigger.addEventListener('click', (e) => {
-            if (trigger.disabled) return;
-            const isOpen = trigger.classList.toggle('is-open');
-            menu.classList.toggle('is-open', isOpen);
-            e.stopPropagation();
-        });
-
-        document.addEventListener('click', () => {
-            trigger.classList.remove('is-open');
-            menu.classList.remove('is-open');
-        });
-
-        // 사이즈 토글
-        const sizeToggles = document.getElementById('size-toggles').querySelectorAll('.toggle-btn');
-        sizeToggles.forEach(btn => {
-            btn.addEventListener('click', () => {
-                sizeToggles.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                dropdown.classList.remove('vds-dropdown--large', 'vds-dropdown--medium', 'vds-dropdown--small');
-                dropdown.classList.add(btn.dataset.value);
-            });
-        });
-
-        // 비활성화 토글
-        const disabledCheck = document.getElementById('state-disabled');
-        disabledCheck.addEventListener('change', () => {
-            trigger.disabled = disabledCheck.checked;
-            if (disabledCheck.checked) {
-                trigger.classList.remove('is-open');
-                menu.classList.remove('is-open');
-            }
-        });
-
-        // 메뉴 아이템 선택
-        menu.querySelectorAll('.vds-menu__item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                if (item.classList.contains('vds-menu__item--disabled')) return;
-
-                menu.querySelectorAll('.vds-menu__item').forEach(i => i.classList.remove('vds-menu__item--selected'));
-                item.classList.add('vds-menu__item--selected');
-
-                const label = item.querySelector('.vds-menu__text').textContent;
-                dropdown.querySelector('.vds-dropdown__label').textContent = label;
-
-                trigger.classList.remove('is-open');
-                menu.classList.remove('is-open');
-                e.stopPropagation();
+        // 추가적인 테스트 로직이 필요하다면 여기에 작성하세요.
+        document.querySelectorAll('.vds-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('vds-change', (e) => {
+                console.log('Value changed:', e.detail);
             });
         });
     </script>

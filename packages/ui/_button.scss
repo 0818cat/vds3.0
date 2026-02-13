@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "sass:list";
-@import "../core/vds3.0";
+@import "../core/index";
 
 // --- 버튼 아키텍처 설정 (Advanced DS Configuration) ---
 $btn-configs: (
@@ -69,7 +69,7 @@ $btn-configs: (
     &--large {
         height: 48px;
         padding: 0 18px;
-        border-radius: $radius-medium;
+        border-radius: $radius-8;
         gap: 6px;
         min-width: 84px;
         @include label-15-sb();
@@ -84,7 +84,7 @@ $btn-configs: (
     &--medium {
         height: 40px;
         padding: 0 14px;
-        border-radius: $radius-medium;
+        border-radius: $radius-8;
         gap: 6px;
         min-width: 70px;
         @include label-14-sb();
@@ -99,7 +99,7 @@ $btn-configs: (
     &--small {
         height: 32px;
         padding: 0 10px;
-        border-radius: $radius-small;
+        border-radius: $radius-6;
         gap: 4px;
         min-width: 56px;
         @include label-13-sb();
@@ -231,11 +231,5 @@ $btn-configs: (
             display: block;
             fill: currentColor;
         }
-    }
-}
-
-@keyframes btn-spin {
-    to {
-        transform: rotate(360deg);
     }
 }

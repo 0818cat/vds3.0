@@ -1,0 +1,407 @@
+/* Typography Tokens (SCSS Mixins) */
+@mixin text-style-display-display-56-b() {
+    font-size: $text-display-56-b-size;
+    font-family: Pretendard;
+    font-weight: $text-display-56-b-weight;
+    font-style: normal;
+    line-height: $text-display-56-b-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-display-display-44-b() {
+    font-size: $text-display-44-b-size;
+    font-family: Pretendard;
+    font-weight: $text-display-44-b-weight;
+    font-style: normal;
+    line-height: $text-display-44-b-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-display-display-32-b() {
+    font-size: $text-display-32-b-size;
+    font-family: Pretendard;
+    font-weight: $text-display-32-b-weight;
+    font-style: normal;
+    line-height: $text-display-32-b-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-display-display-28-b() {
+    font-size: $text-display-28-b-size;
+    font-family: Pretendard;
+    font-weight: $text-display-28-b-weight;
+    font-style: normal;
+    line-height: $text-display-28-b-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-24-b() {
+    font-size: $text-title-24-b-size;
+    font-family: Pretendard;
+    font-weight: $text-title-24-b-weight;
+    font-style: normal;
+    line-height: $text-title-24-b-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-24-r() {
+    font-size: $text-title-24-r-size;
+    font-family: Pretendard;
+    font-weight: $text-title-24-r-weight;
+    font-style: normal;
+    line-height: $text-title-24-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-20-b() {
+    font-size: $text-title-20-b-size;
+    font-family: Pretendard;
+    font-weight: $text-title-20-b-weight;
+    font-style: normal;
+    line-height: $text-title-20-b-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-20-r() {
+    font-size: $text-title-20-r-size;
+    font-family: Pretendard;
+    font-weight: $text-title-20-r-weight;
+    font-style: normal;
+    line-height: $text-title-20-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-18-sb() {
+    font-size: $text-title-18-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-title-18-sb-weight;
+    font-style: normal;
+    line-height: $text-title-18-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-18-r() {
+    font-size: $text-title-18-r-size;
+    font-family: Pretendard;
+    font-weight: $text-title-18-r-weight;
+    font-style: normal;
+    line-height: $text-title-18-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-16-sb() {
+    font-size: $text-title-16-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-title-16-sb-weight;
+    font-style: normal;
+    line-height: $text-title-16-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-16-r() {
+    font-size: $text-title-16-r-size;
+    font-family: Pretendard;
+    font-weight: $text-title-16-r-weight;
+    font-style: normal;
+    line-height: $text-title-16-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-15-sb() {
+    font-size: $text-title-15-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-title-15-sb-weight;
+    font-style: normal;
+    line-height: $text-title-15-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-15-r() {
+    font-size: $text-title-15-r-size;
+    font-family: Pretendard;
+    font-weight: $text-title-15-r-weight;
+    font-style: normal;
+    line-height: $text-title-15-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-14-sb() {
+    font-size: $text-title-14-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-title-14-sb-weight;
+    font-style: normal;
+    line-height: $text-title-14-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-title-title-14-r() {
+    font-size: $text-title-14-r-size;
+    font-family: Pretendard;
+    font-weight: $text-title-14-r-weight;
+    font-style: normal;
+    line-height: $text-title-14-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-16-sb() {
+    font-size: $text-body-16-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-body-16-sb-weight;
+    font-style: normal;
+    line-height: $text-body-16-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-16-r() {
+    font-size: $text-body-16-r-size;
+    font-family: Pretendard;
+    font-weight: $text-body-16-r-weight;
+    font-style: normal;
+    line-height: $text-body-16-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-15-sb() {
+    font-size: $text-body-15-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-body-15-sb-weight;
+    font-style: normal;
+    line-height: $text-body-15-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-15-r() {
+    font-size: $text-body-15-r-size;
+    font-family: Pretendard;
+    font-weight: $text-body-15-r-weight;
+    font-style: normal;
+    line-height: $text-body-15-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-14-sb() {
+    font-size: $text-body-14-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-body-14-sb-weight;
+    font-style: normal;
+    line-height: $text-body-14-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-14-r() {
+    font-size: $text-body-14-r-size;
+    font-family: Pretendard;
+    font-weight: $text-body-14-r-weight;
+    font-style: normal;
+    line-height: $text-body-14-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-13-sb() {
+    font-size: $text-body-13-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-body-13-sb-weight;
+    font-style: normal;
+    line-height: $text-body-13-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-body-body-13-r() {
+    font-size: $text-body-13-r-size;
+    font-family: Pretendard;
+    font-weight: $text-body-13-r-weight;
+    font-style: normal;
+    line-height: $text-body-13-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-caption-caption-13-sb() {
+    font-size: $text-caption-13-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-caption-13-sb-weight;
+    font-style: normal;
+    line-height: $text-caption-13-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-caption-caption-13-r() {
+    font-size: $text-caption-13-r-size;
+    font-family: Pretendard;
+    font-weight: $text-caption-13-r-weight;
+    font-style: normal;
+    line-height: $text-caption-13-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-caption-caption-12-sb() {
+    font-size: $text-caption-12-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-caption-12-sb-weight;
+    font-style: normal;
+    line-height: $text-caption-12-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-caption-caption-12-r() {
+    font-size: $text-caption-12-r-size;
+    font-family: Pretendard;
+    font-weight: $text-caption-12-r-weight;
+    font-style: normal;
+    line-height: $text-caption-12-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-caption-caption-11-sb() {
+    font-size: $text-caption-11-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-caption-11-sb-weight;
+    font-style: normal;
+    line-height: $text-caption-11-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-caption-caption-11-r() {
+    font-size: $text-caption-11-r-size;
+    font-family: Pretendard;
+    font-weight: $text-caption-11-r-weight;
+    font-style: normal;
+    line-height: $text-caption-11-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-15-sb() {
+    font-size: $text-label-15-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-label-15-sb-weight;
+    font-style: normal;
+    line-height: $text-label-15-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-15-r() {
+    font-size: $text-label-15-r-size;
+    font-family: Pretendard;
+    font-weight: $text-label-15-r-weight;
+    font-style: normal;
+    line-height: $text-label-15-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-14-sb() {
+    font-size: $text-label-14-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-label-14-sb-weight;
+    font-style: normal;
+    line-height: $text-label-14-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-14-r() {
+    font-size: $text-label-14-r-size;
+    font-family: Pretendard;
+    font-weight: $text-label-14-r-weight;
+    font-style: normal;
+    line-height: $text-label-14-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-13-sb() {
+    font-size: $text-label-13-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-label-13-sb-weight;
+    font-style: normal;
+    line-height: $text-label-13-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-13-r() {
+    font-size: $text-label-13-r-size;
+    font-family: Pretendard;
+    font-weight: $text-label-13-r-weight;
+    font-style: normal;
+    line-height: $text-label-13-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-lable-12-sb() {
+    font-size: $text-label-12-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-label-12-sb-weight;
+    font-style: normal;
+    line-height: $text-label-12-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-lable-12-r() {
+    font-size: $text-label-12-r-size;
+    font-family: Pretendard;
+    font-weight: $text-label-12-r-weight;
+    font-style: normal;
+    line-height: $text-label-12-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-10-sb() {
+    font-size: $text-label-10-sb-size;
+    font-family: Pretendard;
+    font-weight: $text-label-10-sb-weight;
+    font-style: normal;
+    line-height: $text-label-10-sb-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-label-label-10-r() {
+    font-size: $text-label-10-r-size;
+    font-family: Pretendard;
+    font-weight: $text-label-10-r-weight;
+    font-style: normal;
+    line-height: $text-label-10-r-lh;
+    text-decoration: none;
+    text-transform: none;
+}
+
+@mixin text-style-mono-mono-14-r() {
+    font-family: 'SF Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}

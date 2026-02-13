@@ -1,0 +1,18 @@
+/* VDS 3.0 토큰 및 믹스인 */
+
+/* 토큰 */
+@import 'styles/tokens/radius';
+@import 'styles/tokens/z-index';
+@import 'styles/tokens/colors';
+@import 'styles/tokens/typography';
+
+/* 별칭 - 변수 */
+@import 'styles/aliases/variables';
+
+/* 믹스인 */
+@import 'styles/mixins/typography';
+@import 'styles/mixins/effects';
+@import 'styles/mixins/interaction';
+
+/* 별칭 - 믹스인 */
+@import 'styles/aliases/mixins';

@@ -1,0 +1,196 @@
+/* 사용 편의를 위한 믹스인 별칭(Aliases) */
+
+/* Display */
+@mixin display-56-b() {
+    @include text-style-display-display-56-b();
+}
+
+@mixin display-44-b() {
+    @include text-style-display-display-44-b();
+}
+
+@mixin display-32-b() {
+    @include text-style-display-display-32-b();
+}
+
+@mixin display-28-b() {
+    @include text-style-display-display-28-b();
+}
+
+/* Title */
+@mixin title-24-b() {
+    @include text-style-title-title-24-b();
+}
+
+@mixin title-24-r() {
+    @include text-style-title-title-24-r();
+}
+
+@mixin title-20-b() {
+    @include text-style-title-title-20-b();
+}
+
+@mixin title-20-r() {
+    @include text-style-title-title-20-r();
+}
+
+@mixin title-18-sb() {
+    @include text-style-title-title-18-sb();
+}
+
+@mixin title-18-r() {
+    @include text-style-title-title-18-r();
+}
+
+@mixin title-16-sb() {
+    @include text-style-title-title-16-sb();
+}
+
+@mixin title-16-r() {
+    @include text-style-title-title-16-r();
+}
+
+@mixin title-15-sb() {
+    @include text-style-title-title-15-sb();
+}
+
+@mixin title-15-r() {
+    @include text-style-title-title-15-r();
+}
+
+@mixin title-14-sb() {
+    @include text-style-title-title-14-sb();
+}
+
+@mixin title-14-r() {
+    @include text-style-title-title-14-r();
+}
+
+/* Body */
+@mixin body-16-sb() {
+    @include text-style-body-body-16-sb();
+}
+
+@mixin body-16-r() {
+    @include text-style-body-body-16-r();
+}
+
+@mixin body-15-sb() {
+    @include text-style-body-body-15-sb();
+}
+
+@mixin body-15-r() {
+    @include text-style-body-body-15-r();
+}
+
+@mixin body-14-sb() {
+    @include text-style-body-body-14-sb();
+}
+
+@mixin body-14-r() {
+    @include text-style-body-body-14-r();
+}
+
+@mixin body-13-sb() {
+    @include text-style-body-body-13-sb();
+}
+
+@mixin body-13-r() {
+    @include text-style-body-body-13-r();
+}
+
+/* Caption */
+@mixin caption-13-sb() {
+    @include text-style-caption-caption-13-sb();
+}
+
+@mixin caption-13-r() {
+    @include text-style-caption-caption-13-r();
+}
+
+@mixin caption-12-sb() {
+    @include text-style-caption-caption-12-sb();
+}
+
+@mixin caption-12-r() {
+    @include text-style-caption-caption-12-r();
+}
+
+@mixin caption-11-sb() {
+    @include text-style-caption-caption-11-sb();
+}
+
+@mixin caption-11-r() {
+    @include text-style-caption-caption-11-r();
+}
+
+/* Label */
+@mixin label-15-sb() {
+    @include text-style-label-label-15-sb();
+}
+
+@mixin label-15-r() {
+    @include text-style-label-label-15-r();
+}
+
+@mixin label-14-sb() {
+    @include text-style-label-label-14-sb();
+}
+
+@mixin label-14-r() {
+    @include text-style-label-label-14-r();
+}
+
+@mixin label-13-sb() {
+    @include text-style-label-label-13-sb();
+}
+
+@mixin label-13-r() {
+    @include text-style-label-label-13-r();
+}
+
+@mixin label-12-sb() {
+    @include text-style-label-lable-12-sb();
+}
+
+@mixin label-12-r() {
+    @include text-style-label-lable-12-r();
+}
+
+@mixin label-10-sb() {
+    @include text-style-label-label-10-sb();
+}
+
+@mixin label-10-r() {
+    @include text-style-label-label-10-r();
+}
+
+/* Mono */
+@mixin mono-14-r() {
+    @include text-style-mono-mono-14-r();
+}
+
+/* 효과 관련 (별칭) */
+@mixin elevation-10() {
+    @include effect-style-elevation-10();
+}
+
+@mixin elevation-20() {
+    @include effect-style-elevation-20();
+}
+
+@mixin elevation-30() {
+    @include effect-style-elevation-30();
+}
+
+@mixin elevation-40() {
+    @include effect-style-elevation-40();
+}
+
+@mixin elevation-ambient() {
+    @include effect-style-elevation-ambient();
+}
+
+@mixin elevation-depth() {
+    @include effect-style-elevation-depth();
+}

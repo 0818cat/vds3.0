@@ -299,21 +299,8 @@
         </main>
     </div>
 
+    <script src="assets/js/theme.js"></script>
     <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        if (localStorage.getItem('theme') === 'dark' ||
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            body.classList.add('dark-theme');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-theme');
-            localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
-        });
-
         // Global Event Listener to toggle .has-content class
         function toggleHasContent(input) {
             const container = input.closest('.input-field');

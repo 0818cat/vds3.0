@@ -1,0 +1,36 @@
+/* 상호작용 관련 믹스인 */
+@mixin interaction-overlay($color, $level: 'light') {
+    $hover-opacity: 0.04;
+    $active-opacity: 0.08;
+
+    @if $level =='normal' {
+        $hover-opacity: 0.08;
+        $active-opacity: 0.12;
+    }
+
+    @else if $level =='strong' {
+        $hover-opacity: 0.10;
+        $active-opacity: 0.14;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background-color: $color;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+    }
+
+    &:hover:not(:disabled)::after {
+        background-color: $color;
+        opacity: $hover-opacity;
+    }
+
+    &:active:not(:disabled)::after {
+        background-color: $color;
+        opacity: $active-opacity;
+    }
+}

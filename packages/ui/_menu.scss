@@ -1,19 +1,19 @@
-@import "../core/vds3.0";
+@import "../core/index";
 // Menu 컴포넌트 스타일 (Dropdown 및 Context Menu용)
-// VDS 3.0 디자인 가이드라인 기준
+// VDS 3.0 디자인 가이드라인 기준 (Figma node-id=1039-8824)
 
 .vds-menu {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
     width: 100%;
-    min-width: 160px;
+    min-width: 180px;
     background-color: var(--fill-surface-primary);
     border: 1px solid var(--line-secondary);
-    border-radius: $radius-medium;
+    border-radius: $radius-12;
     @include elevation-40();
     z-index: $z-index-dropdown;
-    padding: 6px;
+    padding: 8px;
     box-sizing: border-box;
     display: none;
     opacity: 0;
@@ -32,42 +32,56 @@
         align-items: center;
         width: 100%;
         padding: 10px 12px;
-        border-radius: $radius-small;
+        border-radius: $radius-6;
         cursor: pointer;
-        gap: 10px;
+        gap: 8px;
         color: var(--label-primary);
         @include body-14-r();
         transition: all 0.2s ease;
         overflow: hidden;
 
-        @include interaction-overlay(var(--label-primary), 'light');
+        @include interaction-overlay(var(--label-primary), 'auto');
 
         &:hover:not(&--disabled) {
-            background-color: var(--fill-background-secondary);
+            background-color: var(--fill-surface-secondary);
         }
 
         &--selected {
             color: var(--static-primary);
             @include body-14-sb();
-            background-color: color-mix(in srgb, var(--static-primary), transparent 94%);
+            background-color: var(--fill-surface-tertiary);
+
+            &::after {
+                content: "";
+                display: block;
+                width: 18px;
+                height: 18px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232262F6'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                margin-left: auto;
+            }
         }
 
         &--disabled {
             cursor: not-allowed;
             color: var(--label-quinary);
             pointer-events: none;
+            opacity: 0.5;
         }
     }
 
     &__divider {
         height: 1px;
         background-color: var(--line-secondary);
-        margin: 6px 4px;
+        margin: 8px 4px;
+        opacity: 0.5;
     }
 
     &__icon {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -89,10 +103,22 @@
     }
 
     &__badge {
-        font-size: 11px;
+        @include caption-11-sb();
         padding: 2px 6px;
-        background-color: var(--fill-background-secondary);
+        background-color: var(--fill-surface-tertiary);
         border-radius: 4px;
         color: var(--label-secondary);
+        margin-left: 4px;
+    }
+
+    // --- 사이즈별 별도 패딩 조정 예시 ---
+    &--small {
+        padding: 6px;
+
+        .vds-menu__item {
+            padding: 8px 10px;
+            gap: 6px;
+            @include body-13-r();
+        }
     }
 }

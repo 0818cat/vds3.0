@@ -2,9 +2,10 @@
   "name": "@dayokang/vds-system",
   "version": "1.0.1",
   "description": "VDS 3.0 Design System tokens and mixins",
-  "main": "_vds3.0.scss",
+  "main": "index.scss",
   "files": [
-    "_vds3.0.scss"
+    "index.scss",
+    "styles"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

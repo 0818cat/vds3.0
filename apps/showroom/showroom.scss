@@ -1,4 +1,4 @@
-@import "../../packages/core/vds3.0";
+@import "../../packages/core/index";
 @import "../../packages/ui/components";
 
 :root {
@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     @include body-16-r();
-    background-color: var(--static-white);
+    background-color: var(--fill-background-primary);
     color: var(--label-primary);
     transition: background-color 0.3s, color 0.3s;
 }
@@ -48,7 +48,7 @@ body {
     top: var(--header-height);
     bottom: 0;
     left: 0;
-    background-color: var(--static-white);
+    background-color: var(--fill-surface-primary);
     border-right: 1px solid var(--line-secondary);
     overflow-y: auto;
     z-index: 90;
@@ -140,7 +140,7 @@ body {
     border: 1px solid var(--line-tertiary);
     border-radius: 12px;
     overflow: hidden;
-    background-color: var(--static-white);
+    background-color: var(--fill-surface-primary);
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -168,7 +168,7 @@ body {
 .controls-area {
     width: 300px;
     padding: 24px;
-    background-color: var(--static-white);
+    background-color: var(--fill-surface-primary);
     flex-shrink: 0;
 
     @media (max-width: 768px) {

@@ -1,13 +1,13 @@
-@import "../core/vds3.0";
+@import "../core/index";
 // Dropdown 컴포넌트 스타일
-// VDS 3.0 디자인 가이드라인 기준
+// VDS 3.0 디자인 가이드라인 기준 (Figma node-id=1039-8824)
 
 .vds-dropdown {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 6px;
+
 
     &__trigger {
         display: flex;
@@ -16,10 +16,13 @@
         width: 100%;
         background-color: var(--fill-surface-secondary);
         border: 1px solid var(--line-secondary);
+        border-radius: $radius-8;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         box-sizing: border-box;
         cursor: pointer;
         user-select: none;
+        overflow: hidden;
+
 
         &:hover:not(:disabled) {
             border-color: var(--line-primary);
@@ -27,23 +30,50 @@
 
         &:focus-within:not(:disabled),
         &.is-open {
-            border-color: var(--line-accent);
-            box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
+            border-color: var(--line-secondary);
             z-index: 1;
         }
 
-        &:disabled {
+
+        &[disabled] {
             background-color: var(--interaction-disabled);
-            border-color: var(--line-tertiary);
+            border-color: var(--line-secondary);
             cursor: not-allowed;
-            color: var(--label-quinary);
+            pointer-events: none;
+            opacity: 1;
 
             .vds-dropdown__label,
-            .vds-dropdown__arrow {
-                color: inherit;
+            .vds-dropdown__arrow,
+            .vds-dropdown__leading-icon,
+            .vds-dropdown__caption {
+                color: var(--label-quinary);
             }
         }
     }
+
+
+
+
+    // --- 상태별 스타일 (States) ---
+    &--negative {
+        .vds-dropdown__trigger {
+            border-color: var(--status-negative);
+
+            &:focus-within:not(:disabled),
+            &.is-open {
+                box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-negative), transparent 90%);
+            }
+
+            &:hover:not(:disabled) {
+                border-color: var(--status-negative);
+            }
+        }
+
+
+
+    }
+
+
 
     &__label {
         color: var(--label-primary);
@@ -54,11 +84,43 @@
         text-align: left;
     }
 
-    &__arrow {
+    &__caption {
+        @include caption-12-r();
+        color: var(--label-tertiary);
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    &__helper-text {
+        @include caption-12-r();
+        color: var(--label-tertiary);
+        margin: 4px 0 0 0; // 기본 마진 4px 적용 (Medium, Small 공통)
+    }
+
+    &__leading-icon {
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--label-quaternary);
+        flex-shrink: 0;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+    }
+
+
+
+
+
+
+    &__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--label-secondary);
         transition: transform 0.2s ease;
 
         .vds-dropdown__trigger.is-open & {
@@ -72,17 +134,36 @@
         }
     }
 
+
+
+
+
+
+
+
     // --- 사이즈 (Sizes) ---
     &--large {
+        $side-padding: 18px;
+
+
         .vds-dropdown__trigger {
             height: 48px;
-            padding: 0 18px;
-            border-radius: $radius-medium;
+            padding: 0 $side-padding;
             gap: 8px;
         }
 
         .vds-dropdown__label {
-            @include label-15-sb();
+            @include label-15-r();
+        }
+
+        .vds-dropdown__helper-text {
+            margin-top: 6px;
+            padding: 0 $side-padding;
+        }
+
+        .vds-dropdown__leading-icon {
+            width: 18px;
+            height: 18px;
         }
 
         .vds-dropdown__arrow {
@@ -92,15 +173,27 @@
     }
 
     &--medium {
+        $side-padding: 14px;
+
+
         .vds-dropdown__trigger {
             height: 40px;
-            padding: 0 14px;
-            border-radius: $radius-medium;
+            padding: 0 $side-padding;
             gap: 6px;
         }
 
         .vds-dropdown__label {
-            @include label-14-sb();
+            @include label-14-r();
+        }
+
+        .vds-dropdown__helper-text {
+            padding: 0 $side-padding;
+        }
+
+
+        .vds-dropdown__leading-icon {
+            width: 17px;
+            height: 17px;
         }
 
         .vds-dropdown__arrow {
@@ -110,15 +203,28 @@
     }
 
     &--small {
+        $side-padding: 12px;
+
+
         .vds-dropdown__trigger {
             height: 32px;
-            padding: 0 10px;
-            border-radius: $radius-small;
+            padding: 0 $side-padding;
             gap: 4px;
+            border-radius: $radius-6;
         }
 
         .vds-dropdown__label {
-            @include label-13-sb();
+            @include label-13-r();
+        }
+
+        .vds-dropdown__helper-text {
+            padding: 0 $side-padding;
+        }
+
+
+        .vds-dropdown__leading-icon {
+            width: 16px;
+            height: 16px;
         }
 
         .vds-dropdown__arrow {
