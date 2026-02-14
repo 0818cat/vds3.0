@@ -1,8 +1,7 @@
 @import "../core/index";
 // Dropdown 컴포넌트 스타일
-// VDS 3.0 디자인 가이드라인 기준 (Figma node-id=1039-8824)
 
-.vds-dropdown {
+.dropdown {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -42,10 +41,10 @@
             pointer-events: none;
             opacity: 1;
 
-            .vds-dropdown__label,
-            .vds-dropdown__arrow,
-            .vds-dropdown__leading-icon,
-            .vds-dropdown__caption {
+            .dropdown__label,
+            .dropdown__arrow,
+            .dropdown__leading-icon,
+            .dropdown__caption {
                 color: var(--label-quinary);
             }
         }
@@ -56,7 +55,7 @@
 
     // --- 상태별 스타일 (States) ---
     &--negative {
-        .vds-dropdown__trigger {
+        .dropdown__trigger {
             border-color: var(--status-negative);
 
             &:focus-within:not(:disabled),
@@ -72,6 +71,17 @@
 
 
     }
+
+    &--filtered {
+        .dropdown__trigger {
+
+            .dropdown__label,
+            .dropdown__leading-icon {
+                color: var(--label-accent);
+            }
+        }
+    }
+
 
 
 
@@ -123,7 +133,7 @@
         color: var(--label-secondary);
         transition: transform 0.2s ease;
 
-        .vds-dropdown__trigger.is-open & {
+        .dropdown__trigger.is-open & {
             transform: rotate(180deg);
         }
 
@@ -146,27 +156,27 @@
         $side-padding: 18px;
 
 
-        .vds-dropdown__trigger {
+        .dropdown__trigger {
             height: 48px;
             padding: 0 $side-padding;
             gap: 8px;
         }
 
-        .vds-dropdown__label {
+        .dropdown__label {
             @include label-15-r();
         }
 
-        .vds-dropdown__helper-text {
+        .dropdown__helper-text {
             margin-top: 6px;
             padding: 0 $side-padding;
         }
 
-        .vds-dropdown__leading-icon {
+        .dropdown__leading-icon {
             width: 18px;
             height: 18px;
         }
 
-        .vds-dropdown__arrow {
+        .dropdown__arrow {
             width: 18px;
             height: 18px;
         }
@@ -176,27 +186,27 @@
         $side-padding: 14px;
 
 
-        .vds-dropdown__trigger {
+        .dropdown__trigger {
             height: 40px;
             padding: 0 $side-padding;
             gap: 6px;
         }
 
-        .vds-dropdown__label {
+        .dropdown__label {
             @include label-14-r();
         }
 
-        .vds-dropdown__helper-text {
+        .dropdown__helper-text {
             padding: 0 $side-padding;
         }
 
 
-        .vds-dropdown__leading-icon {
+        .dropdown__leading-icon {
             width: 17px;
             height: 17px;
         }
 
-        .vds-dropdown__arrow {
+        .dropdown__arrow {
             width: 17px;
             height: 17px;
         }
@@ -206,28 +216,28 @@
         $side-padding: 12px;
 
 
-        .vds-dropdown__trigger {
+        .dropdown__trigger {
             height: 32px;
             padding: 0 $side-padding;
             gap: 4px;
             border-radius: $radius-6;
         }
 
-        .vds-dropdown__label {
+        .dropdown__label {
             @include label-13-r();
         }
 
-        .vds-dropdown__helper-text {
+        .dropdown__helper-text {
             padding: 0 $side-padding;
         }
 
 
-        .vds-dropdown__leading-icon {
+        .dropdown__leading-icon {
             width: 16px;
             height: 16px;
         }
 
-        .vds-dropdown__arrow {
+        .dropdown__arrow {
             width: 16px;
             height: 16px;
         }

@@ -3,12 +3,12 @@
  * 피그마 디자인(node-id=1039-8824) 사양에 맞춘 드롭다운 상호작용을 처리합니다.
  */
 
-class VDSDropdown {
+class Dropdown {
     constructor(element) {
         this.dropdown = element;
-        this.trigger = element.querySelector('.vds-dropdown__trigger');
-        this.menu = element.querySelector('.vds-menu');
-        this.label = element.querySelector('.vds-dropdown__label');
+        this.trigger = element.querySelector('.dropdown__trigger');
+        this.menu = element.querySelector('.menu');
+        this.label = element.querySelector('.dropdown__label');
 
         if (!this.trigger || !this.menu) return;
 
@@ -24,9 +24,9 @@ class VDSDropdown {
         });
 
         // 메뉴 아이템 클릭 이벤트
-        this.menu.querySelectorAll('.vds-menu__item').forEach(item => {
+        this.menu.querySelectorAll('.menu__item').forEach(item => {
             item.addEventListener('click', (e) => {
-                if (item.classList.contains('vds-menu__item--disabled')) return;
+                if (item.classList.contains('menu__item--disabled')) return;
                 this.select(item);
                 this.close();
                 e.stopPropagation();
@@ -52,10 +52,10 @@ class VDSDropdown {
 
     open() {
         // 다른 열려있는 드롭다운 닫기 (선택 사항)
-        document.querySelectorAll('.vds-dropdown__trigger.is-open').forEach(openTrigger => {
+        document.querySelectorAll('.dropdown__trigger.is-open').forEach(openTrigger => {
             if (openTrigger !== this.trigger) {
                 openTrigger.classList.remove('is-open');
-                const openMenu = openTrigger.closest('.vds-dropdown').querySelector('.vds-menu');
+                const openMenu = openTrigger.closest('.dropdown').querySelector('.menu');
                 if (openMenu) openMenu.classList.remove('is-open');
             }
         });
@@ -71,11 +71,11 @@ class VDSDropdown {
 
     select(item) {
         // 선택 상태 업데이트
-        this.menu.querySelectorAll('.vds-menu__item').forEach(i => i.classList.remove('vds-menu__item--selected'));
-        item.classList.add('vds-menu__item--selected');
+        this.menu.querySelectorAll('.menu__item').forEach(i => i.classList.remove('menu__item--selected'));
+        item.classList.add('menu__item--selected');
 
         // 라벨 업데이트
-        const textElement = item.querySelector('.vds-menu__text');
+        const textElement = item.querySelector('.menu__text');
         if (textElement && this.label) {
             this.label.textContent = textElement.textContent;
         }
@@ -94,11 +94,11 @@ class VDSDropdown {
 /**
  * 전역 초기화 함수
  */
-function initVDSDropdowns() {
-    const dropdowns = document.querySelectorAll('.vds-dropdown');
+function initDropdowns() {
+    const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(el => {
         if (!el.__vds_dropdown_initialized) {
-            new VDSDropdown(el);
+            new Dropdown(el);
             el.__vds_dropdown_initialized = true;
         }
     });
@@ -106,9 +106,9 @@ function initVDSDropdowns() {
 
 // DOM 로드 시 초기화
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initVDSDropdowns);
+    document.addEventListener('DOMContentLoaded', initDropdowns);
 } else {
-    initVDSDropdowns();
+    initDropdowns();
 }
 
 // 동적 엘리먼트 관찰
@@ -116,11 +116,11 @@ const vdsObserver = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
             if (node.nodeType === 1) {
-                if (node.classList && node.classList.contains('vds-dropdown')) {
-                    initVDSDropdowns();
+                if (node.classList && node.classList.contains('dropdown')) {
+                    initDropdowns();
                 } else if (node.querySelectorAll) {
-                    const found = node.querySelectorAll('.vds-dropdown');
-                    if (found.length > 0) initVDSDropdowns();
+                    const found = node.querySelectorAll('.dropdown');
+                    if (found.length > 0) initDropdowns();
                 }
             }
         });
@@ -133,4 +133,4 @@ vdsObserver.observe(document.body, {
 });
 
 // 전역 노출 (필요 시)
-window.initVDSDropdowns = initVDSDropdowns;
+window.initDropdowns = initDropdowns;

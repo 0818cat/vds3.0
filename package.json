@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "lottie-web": "^5.13.0"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
   }
 }

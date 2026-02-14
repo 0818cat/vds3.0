@@ -4,26 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VDS 3.0 Gallery - Dropdowns</title>
+    <title>VDS 3.0 Component Gallery - Dropdowns</title>
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
     <style>
-        .preview-canvas {
-            min-height: 480px;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 40px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .vds-dropdown {
+        /* Custom styles for dropdown preview if needed */
+        .dropdown {
+            width: 100%;
             max-width: 320px;
         }
     </style>
@@ -48,22 +36,104 @@
                     <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
                     <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
                     <li><a href="dropdowns.html" class="sidebar-link active">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
                 </ul>
             </nav>
         </aside>
 
         <main class="showroom-main">
-            <section class="component-section">
-                <h2 class="section-title">Dropdown Variations</h2>
-                <p class="section-desc">VDS 3.0 피그마 디자인을 반영한 드롭다운의 다양한 변체입니다.</p>
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">다양한 옵션을 조합하여 드롭다운을 테스트해보세요.</p>
 
-                <div class="gallery-grid">
-                    <!-- Case 1: Large -->
-                    <div class="vds-dropdown vds-dropdown--large">
-                        <div class="vds-dropdown__trigger">
-                            <span class="vds-dropdown__label">Select an option</span>
-                            <span class="vds-dropdown__caption">Caption</span>
-                            <div class="vds-dropdown__arrow">
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas">
+                            <div id="playground-dropdown-container">
+                                <!-- Dropdown Preview will be rendered here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="dropdown--large">L (48)</button>
+                                <button class="toggle-btn" data-value="dropdown--medium">M (40)</button>
+                                <button class="toggle-btn" data-value="dropdown--small">S (32)</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Status</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-disabled"> Disabled
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-negative"> Negative (Error)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-filtered"> Filtered
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-icon"> Leading Icon
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Content</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <input type="text" id="input-label" class="control-select" placeholder="Label Text"
+                                    value="Select an option" style="padding: 8px;">
+                                <input type="text" id="input-caption" class="control-select" placeholder="Caption Text"
+                                    value="Caption" style="padding: 8px;">
+                                <input type="text" id="input-helper" class="control-select" placeholder="Helper Text"
+                                    value="Helper text goes here" style="padding: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code"></code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="component-section" id="all-variants">
+                <h2 class="section-title">Dropdown Components</h2>
+                <p class="section-desc">VDS의 드롭다운 컴포넌트 시스템입니다.</p>
+
+                <div class="gallery-grid"
+                    style="display: grid; grid-template-columns: 100px 1fr 1fr 1fr; gap: 40px; align-items: start;">
+                    <!-- Header -->
+                    <div></div>
+                    <div class="grid-header">Large (48px)</div>
+                    <div class="grid-header">Medium (40px)</div>
+                    <div class="grid-header">Small (32px)</div>
+
+                    <!-- Normal State -->
+                    <div class="grid-side-label">Normal</div>
+                    <!-- Large -->
+                    <div class="dropdown dropdown--large">
+                        <div class="dropdown__trigger">
+                            <span class="dropdown__label">Select an option</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <path
                                         d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
@@ -71,35 +141,14 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="vds-menu">
-                            <div class="vds-menu__item" data-value="1">
-                                <span class="vds-menu__text">Menu Item One</span>
-                            </div>
-                            <div class="vds-menu__item vds-menu__item--selected" data-value="2">
-                                <span class="vds-menu__text">Selected Item Two</span>
-                            </div>
-                            <div class="vds-menu__divider"></div>
-                            <div class="vds-menu__item" data-value="3">
-                                <span class="vds-menu__text">Menu Item Three</span>
-                                <span class="vds-menu__badge">NEW</span>
-                            </div>
-                        </div>
-                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
+                        <p class="dropdown__helper-text">Helper text</p>
                     </div>
-
-                    <!-- Case 2: Medium with Leading Icon -->
-                    <div class="vds-dropdown vds-dropdown--medium">
-                        <div class="vds-dropdown__trigger">
-                            <div class="vds-dropdown__leading-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M9.64062 3C10.7477 3 11.7803 3.55787 12.3877 4.4834L13.2842 5.84863C13.5219 6.21061 13.9263 6.42871 14.3594 6.42871H18.7139C20.5284 6.42871 21.9998 7.89941 22 9.71387V17.7139C22 19.5285 20.5285 21 18.7139 21H5.28613C3.47148 21 2 19.5285 2 17.7139V6.28613C2 4.47148 3.47148 3 5.28613 3H9.64062ZM14.25 8.42871H4V17.7139C4 18.4239 4.57605 19 5.28613 19H18.7139C19.4239 19 20 18.4239 20 17.7139V9.71387C19.9998 9.00398 19.4238 8.42871 18.7139 8.42871H14.3594C14.3228 8.42871 14.2864 8.42602 14.25 8.4248V8.42871ZM5.28613 5C4.57605 5 4 5.57605 4 6.28613V6.42871H11.2734L10.7158 5.58008C10.4781 5.21805 10.0737 5 9.64062 5H5.28613Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
-                            <span class="vds-dropdown__label">Icon Dropdown</span>
-                            <span class="vds-dropdown__caption">Caption</span>
-                            <div class="vds-dropdown__arrow">
+                    <!-- Medium -->
+                    <div class="dropdown dropdown--medium">
+                        <div class="dropdown__trigger">
+                            <span class="dropdown__label">Select an option</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <path
                                         d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
@@ -107,30 +156,14 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="vds-menu">
-                            <div class="vds-menu__item" data-value="a">
-                                <div class="vds-menu__icon"><svg viewBox="0 0 24 24">
-                                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                                    </svg></div>
-                                <span class="vds-menu__text">Home</span>
-                            </div>
-                            <div class="vds-menu__item" data-value="b">
-                                <div class="vds-menu__icon"><svg viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                    </svg></div>
-                                <span class="vds-menu__text">Profile</span>
-                            </div>
-                        </div>
-                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
+                        <p class="dropdown__helper-text">Helper text</p>
                     </div>
-
-                    <!-- Case 3: Small Negative (Error) State -->
-                    <div class="vds-dropdown vds-dropdown--small vds-dropdown--negative">
-                        <div class="vds-dropdown__trigger">
-                            <span class="vds-dropdown__label">Error State</span>
-                            <span class="vds-dropdown__caption">Caption</span>
-                            <div class="vds-dropdown__arrow">
+                    <!-- Small -->
+                    <div class="dropdown dropdown--small">
+                        <div class="dropdown__trigger">
+                            <span class="dropdown__label">Select an option</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <path
                                         d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
@@ -138,21 +171,17 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="vds-menu vds-menu--small">
-                            <div class="vds-menu__item" data-value="err1"><span class="vds-menu__text">Fix me</span>
-                            </div>
-                            <div class="vds-menu__item" data-value="err2"><span class="vds-menu__text">Double
-                                    check</span></div>
-                        </div>
-                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
+                        <p class="dropdown__helper-text">Helper text</p>
                     </div>
 
-                    <!-- Case 4: Medium Disabled State -->
-                    <div class="vds-dropdown vds-dropdown--medium">
-                        <div class="vds-dropdown__trigger" disabled>
-                            <span class="vds-dropdown__label">Disabled Dropdown</span>
-                            <span class="vds-dropdown__caption">Caption</span>
-                            <div class="vds-dropdown__arrow">
+                    <!-- Negative (Error) State -->
+                    <div class="grid-side-label">Negative</div>
+                    <!-- Large -->
+                    <div class="dropdown dropdown--large dropdown--negative">
+                        <div class="dropdown__trigger">
+                            <span class="dropdown__label">Error State</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
                                 <svg viewBox="0 0 24 24" fill="none">
                                     <path
                                         d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
@@ -160,8 +189,150 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="vds-dropdown__helper-text">This is a helper message for additional information.</p>
+                        <p class="dropdown__helper-text">Error message</p>
                     </div>
+                    <!-- Medium -->
+                    <div class="dropdown dropdown--medium dropdown--negative">
+                        <div class="dropdown__trigger">
+                            <span class="dropdown__label">Error State</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Error message</p>
+                    </div>
+                    <!-- Small -->
+                    <div class="dropdown dropdown--small dropdown--negative">
+                        <div class="dropdown__trigger">
+                            <span class="dropdown__label">Error State</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Error message</p>
+                    </div>
+
+                    <!-- Filtered State -->
+                    <div class="grid-side-label">Filtered</div>
+                    <!-- Large -->
+                    <div class="dropdown dropdown--large dropdown--filtered">
+                        <div class="dropdown__trigger">
+                            <div class="dropdown__leading-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <span class="dropdown__label">Filtered Option</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Filtered state</p>
+                    </div>
+                    <!-- Medium -->
+                    <div class="dropdown dropdown--medium dropdown--filtered">
+                        <div class="dropdown__trigger">
+                            <div class="dropdown__leading-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <span class="dropdown__label">Filtered Option</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Filtered state</p>
+                    </div>
+                    <!-- Small -->
+                    <div class="dropdown dropdown--small dropdown--filtered">
+                        <div class="dropdown__trigger">
+                            <div class="dropdown__leading-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <span class="dropdown__label">Filtered Option</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Filtered state</p>
+                    </div>
+
+                    <!-- Disabled State -->
+                    <div class="grid-side-label">Disabled</div>
+                    <!-- Large -->
+                    <div class="dropdown dropdown--large">
+                        <div class="dropdown__trigger" disabled>
+                            <span class="dropdown__label">Disabled Dropdown</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Helper text</p>
+                    </div>
+                    <!-- Medium -->
+                    <div class="dropdown dropdown--medium">
+                        <div class="dropdown__trigger" disabled>
+                            <span class="dropdown__label">Disabled Dropdown</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Helper text</p>
+                    </div>
+                    <!-- Small -->
+                    <div class="dropdown dropdown--small">
+                        <div class="dropdown__trigger" disabled>
+                            <span class="dropdown__label">Disabled Dropdown</span>
+                            <span class="dropdown__caption">Caption</span>
+                            <div class="dropdown__arrow">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="dropdown__helper-text">Helper text</p>
+                    </div>
+
                 </div>
             </section>
         </main>
@@ -170,12 +341,159 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/dropdown.js"></script>
     <script>
-        // 추가적인 테스트 로직이 필요하다면 여기에 작성하세요.
-        document.querySelectorAll('.vds-dropdown').forEach(dropdown => {
-            dropdown.addEventListener('vds-change', (e) => {
-                console.log('Value changed:', e.detail);
+        // Playground Logic
+        function initPlayground() {
+            const container = document.getElementById('playground-dropdown-container');
+
+            const sizeToggles = document.getElementById('size-toggles');
+            const stateDisabled = document.getElementById('state-disabled');
+            const stateNegative = document.getElementById('state-negative');
+            const stateFiltered = document.getElementById('state-filtered');
+
+            const optIcon = document.getElementById('opt-icon');
+
+            const inputLabel = document.getElementById('input-label');
+            const inputCaption = document.getElementById('input-caption');
+            const inputHelper = document.getElementById('input-helper');
+
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
+
+            let state = {
+                size: 'dropdown--large',
+                disabled: false,
+                negative: false,
+                filtered: false,
+                icon: false,
+                label: 'Select an option',
+                caption: 'Caption',
+                helper: 'Helper text goes here'
+            };
+
+            function updateUI() {
+                // Determine classes
+                let classes = `dropdown ${state.size}`;
+                if (state.negative) classes += ' dropdown--negative';
+                if (state.filtered) classes += ' dropdown--filtered';
+                // disabled attribute is handled in HTML string
+
+                // HTML Structure Construction
+                let innerHTML = `<div class="${classes}">`;
+                innerHTML += `<div class="dropdown__trigger"${state.disabled ? ' disabled' : ''}>`;
+
+                if (state.icon) {
+                    innerHTML += `
+                        <div class="dropdown__leading-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor"/>
+                            </svg>
+                        </div>`;
+                }
+
+                innerHTML += `<span class="dropdown__label">${state.label}</span>`;
+                innerHTML += `<span class="dropdown__caption">${state.caption}</span>`;
+
+                innerHTML += `
+                    <div class="dropdown__arrow">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z" fill="currentColor" />
+                        </svg>
+                    </div>`;
+
+                innerHTML += `</div>`; // Close trigger
+
+                // Menu (optional, just for visual completeness in playground, maybe hidden initially)
+                // For playground, let's keep it simple or add a dummy menu
+                innerHTML += `
+                    <div class="menu">
+                        <div class="menu__item"><span class="menu__text">Option 1</span></div>
+                        <div class="menu__item"><span class="menu__text">Option 2</span></div>
+                    </div>`;
+
+                innerHTML += `<p class="dropdown__helper-text">${state.helper}</p>`;
+                innerHTML += `</div>`; // Close dropdown
+
+                container.innerHTML = innerHTML;
+
+                // Code Generation
+                let code = `<div class="${classes}">\n`;
+                code += `    <div class="dropdown__trigger"${state.disabled ? ' disabled' : ''}>\n`;
+                if (state.icon) {
+                    code += `        <div class="dropdown__leading-icon">\n`;
+                    code += `            <!-- Icon SVG -->\n`;
+                    code += `        </div>\n`;
+                }
+                code += `        <span class="dropdown__label">${state.label}</span>\n`;
+                code += `        <span class="dropdown__caption">${state.caption}</span>\n`;
+                code += `        <div class="dropdown__arrow">\n`;
+                code += `            <!-- Arrow SVG -->\n`;
+                code += `        </div>\n`;
+                code += `    </div>\n`;
+                code += `    <div class="menu">\n`;
+                code += `        <!-- Menu Items -->\n`;
+                code += `    </div>\n`;
+                code += `    <p class="dropdown__helper-text">${state.helper}</p>\n`;
+                code += `</div>`;
+
+                generatedCode.innerText = code;
+            }
+
+            sizeToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    sizeToggles.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.size = e.target.dataset.value;
+                    updateUI();
+                }
             });
-        });
+
+            stateDisabled.addEventListener('change', (e) => {
+                state.disabled = e.target.checked;
+                updateUI();
+            });
+
+            stateNegative.addEventListener('change', (e) => {
+                state.negative = e.target.checked;
+                updateUI();
+            });
+
+            stateFiltered.addEventListener('change', (e) => {
+                state.filtered = e.target.checked;
+                updateUI();
+            });
+
+            optIcon.addEventListener('change', (e) => {
+                state.icon = e.target.checked;
+                updateUI();
+            });
+
+            inputLabel.addEventListener('input', (e) => {
+                state.label = e.target.value;
+                updateUI();
+            });
+
+            inputCaption.addEventListener('input', (e) => {
+                state.caption = e.target.value;
+                updateUI();
+            });
+
+            inputHelper.addEventListener('input', (e) => {
+                state.helper = e.target.value;
+                updateUI();
+            });
+
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    setTimeout(() => copyBtn.innerHTML = originalHTML, 1500);
+                });
+            });
+
+            updateUI();
+        }
+
+        document.addEventListener('DOMContentLoaded', initPlayground);
     </script>
 </body>
 

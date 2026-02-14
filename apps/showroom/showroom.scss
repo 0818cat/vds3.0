@@ -87,9 +87,9 @@ body {
     }
 
     &.active {
-        color: var(--primary-500);
-        background-color: var(--primary-50);
-        border-right: 3px solid var(--primary-500);
+        color: var(--static-primary);
+        background-color: var(--colors-blue-50);
+        border-right: 3px solid var(--static-primary);
         border-left: none;
         font-weight: 600;
     }
@@ -238,9 +238,9 @@ body {
         padding: 8px;
 
         &.active {
-            border-color: var(--primary-500);
-            color: var(--primary-500);
-            background-color: var(--primary-50);
+            border-color: var(--static-primary);
+            color: var(--static-primary);
+            background-color: var(--colors-blue-50);
         }
     }
 }
@@ -263,8 +263,8 @@ body {
 
     &:focus {
         outline: none;
-        border-color: var(--primary-500);
-        box-shadow: 0 0 0 3px var(--primary-50);
+        border-color: var(--static-primary);
+        box-shadow: 0 0 0 3px var(--colors-blue-50);
     }
 }
 
@@ -286,7 +286,7 @@ body {
     input {
         width: 16px;
         height: 16px;
-        accent-color: var(--primary-500);
+        accent-color: var(--static-primary);
     }
 }
 

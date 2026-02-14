@@ -2,7 +2,7 @@
 // Menu 컴포넌트 스타일 (Dropdown 및 Context Menu용)
 // VDS 3.0 디자인 가이드라인 기준 (Figma node-id=1039-8824)
 
-.vds-menu {
+.menu {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
@@ -26,11 +26,18 @@
         transform: translateY(0);
     }
 
+    &--sub {
+        top: -8px; // Align with parent item (approximated based on padding)
+        left: 100%;
+        margin-left: 4px;
+        transform: none; // Reset initial transform for sub-menu
+    }
+
     &__item {
         position: relative;
         display: flex;
         align-items: center;
-        width: 100%;
+        box-sizing: border-box;
         padding: 10px 12px;
         border-radius: $radius-6;
         cursor: pointer;
@@ -44,6 +51,13 @@
 
         &:hover:not(&--disabled) {
             background-color: var(--fill-surface-secondary);
+
+            // Show nested menu on hover
+            >.menu {
+                display: block;
+                opacity: 1;
+                transform: none;
+            }
         }
 
         &--selected {
@@ -64,6 +78,20 @@
             }
         }
 
+        &--negative {
+            color: var(--status-negative);
+
+            @include interaction-overlay(var(--status-negative), 'normal');
+
+            &:hover:not(&--disabled) {
+                background-color: transparent; // Reset inherited background
+            }
+
+            .menu__icon {
+                color: var(--status-negative);
+            }
+        }
+
         &--disabled {
             cursor: not-allowed;
             color: var(--label-quinary);
@@ -75,8 +103,21 @@
     &__divider {
         height: 1px;
         background-color: var(--line-secondary);
-        margin: 8px 4px;
+        margin: 8px;
         opacity: 0.5;
+
+        // Smart Logic: Automatically hide redundant dividers
+        &:first-child {
+            display: none;
+        }
+
+        &:last-child {
+            display: none;
+        }
+
+        &+.menu__divider {
+            display: none;
+        }
     }
 
     &__icon {
@@ -86,6 +127,33 @@
         align-items: center;
         justify-content: center;
         color: inherit;
+        flex-shrink: 0;
+
+        svg {
+            width: 100%;
+            height: 100%;
+
+            // 핫핑크 플레이스홀더 컬러만 타겟팅하여 교체 (두께 유지)
+            [fill="#FF00CD"],
+            [fill="#ff00cd"] {
+                fill: currentColor !important;
+            }
+
+            [stroke="#FF00CD"],
+            [stroke="#ff00cd"] {
+                stroke: currentColor !important;
+            }
+        }
+    }
+
+    &__chevron {
+        width: 17px;
+        height: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--label-tertiary);
+        margin-left: auto;
         flex-shrink: 0;
 
         svg {
@@ -102,23 +170,38 @@
         text-overflow: ellipsis;
     }
 
-    &__badge {
-        @include caption-11-sb();
-        padding: 2px 6px;
-        background-color: var(--fill-surface-tertiary);
-        border-radius: 4px;
-        color: var(--label-secondary);
-        margin-left: 4px;
+    &__caption {
+        @include caption-12-r();
+        color: var(--label-tertiary);
+        margin-left: auto;
     }
+
+    &__group-title {
+        @include caption-11-sb();
+        color: var(--label-quaternary);
+        padding: 4px 12px;
+        margin-top: 4px;
+        margin-bottom: 2px;
+    }
+
 
     // --- 사이즈별 별도 패딩 조정 예시 ---
     &--small {
         padding: 6px;
 
-        .vds-menu__item {
+        .menu__item {
             padding: 8px 10px;
             gap: 6px;
             @include body-13-r();
+        }
+
+        .menu__group-title {
+            padding: 4px 10px;
+        }
+
+        .menu__chevron {
+            width: 16px;
+            height: 16px;
         }
     }
 }
