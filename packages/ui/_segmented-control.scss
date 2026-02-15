@@ -13,7 +13,7 @@
         height: 40px;
 
         .segmented-control__item {
-            @include text-style-label-label-14-sb();
+            @include label-14-sb(); // 앨리어스 적용
             padding: 0 16px;
         }
     }
@@ -22,7 +22,7 @@
         height: 32px;
 
         .segmented-control__item {
-            @include text-style-label-lable-12-sb(); // 시스템 오타 준수
+            @include label-12-sb(); // 앨리어스 적용
             padding: 0 12px;
         }
     }
