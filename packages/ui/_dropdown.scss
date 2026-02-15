@@ -180,6 +180,10 @@
             width: 18px;
             height: 18px;
         }
+
+        .menu {
+            top: 52px !important; // 48px (trigger) + 4px (gap)
+        }
     }
 
     &--medium {
@@ -209,6 +213,11 @@
         .dropdown__arrow {
             width: 17px;
             height: 17px;
+        }
+
+        .menu {
+            top: 44px !important; // 40px (trigger) + 4px (gap)
+            @include menu-size-small();
         }
     }
 
@@ -240,6 +249,11 @@
         .dropdown__arrow {
             width: 16px;
             height: 16px;
+        }
+
+        .menu {
+            top: 36px !important; // 32px (trigger) + 4px (gap)
+            @include menu-size-small();
         }
     }
 }

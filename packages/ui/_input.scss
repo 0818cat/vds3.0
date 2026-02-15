@@ -1,6 +1,6 @@
 // Input Field 스타일 정의
 
-.input-field {
+.input {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -47,7 +47,7 @@
         transition: opacity 0.2s ease, visibility 0.2s ease;
         z-index: 2;
 
-        .input-field.has-content & {
+        .input.has-content & {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
@@ -85,34 +85,34 @@
         $side-padding: 18px;
         gap: 6px;
 
-        .input-field__container {
+        .input__container {
             gap: 8px;
         }
 
-        .input-field__input {
+        .input__input {
             height: 48px;
             padding: 0 $side-padding;
         }
 
-        .input-field__icon,
-        .input-field__clear-icon {
+        .input__icon,
+        .input__clear-icon {
             width: 18px;
             height: 18px;
         }
 
-        .input-field__clear-icon {
+        .input__clear-icon {
             margin-right: 14px;
         }
 
-        .input-field__icon+.input-field__input {
+        .input__icon+.input__input {
             padding-left: 0;
         }
 
-        .input-field__icon {
+        .input__icon {
             margin-left: $side-padding - 1px; // border 1px 보정
         }
 
-        .input-field__helper-text {
+        .input__helper-text {
             margin-left: $side-padding;
         }
     }
@@ -121,35 +121,35 @@
         $side-padding: 14px;
         gap: 4px;
 
-        .input-field__container {
+        .input__container {
             gap: 6px;
         }
 
-        .input-field__input {
+        .input__input {
             height: 40px;
             @include body-14-r();
             padding: 0 $side-padding;
         }
 
-        .input-field__icon,
-        .input-field__clear-icon {
+        .input__icon,
+        .input__clear-icon {
             width: 17px;
             height: 17px;
         }
 
-        .input-field__clear-icon {
+        .input__clear-icon {
             margin-right: 12px;
         }
 
-        .input-field__icon+.input-field__input {
+        .input__icon+.input__input {
             padding-left: 0;
         }
 
-        .input-field__icon {
+        .input__icon {
             margin-left: $side-padding - 1px; // border 1px 보정
         }
 
-        .input-field__helper-text {
+        .input__helper-text {
             margin-left: $side-padding;
         }
     }
@@ -158,36 +158,36 @@
         $side-padding: 10px;
         gap: 4px;
 
-        .input-field__container {
+        .input__container {
             border-radius: $radius-6;
             gap: 4px;
         }
 
-        .input-field__input {
+        .input__input {
             height: 32px;
             @include body-13-r();
             padding: 0 $side-padding;
         }
 
-        .input-field__icon,
-        .input-field__clear-icon {
+        .input__icon,
+        .input__clear-icon {
             width: 16px;
             height: 16px;
         }
 
-        .input-field__icon {
+        .input__icon {
             margin-left: $side-padding - 1px; // border 1px 보정
         }
 
-        .input-field__clear-icon {
+        .input__clear-icon {
             margin-right: 8px;
         }
 
-        .input-field__icon+.input-field__input {
+        .input__icon+.input__input {
             padding-left: 0;
         }
 
-        .input-field__helper-text {
+        .input__helper-text {
             margin-left: $side-padding;
         }
     }
@@ -220,8 +220,8 @@
     }
 
     &--disabled,
-    &:has(.input-field__input:disabled) {
-        .input-field__container {
+    &:has(.input__input:disabled) {
+        .input__container {
             background-color: var(--interaction-disabled);
             border-color: var(--line-tertiary);
             cursor: not-allowed;
@@ -239,11 +239,11 @@
         color: var(--label-tertiary);
         margin: 0;
 
-        .input-field--error & {
+        .input--error & {
             color: var(--status-negative);
         }
 
-        .input-field--success & {
+        .input--success & {
             color: var(--static-primary);
         }
     }

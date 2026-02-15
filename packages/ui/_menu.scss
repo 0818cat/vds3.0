@@ -2,8 +2,30 @@
 // Menu 컴포넌트 스타일 (Dropdown 및 Context Menu용)
 // VDS 3.0 디자인 가이드라인 기준 (Figma node-id=1039-8824)
 
+// --- 믹스인 (Mixins) ---
+@mixin menu-size-small {
+    padding: 6px;
+    border-radius: $radius-8 !important;
+
+    .menu__item {
+        padding: 8px 10px;
+        gap: 6px;
+        @include body-13-r();
+    }
+
+    .menu__group-title {
+        padding: 4px 10px;
+    }
+
+    .menu__chevron {
+        width: 16px;
+        height: 16px;
+    }
+}
+
 .menu {
     position: absolute;
+    // ... (existing styles)
     top: calc(100% + 4px);
     left: 0;
     width: 100%;
@@ -50,7 +72,6 @@
         @include interaction-overlay(var(--label-primary), 'auto');
 
         &:hover:not(&--disabled) {
-            background-color: var(--fill-surface-secondary);
 
             // Show nested menu on hover
             >.menu {
@@ -62,30 +83,18 @@
 
         &--selected {
             color: var(--static-primary);
-            @include body-14-sb();
-            background-color: var(--fill-surface-tertiary);
+            @include label-14-r();
 
-            &::after {
-                content: "";
+            .menu__selected-check {
                 display: block;
-                width: 18px;
-                height: 18px;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232262F6'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: contain;
-                margin-left: auto;
             }
         }
 
         &--negative {
             color: var(--status-negative);
 
-            @include interaction-overlay(var(--status-negative), 'normal');
+            @include interaction-overlay(var(--status-negative), 'light');
 
-            &:hover:not(&--disabled) {
-                background-color: transparent; // Reset inherited background
-            }
 
             .menu__icon {
                 color: var(--status-negative);
@@ -184,24 +193,21 @@
         margin-bottom: 2px;
     }
 
+    &__selected-check {
+        display: none;
+        width: 18px;
+        height: 18px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232262F6'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
 
     // --- 사이즈별 별도 패딩 조정 예시 ---
     &--small {
-        padding: 6px;
-
-        .menu__item {
-            padding: 8px 10px;
-            gap: 6px;
-            @include body-13-r();
-        }
-
-        .menu__group-title {
-            padding: 4px 10px;
-        }
-
-        .menu__chevron {
-            width: 16px;
-            height: 16px;
-        }
+        @include menu-size-small();
     }
 }
