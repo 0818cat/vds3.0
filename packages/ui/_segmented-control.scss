@@ -1,0 +1,59 @@
+@import "../core/index";
+
+.segmented-control {
+    display: inline-flex;
+    position: relative;
+    padding: 2px;
+    background-color: var(--refine-senary);
+    border-radius: 8px;
+    user-select: none;
+    gap: 4px; // 아이템 간 간격
+
+    &--medium {
+        height: 40px;
+
+        .segmented-control__item {
+            @include text-style-label-label-14-sb();
+            padding: 0 16px;
+        }
+    }
+
+    &--small {
+        height: 32px;
+
+        .segmented-control__item {
+            @include text-style-label-lable-12-sb(); // lable 오타 주의 (기존 시스템 준수)
+            padding: 0 12px;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex: 1;
+        cursor: pointer;
+        color: var(--label-secondary);
+        border-radius: 6px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        height: 100%;
+        z-index: 1;
+
+        &:hover {
+            color: var(--label-primary);
+        }
+
+        &--active {
+            color: var(--label-primary);
+            background-color: var(--static-white);
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+
+            // 다크모드 대응
+            [data-theme='dark'] & {
+                background-color: var(--fill-surface-tertiary);
+            }
+        }
+    }
+}

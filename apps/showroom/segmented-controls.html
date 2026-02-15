@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - SegmentedControl</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <style>
+        .preview-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .preview-case {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .preview-label {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--label-quaternary);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar-link active">SegmentedControl</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section">
+                <h1 class="section-title">SegmentedControl</h1>
+                <p class="section-desc">여러 옵션 중 하나를 선택할 때 사용하는 컴포넌트입니다. 탭보다 컴팩트하며 버튼 그룹 형태의 UI를 제공합니다.</p>
+            </section>
+
+            <section class="component-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div id="playground-target">
+                            <!-- JS에 의해 렌더링됨 -->
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="segmented-control--medium">Medium</button>
+                                <button class="toggle-btn" data-value="segmented-control--small">Small</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Items</label>
+                            <div class="checkbox-group" id="item-config">
+                                <!-- JS에 의해 입력 필드 생성 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-viewer">
+                    <pre><code id="generated-code"></code></pre>
+                    <button class="copy-btn" id="copy-code">📋</button>
+                </div>
+            </section>
+
+            <section class="component-section">
+                <h2 class="section-title">Gallery</h2>
+                <div class="preview-wrapper">
+                    <div class="preview-case">
+                        <span class="preview-label">Medium</span>
+                        <div class="segmented-control segmented-control--medium">
+                            <div class="segmented-control__item segmented-control__item--active">Label</div>
+                            <div class="segmented-control__item">Label</div>
+                            <div class="segmented-control__item">Label</div>
+                        </div>
+                    </div>
+                    <div class="preview-case">
+                        <span class="preview-label">Small</span>
+                        <div class="segmented-control segmented-control--small">
+                            <div class="segmented-control__item segmented-control__item--active">Label</div>
+                            <div class="segmented-control__item">Label</div>
+                            <div class="segmented-control__item">Label</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const state = {
+            size: 'segmented-control--medium',
+            items: ['Label', 'Label', 'Label'],
+            activeIndex: 0
+        };
+
+        function renderPlayground() {
+            const container = document.getElementById('playground-target');
+            const control = document.createElement('div');
+            control.className = `segmented-control ${state.size}`;
+
+            state.items.forEach((label, index) => {
+                const item = document.createElement('div');
+                item.className = `segmented-control__item ${index === state.activeIndex ? 'segmented-control__item--active' : ''}`;
+                item.textContent = label;
+                item.onclick = () => {
+                    state.activeIndex = index;
+                    renderPlayground();
+                };
+                control.appendChild(item);
+            });
+
+            container.innerHTML = '';
+            container.appendChild(control);
+            updateCode();
+        }
+
+        function updateCode() {
+            const itemsHtml = state.items.map((label, index) =>
+                `    <div class="segmented-control__item${index === state.activeIndex ? ' segmented-control__item--active' : ''}">${label}</div>`
+            ).join('\n');
+            const code = `<div class="segmented-control ${state.size}">\n${itemsHtml}\n</div>`;
+            document.getElementById('generated-code').textContent = code;
+        }
+
+        // 초기화
+        document.querySelectorAll('#size-toggles .toggle-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('#size-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.size = btn.dataset.value;
+                renderPlayground();
+            };
+        });
+
+        // 테마 토글
+        document.getElementById('theme-toggle').onclick = () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        };
+
+        renderPlayground();
+    </script>
+</body>
+
+</html>
