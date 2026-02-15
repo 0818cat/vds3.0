@@ -3,17 +3,17 @@
 .segmented-control {
     display: inline-flex;
     position: relative;
-    padding: $radius-2;
+    padding: 2px;
     background-color: var(--fill-background-secondary);
     border-radius: $radius-8;
     user-select: none;
-    gap: $radius-4; // 아이템 간 간격 토큰화
+    gap: 4px; // 아이템 간 간격
 
     &--medium {
         height: 40px;
 
         .segmented-control__item {
-            @include label-14-sb(); // 앨리어스 적용
+            @include label-14-sb();
             padding: 0 16px;
         }
     }
@@ -22,7 +22,7 @@
         height: 32px;
 
         .segmented-control__item {
-            @include label-12-sb(); // 앨리어스 적용
+            @include label-12-sb();
             padding: 0 12px;
         }
     }
@@ -47,10 +47,10 @@
 
         &--active {
             color: var(--label-primary);
-            background-color: var(--fill-segment); // 시맨틱 토큰 사용
-            box-shadow: 0px 1px 3px var(--elevation-10-color); // 그림자 컬러 토큰화
+            background-color: var(--fill-segment);
+            box-shadow: 0px 1px 3px var(--elevation-10-color);
 
-            // 다크모드 대응 (fill-segment가 이미 다크모드에서 grey-300으로 정의됨)
+
         }
     }
 }
