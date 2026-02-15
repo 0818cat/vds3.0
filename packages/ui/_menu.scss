@@ -5,7 +5,7 @@
 // --- 믹스인 (Mixins) ---
 @mixin menu-size-small {
     padding: 6px;
-    border-radius: $radius-8 !important;
+    border-radius: $radius-8;
 
     .menu__item {
         padding: 8px 10px;
@@ -14,10 +14,13 @@
     }
 
     .menu__group-title {
-        padding: 4px 10px;
+        padding: 6px 8px 2px;
+        @include caption-11-r();
     }
 
-    .menu__chevron {
+    .menu__chevron,
+    .menu__selected-check,
+    .menu__icon {
         width: 16px;
         height: 16px;
     }
@@ -92,9 +95,7 @@
 
         &--negative {
             color: var(--status-negative);
-
             @include interaction-overlay(var(--status-negative), 'light');
-
 
             .menu__icon {
                 color: var(--status-negative);
@@ -112,8 +113,7 @@
     &__divider {
         height: 1px;
         background-color: var(--line-secondary);
-        margin: 8px;
-        opacity: 0.5;
+        margin: 8px -8px; // 메뉴 패딩(8px) 상쇄를 위한 음수 마진 적용
 
         // Smart Logic: Automatically hide redundant dividers
         &:first-child {
@@ -130,8 +130,8 @@
     }
 
     &__icon {
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -186,18 +186,16 @@
     }
 
     &__group-title {
-        @include caption-11-sb();
+        @include caption-12-r();
         color: var(--label-quaternary);
-        padding: 4px 12px;
-        margin-top: 4px;
-        margin-bottom: 2px;
+        padding: 6px 10px 2px;
     }
 
     &__selected-check {
         display: none;
         width: 18px;
         height: 18px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232262F6'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232262F6'%3E%3Cpath d='M18.2567 6.33096C18.6262 5.9205 19.2584 5.8873 19.6688 6.25674C20.0793 6.62621 20.1125 7.25836 19.7431 7.66885L10.7431 17.6688C10.3736 18.0793 9.74145 18.1125 9.33096 17.7431L4.33096 13.2431C3.9205 12.8736 3.8873 12.2415 4.25674 11.831C4.62621 11.4205 5.25836 11.3873 5.66885 11.7567L9.92471 15.5878L18.2567 6.33096Z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;

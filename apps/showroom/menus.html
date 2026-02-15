@@ -214,17 +214,18 @@
                         </div>
                     </div>
 
-                    <!-- Small Menu -->
                     <div class="variant-item">
                         <h3 class="variant-title">Small Menu</h3>
                         <div class="menu menu--small preview-mode">
                             <div class="menu__group-title">FILE</div>
-                            <div class="menu__item">
+                            <div class="menu__item menu__item--selected">
                                 <span class="menu__text">New File</span>
                                 <span class="menu__caption">Cmd+N</span>
+                                <div class="menu__selected-check"></div>
                             </div>
                             <div class="menu__item">
                                 <span class="menu__text">Open File...</span>
+                                <div class="menu__selected-check"></div>
                             </div>
                         </div>
                     </div>
@@ -463,7 +464,7 @@
                 }
 
                 if (state.divider && state.negative) {
-                    innerHTML += `<div class="vds-menu__divider"></div>`;
+                    innerHTML += `<div class="menu__divider"></div>`;
                 }
 
                 if (state.negative) {
