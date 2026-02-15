@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/theme.js"></script>
+    <style>
+        .landing-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .landing-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--label-primary);
+        }
+
+        .landing-desc {
+            font-size: 16px;
+            color: var(--label-secondary);
+            margin-bottom: 48px;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .component-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            background-color: var(--fill-surface-primary);
+            border: 1px solid var(--line-tertiary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--label-primary);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .component-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            border-color: var(--line-secondary);
+            color: var(--static-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container" style="min-height: 100vh; display: flex; flex-direction: column;">
+        <header class="showroom-header">
+            <div class="header-left">
+                <span class="logo">VDS 3.0 Gallery</span>
+            </div>
+            <div class="header-right">
+                <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+            </div>
+        </header>
+
+        <main class="landing-container">
+            <h1 class="landing-title">VDS 3.0 Component Gallery</h1>
+            <p class="landing-desc">VARCO Design System 3.0의 컴포넌트 쇼룸입니다.</p>
+
+            <div class="component-grid">
+                <a href="buttons.html" class="component-card">Buttons</a>
+                <a href="icon-buttons.html" class="component-card">Icon Buttons</a>
+                <a href="input-fields.html" class="component-card">Input Fields</a>
+                <a href="dropdowns.html" class="component-card">Dropdowns</a>
+                <a href="menus.html" class="component-card">Menus</a>
+                <a href="tabs.html" class="component-card">Tabs</a>
+                <a href="segmented-controls.html" class="component-card">Segmented Control</a>
+                <a href="chips.html" class="component-card">Chips</a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
