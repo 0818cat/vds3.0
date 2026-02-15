@@ -1,0 +1,144 @@
+@import "../core/index";
+
+// VDS 3.0 Tab 컴포넌트 스타일
+
+@mixin tab-large {
+    height: 48px;
+    padding: 0 18px;
+    @include label-15-sb();
+}
+
+@mixin tab-medium {
+    height: 40px;
+    padding: 0 10px;
+    @include label-14-sb();
+}
+
+@mixin tab-small {
+    height: 32px;
+    padding: 0 10px;
+    @include label-13-sb();
+}
+
+
+
+
+
+
+.tab-list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--line-tertiary);
+    width: 100%;
+    background-color: transparent;
+}
+
+.tab-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    color: var(--label-tertiary);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+
+
+    &--active {
+        color: var(--label-primary);
+
+        &::after {
+            content: none;
+        }
+
+        // 텍스트까지 액센트 컬러를 사용하는 변형
+        &.tab-item--accent {
+            color: var(--label-accent);
+        }
+    }
+
+
+
+    &--disabled {
+        cursor: not-allowed;
+        color: var(--label-quinary);
+        pointer-events: none;
+    }
+
+    &__text {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        height: 100%;
+
+        &::after {
+            content: none;
+        }
+    }
+
+
+}
+
+
+
+
+
+
+// --- 언더라인 옵션 제어 ---
+
+// 1. Full Width
+.tab-list--underline-full .tab-item--active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    display: block !important;
+}
+
+// 2. Label Width
+.tab-list--underline-label .tab-item--active {
+    &::after {
+        content: none !important; // 탭 전체 언더라인 제거
+    }
+
+    .tab-item__text::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        display: block !important;
+    }
+}
+
+// 3. None
+.tab-list--underline-none .tab-item--active {
+
+    &::after,
+    .tab-item__text::after {
+        display: none !important;
+        content: none !important;
+    }
+}
+
+
+
+
+
+// 사이즈 클래스 대응
+.tab-list--large .tab-item {
+    @include tab-large;
+}
+
+.tab-list--medium .tab-item {
+    @include tab-medium;
+}
+
+.tab-list--small .tab-item {
+    @include tab-small;
+}

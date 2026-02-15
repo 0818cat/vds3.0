@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - Tabs</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <style>
+        .tab-preview {
+            width: 100%;
+            padding: 40px;
+            background-color: var(--fill-surface-primary);
+            border-radius: 12px;
+            border: 1px solid var(--line-tertiary);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link active">Tabs</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">탭 사이즈와 언더라인 옵션을 조합하여 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas" style="width: 100%;">
+                            <div id="playground-tab-container" class="tab-preview">
+                                <!-- Tab Preview will be rendered here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Tab Items</label>
+                            <div class="checkbox-group" style="gap: 8px;">
+                                <div id="tab-items-inputs" style="display: flex; flex-direction: column; gap: 8px;">
+                                    <!-- Inputs will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-icons" checked> Show Icons
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-accent"> Accent Active Color
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Underline Type</label>
+                            <div class="toggle-group" id="underline-toggles">
+                                <button class="toggle-btn" data-value="tab-list--underline-none">None</button>
+                                <button class="toggle-btn" data-value="tab-list--underline-label">Label</button>
+                                <button class="toggle-btn active" data-value="tab-list--underline-full">Full</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="tab-list--large">Large</button>
+                                <button class="toggle-btn" data-value="tab-list--medium">Medium</button>
+                                <button class="toggle-btn" data-value="tab-list--small">Small</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code"></code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="component-section">
+                <h2 class="section-title">Underline Variants</h2>
+                <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 32px;">
+                    <div>
+                        <h4 style="margin-bottom: 16px; color: var(--label-tertiary);">Full Width Underline (Default)
+                        </h4>
+                        <div class="tab-list tab-list--large tab-list--underline-full">
+                            <div class="tab-item tab-item--active"><span class="tab-item__text">Active Tab</span></div>
+                            <div class="tab-item"><span class="tab-item__text">Second Tab</span></div>
+                            <div class="tab-item"><span class="tab-item__text">Third Tab</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 16px; color: var(--label-tertiary);">Label Width Underline</h4>
+                        <div class="tab-list tab-list--large tab-list--underline-label">
+                            <div class="tab-item tab-item--active">
+                                <div class="tab-item__icon"><svg viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"
+                                            fill="currentColor" />
+                                    </svg></div>
+                                <span class="tab-item__text">Active Tab</span>
+                            </div>
+                            <div class="tab-item">
+                                <div class="tab-item__icon"><svg viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"
+                                            fill="currentColor" />
+                                    </svg></div>
+                                <span class="tab-item__text">Second Tab</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 16px; color: var(--label-tertiary);">No Underline</h4>
+                        <div class="tab-list tab-list--large tab-list--underline-none">
+                            <div class="tab-item tab-item--active"><span class="tab-item__text">Active Tab</span></div>
+                            <div class="tab-item"><span class="tab-item__text">Second Tab</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+        const iconSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"/></svg>`;
+
+        function initPlayground() {
+            const container = document.getElementById('playground-tab-container');
+            const generatedCode = document.getElementById('generated-code');
+            const itemsInputs = document.getElementById('tab-items-inputs');
+
+            let state = {
+                size: 'tab-list--large',
+                underline: 'tab-list--underline-full',
+                showIcons: true,
+                useAccent: false,
+                activeIndex: 0,
+                items: ['Home', 'Search', 'Profile', 'Settings']
+            };
+
+            function renderInputs() {
+                itemsInputs.innerHTML = '';
+                state.items.forEach((item, index) => {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = item;
+                    input.style.padding = '6px 10px';
+                    input.style.border = '1px solid var(--line-secondary)';
+                    input.style.borderRadius = '6px';
+                    input.addEventListener('input', (e) => {
+                        state.items[index] = e.target.value;
+                        updateUI();
+                    });
+                    itemsInputs.appendChild(input);
+                });
+            }
+
+            function updateUI() {
+                // UI Render
+                let html = `<div class="tab-list ${state.size} ${state.underline}">`;
+                state.items.forEach((item, index) => {
+                    const isActive = state.activeIndex === index;
+                    html += `
+                        <div class="tab-item ${isActive ? 'tab-item--active' : ''} ${isActive && state.useAccent ? 'tab-item--accent' : ''}" onclick="window.setTabActive(${index})">
+                            ${state.showIcons ? `<div class="tab-item__icon">${iconSvg}</div>` : ''}
+                            <span class="tab-item__text">${item}</span>
+                        </div>`;
+                });
+                html += `</div>`;
+                container.innerHTML = html;
+
+                // Code Render
+                let code = `<div class="tab-list ${state.size} ${state.underline}">\n`;
+                state.items.forEach((item, index) => {
+                    const isActive = state.activeIndex === index;
+                    code += `    <div class="tab-item ${isActive ? 'tab-item--active' : ''} ${isActive && state.useAccent ? 'tab-item--accent' : ''}">\n`;
+                    if (state.showIcons) code += `        <div class="tab-item__icon"><!-- SVG --></div>\n`;
+                    code += `        <span class="tab-item__text">${item}</span>\n`;
+                    code += `    </div>\n`;
+                });
+                code += `</div>`;
+                generatedCode.innerText = code;
+            }
+
+            window.setTabActive = (index) => {
+                state.activeIndex = index;
+                updateUI();
+            };
+
+            document.getElementById('opt-icons').addEventListener('change', (e) => {
+                state.showIcons = e.target.checked;
+                updateUI();
+            });
+
+            document.getElementById('opt-accent').addEventListener('change', (e) => {
+                state.useAccent = e.target.checked;
+                updateUI();
+            });
+
+            document.getElementById('size-toggles').addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    document.querySelectorAll('#size-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.size = e.target.dataset.value;
+                    updateUI();
+                }
+            });
+
+            document.getElementById('underline-toggles').addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    document.querySelectorAll('#underline-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.underline = e.target.dataset.value;
+                    updateUI();
+                }
+            });
+
+            renderInputs();
+            updateUI();
+        }
+
+        document.addEventListener('DOMContentLoaded', initPlayground);
+    </script>
+</body>
+
+</html>
