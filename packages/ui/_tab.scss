@@ -5,37 +5,22 @@
 @mixin tab-large {
     height: 48px;
     padding: 0 18px;
-    gap: 6px;
     @include label-15-sb();
 
-    .tab-item__icon {
-        width: 20px;
-        height: 20px;
-    }
 }
 
 @mixin tab-medium {
     height: 40px;
     padding: 0 10px;
-    gap: 6px;
     @include label-14-sb();
 
-    .tab-item__icon {
-        width: 18px;
-        height: 18px;
-    }
 }
 
 @mixin tab-small {
     height: 32px;
-    padding: 0 8px; // Small 사이즈에 맞게 패딩 축소
-    gap: 4px; // 아이콘과 텍스트 간격 축소
+    padding: 0 10px;
     @include label-13-sb();
 
-    .tab-item__icon {
-        width: 16px;
-        height: 16px;
-    }
 }
 
 .tab-list {
