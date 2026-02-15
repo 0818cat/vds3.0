@@ -7,14 +7,13 @@
     background-color: var(--fill-background-secondary);
     border-radius: $radius-8;
     user-select: none;
-    gap: 4px; // 아이템 간 간격
 
     &--medium {
         height: 40px;
 
         .segmented-control__item {
             @include label-14-sb();
-            padding: 0 16px;
+            padding: 0 14px;
         }
     }
 
@@ -22,8 +21,8 @@
         height: 32px;
 
         .segmented-control__item {
-            @include label-12-sb();
-            padding: 0 12px;
+            @include label-13-sb();
+            padding: 0 10px;
         }
     }
 

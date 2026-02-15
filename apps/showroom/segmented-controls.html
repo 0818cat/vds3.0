@@ -28,6 +28,73 @@
             color: var(--label-quaternary);
             text-transform: uppercase;
         }
+
+        /* 플레이그라운드 전용 스타일 */
+        .preview-area {
+            transition: background-color 0.2s ease;
+            position: relative;
+        }
+
+        .preview-area.bg-surface {
+            background-color: var(--fill-surface-primary);
+        }
+
+        .preview-area.bg-grey {
+            background-color: var(--refine-senary);
+        }
+
+        .label-input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .label-input-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .label-input {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--line-secondary);
+            background: var(--fill-surface-primary);
+            color: var(--label-primary);
+            font-size: 13px;
+        }
+
+        .label-input:focus {
+            outline: none;
+            border-color: var(--line-accent);
+        }
+
+        .item-count-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .count-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid var(--line-secondary);
+            background: var(--fill-surface-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--label-primary);
+        }
+
+        .count-btn:hover {
+            background: var(--refine-senary);
+        }
     </style>
 </head>
 
@@ -66,7 +133,7 @@
             <section class="component-section">
                 <h2 class="section-title">Interactive Playground</h2>
                 <div class="playground-container">
-                    <div class="preview-area">
+                    <div class="preview-area" id="playground-preview">
                         <div id="playground-target">
                             <!-- JS에 의해 렌더링됨 -->
                         </div>
@@ -79,9 +146,24 @@
                                 <button class="toggle-btn" data-value="segmented-control--small">Small</button>
                             </div>
                         </div>
+
                         <div class="control-group">
-                            <label class="control-label">Items</label>
-                            <div class="checkbox-group" id="item-config">
+                            <label class="control-label">Preview Background</label>
+                            <div class="toggle-group" id="bg-toggles">
+                                <button class="toggle-btn active" data-value="bg-surface">Surface</button>
+                                <button class="toggle-btn" data-value="bg-grey">Grey (Contrast)</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Items Configuration</label>
+                            <div class="item-count-control">
+                                <button class="count-btn" id="decrease-items">−</button>
+                                <span id="current-count"
+                                    style="min-width: 20px; text-align: center; font-weight: 600;">3</span>
+                                <button class="count-btn" id="increase-items">+</button>
+                            </div>
+                            <div id="label-inputs" class="label-input-container">
                                 <!-- JS에 의해 입력 필드 생성 -->
                             </div>
                         </div>
@@ -120,11 +202,17 @@
     <script>
         const state = {
             size: 'segmented-control--medium',
-            items: ['Label', 'Label', 'Label'],
+            bg: 'bg-surface',
+            items: ['Label 1', 'Label 2', 'Label 3'],
             activeIndex: 0
         };
 
         function renderPlayground() {
+            // 배경 업데이트
+            const previewArea = document.getElementById('playground-preview');
+            previewArea.className = `preview-area ${state.bg}`;
+
+            // 컴포넌트 렌더링
             const container = document.getElementById('playground-target');
             const control = document.createElement('div');
             control.className = `segmented-control ${state.size}`;
@@ -143,17 +231,42 @@
             container.innerHTML = '';
             container.appendChild(control);
             updateCode();
+            renderLabelInputs();
+        }
+
+        function renderLabelInputs() {
+            const container = document.getElementById('label-inputs');
+            if (container.children.length === state.items.length) return; // 최적화: 개수 같으면 패스
+
+            container.innerHTML = '';
+            state.items.forEach((label, index) => {
+                const row = document.createElement('div');
+                row.className = 'label-input-row';
+
+                const input = document.createElement('input');
+                input.className = 'label-input';
+                input.value = label;
+                input.placeholder = `Item ${index + 1}`;
+                input.oninput = (e) => {
+                    state.items[index] = e.target.value;
+                    renderPlayground();
+                };
+
+                row.appendChild(input);
+                container.appendChild(row);
+            });
+            document.getElementById('current-count').textContent = state.items.length;
         }
 
         function updateCode() {
             const itemsHtml = state.items.map((label, index) =>
-                `    <div class="segmented-control__item${index === state.activeIndex ? ' segmented-control__item--active' : ''}">${label}</div>`
+                `    <div class="segmented-control__item${index === state.activeIndex ? ' segmented-control__item--active' : ''}">${label || 'Label'}</div>`
             ).join('\n');
             const code = `<div class="segmented-control ${state.size}">\n${itemsHtml}\n</div>`;
             document.getElementById('generated-code').textContent = code;
         }
 
-        // 초기화
+        // 초기화 및 이벤트 바인딩
         document.querySelectorAll('#size-toggles .toggle-btn').forEach(btn => {
             btn.onclick = () => {
                 document.querySelectorAll('#size-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
@@ -162,6 +275,40 @@
                 renderPlayground();
             };
         });
+
+        document.querySelectorAll('#bg-toggles .toggle-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('#bg-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.bg = btn.dataset.value;
+                renderPlayground();
+            };
+        });
+
+        document.getElementById('increase-items').onclick = () => {
+            if (state.items.length < 6) {
+                state.items.push(`Label ${state.items.length + 1}`);
+                renderPlayground();
+            }
+        };
+
+        document.getElementById('decrease-items').onclick = () => {
+            if (state.items.length > 2) {
+                state.items.pop();
+                if (state.activeIndex >= state.items.length) state.activeIndex = state.items.length - 1;
+                renderPlayground();
+            }
+        };
+
+        document.getElementById('copy-code').onclick = () => {
+            const code = document.getElementById('generated-code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copy-code');
+                const originalText = btn.textContent;
+                btn.textContent = '✅';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            });
+        };
 
         // 테마 토글
         document.getElementById('theme-toggle').onclick = () => {
