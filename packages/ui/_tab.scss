@@ -78,7 +78,7 @@
         position: relative;
         display: inline-flex;
         align-items: center;
-        // height: 100% 제거 - 부모의 align-items: center에 맡김
+        height: 100%; // 언더라인이 탭 하단에 붙도록 높이 100% 유지
     }
 
     // 개별 아이템 사이즈 클래스 대응

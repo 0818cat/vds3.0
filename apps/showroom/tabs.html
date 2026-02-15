@@ -71,9 +71,6 @@
                             <label class="control-label">Options</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="opt-icons" checked> Show Icons
-                                </label>
-                                <label class="checkbox-label">
                                     <input type="checkbox" id="opt-accent"> Accent Active Color
                                 </label>
                             </div>
@@ -127,21 +124,10 @@
                         <h4 style="margin-bottom: 16px; color: var(--label-tertiary);">Label Width Underline</h4>
                         <div class="tab-list tab-list--large tab-list--underline-label">
                             <div class="tab-item tab-item--active">
-                                <div class="tab-item__icon"><svg viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"
-                                            fill="currentColor" />
-                                    </svg></div>
+
                                 <span class="tab-item__text">Active Tab</span>
                             </div>
                             <div class="tab-item">
-                                <div class="tab-item__icon"><svg viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"
-                                            fill="currentColor" />
-                                    </svg></div>
                                 <span class="tab-item__text">Second Tab</span>
                             </div>
                         </div>
@@ -170,7 +156,7 @@
             let state = {
                 size: 'tab-list--large',
                 underline: 'tab-list--underline-full',
-                showIcons: true,
+                showIcons: false,
                 useAccent: false,
                 activeIndex: 0,
                 items: ['Home', 'Search', 'Profile', 'Settings']
@@ -225,10 +211,6 @@
                 updateUI();
             };
 
-            document.getElementById('opt-icons').addEventListener('change', (e) => {
-                state.showIcons = e.target.checked;
-                updateUI();
-            });
 
             document.getElementById('opt-accent').addEventListener('change', (e) => {
                 state.useAccent = e.target.checked;
