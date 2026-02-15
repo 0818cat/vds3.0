@@ -50,24 +50,29 @@
         background-color: currentColor;
     }
 
-    // Hover 또는 Active 상태에서 색상 및 언더라인 활성화
+    // [Hover 또는 Active] 기본 피드백 스타일
     &:hover,
     &--active {
-        color: var(--label-primary);
+        color: var(--label-primary); // 기본 컬러
 
         &::after {
             content: ''; // 기본 활성화 (Full Width)
         }
+    }
 
-        // [부모 클래스 기반] 리스트 전체가 액센트 모드인 경우
-        .tab-list--accent & {
+    // [Hover 또는 Active] 액센트 모드 전용 (플리커링 방지를 위해 명확히 분리)
+    .tab-list--accent & {
+
+        &:hover,
+        &--active {
             color: var(--label-accent);
         }
+    }
 
-        // [아이템 개별 클래스 기반] 텍스트까지 액센트 컬러를 사용하는 변형 (호환성 유지)
-        &.tab-item--accent {
-            color: var(--label-accent);
-        }
+    // [아이템 개별 클래스 기반] 호환성 유지
+    &--accent:hover,
+    &--accent.tab-item--active {
+        color: var(--label-accent);
     }
 
     &--disabled {
