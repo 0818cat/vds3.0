@@ -231,12 +231,26 @@
 
         let playgroundControl = null;
 
-        function updateIndicator(control, activeItem) {
+        function updateIndicator(control, activeItem, instant = false) {
             const indicator = control.querySelector('.segmented-control__indicator');
             if (!indicator || !activeItem) return;
 
+            if (instant) {
+                indicator.style.transition = 'none';
+            } else {
+                indicator.style.transition = 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+
             indicator.style.width = `${activeItem.offsetWidth}px`;
             indicator.style.transform = `translateX(${activeItem.offsetLeft - 2}px)`; // 2px is padding
+
+            if (instant) {
+                // Force layout and restore transition
+                indicator.offsetHeight;
+                setTimeout(() => {
+                    indicator.style.transition = '';
+                }, 50);
+            }
         }
 
         function renderPlayground(recreate = false) {
@@ -286,12 +300,13 @@
                 numSpan.style.display = itemData.number ? 'inline' : 'none';
             });
 
-            updatePlaygroundActiveState();
+            // Recreate인 경우 즉시 배치(instant), 클릭인 경우 애니메이션(smooth)
+            updatePlaygroundActiveState(recreate);
             updateCode();
             renderLabelInputs();
         }
 
-        function updatePlaygroundActiveState() {
+        function updatePlaygroundActiveState(instant = false) {
             if (!playgroundControl) return;
             const items = playgroundControl.querySelectorAll('.segmented-control__item');
             let activeElement = null;
@@ -308,7 +323,7 @@
             if (activeElement) {
                 // Use requestAnimationFrame to ensure offsetWidth/offsetLeft are ready
                 requestAnimationFrame(() => {
-                    updateIndicator(playgroundControl, activeElement);
+                    updateIndicator(playgroundControl, activeElement, instant);
                 });
             }
         }
