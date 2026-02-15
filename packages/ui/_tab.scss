@@ -110,17 +110,7 @@
 
 // --- 언더라인 옵션 제어 (명시도를 활용하여 !important 없이 제어) ---
 
-// 기본 상태 (클래스 미적용 시 Full Width) 및 명시적 Full Width 설정
-.tab-list,
-.tab-list--underline-full {
-
-    .tab-item:hover::after,
-    .tab-item--active::after {
-        content: '';
-    }
-}
-
-// 2. Label Width Underline (기본 Full 언더라인을 숨기고 텍스트 언더라인 활성화)
+// 1. Label Width Underline (기본 Full 언더라인을 숨기고 텍스트 언더라인 활성화)
 .tab-list--underline-label {
 
     .tab-item:hover,
