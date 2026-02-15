@@ -181,11 +181,18 @@
 
             function updateUI() {
                 // UI Render
-                let html = `<div class="tab-list ${state.size} ${state.underline}">`;
+                const listClasses = ['tab-list', state.size, state.underline].filter(Boolean).join(' ');
+                let html = `<div class="${listClasses}">`;
                 state.items.forEach((item, index) => {
                     const isActive = state.activeIndex === index;
+                    const itemClasses = [
+                        'tab-item',
+                        isActive ? 'tab-item--active' : '',
+                        (isActive && state.useAccent) ? 'tab-item--accent' : ''
+                    ].filter(Boolean).join(' ');
+
                     html += `
-                        <div class="tab-item ${isActive ? 'tab-item--active' : ''} ${isActive && state.useAccent ? 'tab-item--accent' : ''}" onclick="window.setTabActive(${index})">
+                        <div class="${itemClasses}" onclick="window.setTabActive(${index})">
                             ${state.showIcons ? `<div class="tab-item__icon">${iconSvg}</div>` : ''}
                             <span class="tab-item__text">${item}</span>
                         </div>`;
@@ -194,10 +201,17 @@
                 container.innerHTML = html;
 
                 // Code Render
-                let code = `<div class="tab-list ${state.size} ${state.underline}">\n`;
+                const codeListClasses = ['tab-list', state.size, state.underline].filter(Boolean).join(' ');
+                let code = `<div class="${codeListClasses}">\n`;
                 state.items.forEach((item, index) => {
                     const isActive = state.activeIndex === index;
-                    code += `    <div class="tab-item ${isActive ? 'tab-item--active' : ''} ${isActive && state.useAccent ? 'tab-item--accent' : ''}">\n`;
+                    const codeItemClasses = [
+                        'tab-item',
+                        isActive ? 'tab-item--active' : '',
+                        (isActive && state.useAccent) ? 'tab-item--accent' : ''
+                    ].filter(Boolean).join(' ');
+
+                    code += `    <div class="${codeItemClasses}">\n`;
                     if (state.showIcons) code += `        <div class="tab-item__icon"><!-- SVG --></div>\n`;
                     code += `        <span class="tab-item__text">${item}</span>\n`;
                     code += `    </div>\n`;
