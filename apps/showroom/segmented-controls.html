@@ -132,6 +132,7 @@
                     <li><a href="menus.html" class="sidebar-link">Menus</a></li>
                     <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
                     <li><a href="segmented-controls.html" class="sidebar-link active">SegmentedControl</a></li>
+                    <li><a href="chips.html" class="sidebar-link">Chips</a></li>
                 </ul>
             </nav>
         </aside>
@@ -217,6 +218,7 @@
         </main>
     </div>
 
+    <script src="assets/js/theme.js"></script>
     <script>
         const state = {
             size: 'segmented-control--medium',
@@ -449,15 +451,13 @@
             });
         };
 
-        // 테마 토글
-        document.getElementById('theme-toggle').onclick = () => {
-            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
+        // 테마 토글 (UI 업데이트만 처리, 실제 토글은 theme.js가 담당)
+        document.getElementById('theme-toggle').addEventListener('click', () => {
             setTimeout(() => {
                 updatePlaygroundActiveState();
                 initGalleryAnimations();
-            }, 100); // Wait for CSS vars to apply
-        };
+            }, 100); // Wait for CSS vars to apply from theme.js class change
+        });
 
         renderPlayground();
         initGalleryAnimations();

@@ -1,0 +1,102 @@
+@import "../core/index";
+
+.chips {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    box-sizing: border-box;
+    position: relative; // For interaction-overlay
+    overflow: hidden; // Ensures overlay stays within border-radius
+
+    // Default State (Unselected)
+    background-color: var(--refine-septenary);
+    color: var(--label-primary);
+
+    @include interaction-overlay(var(--interaction-surface), 'light');
+
+    // Selected State
+    &--selected {
+        background-color: var(--inverse-black);
+        color: var(--inverse-white);
+
+    }
+
+    // Sizes
+    &--large {
+        height: 48px;
+        min-height: 48px;
+        padding: 0 16px;
+        gap: 6px;
+        @include label-15-r();
+
+        &.chips--selected {
+            @include label-15-sb();
+        }
+
+        .chips__icon {
+            width: 18px;
+            height: 18px;
+            font-size: 18px;
+        }
+    }
+
+
+    &--medium {
+        height: 40px;
+        min-height: 40px;
+        padding: 0 14px;
+        gap: 4px;
+        @include label-14-r();
+
+        &.chips--selected {
+            @include label-14-sb();
+        }
+
+        .chips__icon {
+            width: 17px;
+            height: 17px;
+            font-size: 17px; // for icon fonts if used
+        }
+    }
+
+    &--small {
+        height: 32px;
+        min-height: 32px;
+        padding: 0 12px;
+        gap: 2px;
+        @include label-13-r();
+
+        &.chips--selected {
+            @include label-13-sb();
+        }
+
+        .chips__icon {
+            width: 16px;
+            height: 16px;
+            font-size: 16px; // for icon fonts if used
+        }
+    }
+
+
+    // Icon Only Mode
+    &--icon-only {
+        padding: 0;
+        aspect-ratio: 1/1; // Ensures circle/square shape
+        justify-content: center;
+
+        // Ensure icon is centered and no text gap issues (though text should be removed in HTML)
+        gap: 0;
+    }
+
+    // Icons
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+}

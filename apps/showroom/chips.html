@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - Chips</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <style>
+        .chip-preview {
+            width: 100%;
+            padding: 40px;
+            background-color: var(--fill-surface-primary);
+            border-radius: 12px;
+            border: 1px solid var(--line-tertiary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            /* Allow wrapping */
+            gap: 8px;
+            /* Gap between chips */
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-top: 16px;
+        }
+
+        .preview-case {
+            margin-bottom: 40px;
+        }
+
+        .preview-label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 16px;
+            color: var(--label-tertiary);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar-link">SegmentedControl</a></li>
+                    <li><a href="chips.html" class="sidebar-link active">Chips</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">Chips의 사이즈와 상태를 조합하여 테스트해보세요. 클릭하여 선택 상태를 토글할 수 있습니다.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas" style="width: 100%;">
+                            <div id="playground-target" class="chip-preview">
+                                <!-- Chips will be rendered here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Chip Items</label>
+                            <div class="checkbox-group" style="gap: 8px;">
+                                <div id="chip-items-inputs" style="display: flex; flex-direction: column; gap: 8px;">
+                                    <!-- Inputs will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Removed single 'State' toggle as selection is interactive per chip -->
+
+                        <div class="control-group">
+                            <label class="control-label">Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="check-icon"> Show Icon
+                                </label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn" data-value="chips--large">Large</button>
+                                <button class="toggle-btn active" data-value="chips--medium">Medium</button>
+                                <button class="toggle-btn" data-value="chips--small">Small</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code"></code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="component-section">
+                <h2 class="section-title">Gallery</h2>
+                <div class="preview-wrapper">
+                    <div class="preview-case">
+                        <span class="preview-label">Medium Sizes</span>
+                        <div class="chip-group">
+                            <button class="chips chips--medium">Default</button>
+                            <button class="chips chips--medium chips--selected">Selected</button>
+                        </div>
+                    </div>
+                    <div class="preview-case">
+                        <span class="preview-label">Small Sizes</span>
+                        <div class="chip-group">
+                            <button class="chips chips--small">Default</button>
+                            <button class="chips chips--small chips--selected">Selected</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+        const iconSvg = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/></svg>`;
+
+        function initPlayground() {
+            const container = document.getElementById('playground-target');
+            const generatedCode = document.getElementById('generated-code');
+            const itemsInputs = document.getElementById('chip-items-inputs');
+
+            let state = {
+                size: 'chips--medium',
+                items: [
+                    { text: 'Design', iconOnly: false },
+                    { text: 'Development', iconOnly: false },
+                    { text: 'Marketing', iconOnly: false },
+                    { text: 'Strategy', iconOnly: false }
+                ],
+                selected: [1], // Initial selected index
+                showIcon: false
+                // Global iconOnly removed in favor of per-item
+            };
+
+            function renderInputs() {
+                itemsInputs.innerHTML = '';
+                state.items.forEach((itemObj, index) => {
+                    const row = document.createElement('div');
+                    row.style.display = 'flex';
+                    row.style.alignItems = 'center';
+                    row.style.gap = '8px';
+                    row.style.marginBottom = '8px';
+
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = itemObj.text;
+                    input.style.flex = '1';
+                    input.style.padding = '8px 12px';
+                    input.style.border = '1px solid var(--line-tertiary)';
+                    input.style.borderRadius = '8px';
+                    input.style.background = 'var(--fill-surface-primary)';
+                    input.style.color = 'var(--label-primary)';
+
+                    input.addEventListener('input', (e) => {
+                        state.items[index].text = e.target.value;
+                        updateUI();
+                    });
+
+                    // Per-item Icon Only checkbox
+                    const checkboxLabel = document.createElement('label');
+                    checkboxLabel.style.display = 'flex';
+                    checkboxLabel.style.alignItems = 'center';
+                    checkboxLabel.style.fontSize = '12px';
+                    checkboxLabel.style.whiteSpace = 'nowrap';
+                    checkboxLabel.style.gap = '4px';
+                    checkboxLabel.style.cursor = 'pointer';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = itemObj.iconOnly;
+                    checkbox.addEventListener('change', (e) => {
+                        state.items[index].iconOnly = e.target.checked;
+                        updateUI();
+                    });
+
+                    checkboxLabel.appendChild(checkbox);
+                    checkboxLabel.appendChild(document.createTextNode('Icon Only'));
+
+                    row.appendChild(input);
+                    row.appendChild(checkboxLabel);
+                    itemsInputs.appendChild(row);
+                });
+            }
+
+            function updateUI() {
+                // UI Render
+                let html = '';
+                state.items.forEach((itemObj, index) => {
+                    const isSelected = state.selected.includes(index);
+                    const classes = ['chips', state.size];
+                    if (isSelected) classes.push('chips--selected');
+                    if (itemObj.iconOnly) classes.push('chips--icon-only');
+
+                    // If Icon Only mode is on for this item, we MUST show the icon.
+                    // If not, we allow the global showIcon toggle to decide.
+                    const shouldShowIcon = state.showIcon || itemObj.iconOnly;
+                    const iconHtml = shouldShowIcon ? `<span class="chips__icon">${iconSvg}</span>` : '';
+
+                    // If Icon Only mode is on, do not render text
+                    const content = itemObj.iconOnly ? '' : itemObj.text;
+
+                    html += `<button class="${classes.join(' ')}" onclick="window.toggleChip(${index})">${iconHtml}${content}</button>`;
+                });
+                container.innerHTML = html;
+
+                // Code Render
+                let code = '';
+                state.items.forEach((itemObj, index) => {
+                    const isSelected = state.selected.includes(index);
+                    const classes = ['chips', state.size];
+                    if (isSelected) classes.push('chips--selected');
+                    if (itemObj.iconOnly) classes.push('chips--icon-only');
+
+                    const shouldShowIcon = state.showIcon || itemObj.iconOnly;
+
+                    code += `<button class="${classes.join(' ')}">`;
+                    if (shouldShowIcon) code += `\n  <span class="chips__icon"><!-- SVG --></span>\n  `;
+                    if (!itemObj.iconOnly) {
+                        code += `${itemObj.text}`;
+                        if (shouldShowIcon) code += `\n`;
+                    }
+                    code += `</button>\n`;
+                });
+                generatedCode.innerText = code.trim();
+            }
+
+            window.toggleChip = (index) => {
+                // User requested Single Select behavior (like Tabs).
+                // Clicking an item selects it and deselects others.
+                // Clicking the already selected item does nothing (keeps it selected), strictly like Tabs.
+                // If 'toggle' behavior is desired (allow 0 selection), we can check includes.
+                // Given "like tabs", I will enforce always having one selected if one was clicked.
+                state.selected = [index];
+                updateUI();
+            };
+
+            document.getElementById('size-toggles').addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    document.querySelectorAll('#size-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.size = e.target.dataset.value;
+                    updateUI();
+                }
+            });
+
+            document.getElementById('check-icon').addEventListener('change', (e) => {
+                state.showIcon = e.target.checked;
+                updateUI();
+            });
+
+            // Removed global 'check-icon-only' event listener as it's now per-item.
+
+            // Copy code functionality
+            document.getElementById('copy-code-btn').onclick = () => {
+                const code = document.getElementById('generated-code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    const icon = document.getElementById('copy-code-btn').innerHTML;
+                    document.getElementById('copy-code-btn').textContent = '✅';
+                    setTimeout(() => {
+                        document.getElementById('copy-code-btn').innerHTML = icon;
+                    }, 2000);
+                });
+            };
+
+            renderInputs();
+            updateUI();
+        }
+
+        document.addEventListener('DOMContentLoaded', initPlayground);
+    </script>
+</body>
+
+</html>
