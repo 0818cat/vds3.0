@@ -114,7 +114,7 @@
                     <div>
                         <h4 style="margin-bottom: 16px; color: var(--label-tertiary);">Full Width Underline (Default)
                         </h4>
-                        <div class="tab-list tab-list--large tab-list--underline-full">
+                        <div class="tab-list tab-list--large">
                             <div class="tab-item tab-item--active"><span class="tab-item__text">Active Tab</span></div>
                             <div class="tab-item"><span class="tab-item__text">Second Tab</span></div>
                             <div class="tab-item"><span class="tab-item__text">Third Tab</span></div>
@@ -155,7 +155,7 @@
 
             let state = {
                 size: 'tab-list--large',
-                underline: 'tab-list--underline-full',
+                underline: '', // 클래스 없이도 기본 언더라인이 나오도록 설정
                 showIcons: false,
                 useAccent: false,
                 activeIndex: 0,

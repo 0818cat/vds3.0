@@ -6,21 +6,18 @@
     height: 48px;
     padding: 0 18px;
     @include label-15-sb();
-
 }
 
 @mixin tab-medium {
     height: 40px;
     padding: 0 10px;
     @include label-14-sb();
-
 }
 
 @mixin tab-small {
     height: 32px;
     padding: 0 10px;
     @include label-13-sb();
-
 }
 
 .tab-list {
@@ -42,11 +39,22 @@
     box-sizing: border-box;
     white-space: nowrap;
 
+    // 언더라인 베이스 (기본적으로 Full Width 활성)
+    &::after {
+        content: none;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: currentColor;
+    }
+
     &--active {
         color: var(--label-primary);
 
         &::after {
-            content: none;
+            content: ''; // 기본 활성화 (Full Width)
         }
 
         // 텍스트까지 액센트 컬러를 사용하는 변형
@@ -78,7 +86,18 @@
         position: relative;
         display: inline-flex;
         align-items: center;
-        height: 100%; // 언더라인이 탭 하단에 붙도록 높이 100% 유지
+        height: 100%;
+
+        // 텍스트 영역 언더라인 베이스 (기본적으로 숨김)
+        &::after {
+            content: none;
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: currentColor;
+        }
     }
 
     // 개별 아이템 사이즈 클래스 대응
@@ -95,45 +114,36 @@
     }
 }
 
-// --- 언더라인 옵션 제어 ---
+// --- 언더라인 옵션 제어  ---
 
-// 1. Full Width
-.tab-list--underline-full .tab-item--active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: currentColor; // 현재 글자색(Accent 포함)에 맞춤
-    display: block !important;
-}
-
-// 2. Label Width
-.tab-list--underline-label .tab-item--active {
-    &::after {
-        content: none !important;
-    }
-
-    .tab-item__text::after {
+// 1. Full Width Underline (이미 기본값이므로 추가 클래스 사용 시에도 유지)
+.tab-list--underline-full {
+    .tab-item--active::after {
         content: '';
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background-color: currentColor;
-        display: block !important;
     }
 }
 
-// 3. None
-.tab-list--underline-none .tab-item--active {
+// 2. Label Width Underline (기본 Full 언더라인을 숨기고 텍스트 언더라인 활성화)
+.tab-list--underline-label {
+    .tab-item--active {
+        &::after {
+            content: none;
+        }
 
-    &::after,
-    .tab-item__text::after {
-        display: none !important;
-        content: none !important;
+        .tab-item__text::after {
+            content: '';
+        }
+    }
+}
+
+// 3. No Underline (모든 언더라인 숨김)
+.tab-list--underline-none {
+    .tab-item--active {
+
+        &::after,
+        .tab-item__text::after {
+            content: none;
+        }
     }
 }
 
