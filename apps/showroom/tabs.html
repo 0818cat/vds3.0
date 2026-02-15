@@ -181,14 +181,13 @@
 
             function updateUI() {
                 // UI Render
-                const listClasses = ['tab-list', state.size, state.underline].filter(Boolean).join(' ');
+                const listClasses = ['tab-list', state.size, state.underline, state.useAccent ? 'tab-list--accent' : ''].filter(Boolean).join(' ');
                 let html = `<div class="${listClasses}">`;
                 state.items.forEach((item, index) => {
                     const isActive = state.activeIndex === index;
                     const itemClasses = [
                         'tab-item',
-                        isActive ? 'tab-item--active' : '',
-                        (isActive && state.useAccent) ? 'tab-item--accent' : ''
+                        isActive ? 'tab-item--active' : ''
                     ].filter(Boolean).join(' ');
 
                     html += `
@@ -201,14 +200,13 @@
                 container.innerHTML = html;
 
                 // Code Render
-                const codeListClasses = ['tab-list', state.size, state.underline].filter(Boolean).join(' ');
+                const codeListClasses = ['tab-list', state.size, state.underline, state.useAccent ? 'tab-list--accent' : ''].filter(Boolean).join(' ');
                 let code = `<div class="${codeListClasses}">\n`;
                 state.items.forEach((item, index) => {
                     const isActive = state.activeIndex === index;
                     const codeItemClasses = [
                         'tab-item',
-                        isActive ? 'tab-item--active' : '',
-                        (isActive && state.useAccent) ? 'tab-item--accent' : ''
+                        isActive ? 'tab-item--active' : ''
                     ].filter(Boolean).join(' ');
 
                     code += `    <div class="${codeItemClasses}">\n`;

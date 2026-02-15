@@ -59,7 +59,12 @@
             content: ''; // 기본 활성화 (Full Width)
         }
 
-        // 텍스트까지 액센트 컬러를 사용하는 변형
+        // [부모 클래스 기반] 리스트 전체가 액센트 모드인 경우
+        .tab-list--accent & {
+            color: var(--label-accent);
+        }
+
+        // [아이템 개별 클래스 기반] 텍스트까지 액센트 컬러를 사용하는 변형 (호환성 유지)
         &.tab-item--accent {
             color: var(--label-accent);
         }
