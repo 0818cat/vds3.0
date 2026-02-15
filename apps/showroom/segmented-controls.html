@@ -57,7 +57,7 @@
         }
 
         .label-input {
-            flex: 1;
+            flex: 2;
             padding: 6px 10px;
             border-radius: 6px;
             border: 1px solid var(--line-secondary);
@@ -66,7 +66,19 @@
             font-size: 13px;
         }
 
-        .label-input:focus {
+        .number-input {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--line-secondary);
+            background: var(--fill-surface-primary);
+            color: var(--label-primary);
+            font-size: 13px;
+            width: 50px;
+        }
+
+        .label-input:focus,
+        .number-input:focus {
             outline: none;
             border-color: var(--line-accent);
         }
@@ -156,7 +168,7 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">Items Configuration</label>
+                            <label class="control-label">Items Configuration (Label / Number)</label>
                             <div class="item-count-control">
                                 <button class="count-btn" id="decrease-items">−</button>
                                 <span id="current-count"
@@ -179,18 +191,24 @@
                 <h2 class="section-title">Gallery</h2>
                 <div class="preview-wrapper">
                     <div class="preview-case">
-                        <span class="preview-label">Medium</span>
-                        <div class="segmented-control segmented-control--medium">
-                            <div class="segmented-control__item segmented-control__item--active">Label</div>
-                            <div class="segmented-control__item">Label</div>
+                        <span class="preview-label">Medium with Sliding Animation</span>
+                        <div class="segmented-control segmented-control--medium" id="gallery-sc-medium">
+                            <div class="segmented-control__indicator"></div>
+                            <div class="segmented-control__item segmented-control__item--active">Label <span
+                                    class="segmented-control__number">12</span></div>
+                            <div class="segmented-control__item">Label <span class="segmented-control__number">5</span>
+                            </div>
                             <div class="segmented-control__item">Label</div>
                         </div>
                     </div>
                     <div class="preview-case">
-                        <span class="preview-label">Small</span>
-                        <div class="segmented-control segmented-control--small">
-                            <div class="segmented-control__item segmented-control__item--active">Label</div>
-                            <div class="segmented-control__item">Label</div>
+                        <span class="preview-label">Small with Sliding Animation</span>
+                        <div class="segmented-control segmented-control--small" id="gallery-sc-small">
+                            <div class="segmented-control__indicator"></div>
+                            <div class="segmented-control__item segmented-control__item--active">Label <span
+                                    class="segmented-control__number">1</span></div>
+                            <div class="segmented-control__item">Label <span class="segmented-control__number">2</span>
+                            </div>
                             <div class="segmented-control__item">Label</div>
                         </div>
                     </div>
@@ -203,66 +221,172 @@
         const state = {
             size: 'segmented-control--medium',
             bg: 'bg-surface',
-            items: ['Label 1', 'Label 2', 'Label 3'],
+            items: [
+                { label: 'Label 1', number: '12' },
+                { label: 'Label 2', number: '5' },
+                { label: 'Label 3', number: '' }
+            ],
             activeIndex: 0
         };
 
-        function renderPlayground() {
-            // 배경 업데이트
+        let playgroundControl = null;
+
+        function updateIndicator(control, activeItem) {
+            const indicator = control.querySelector('.segmented-control__indicator');
+            if (!indicator || !activeItem) return;
+
+            indicator.style.width = `${activeItem.offsetWidth}px`;
+            indicator.style.transform = `translateX(${activeItem.offsetLeft - 2}px)`; // 2px is padding
+        }
+
+        function renderPlayground(recreate = false) {
             const previewArea = document.getElementById('playground-preview');
             previewArea.className = `preview-area ${state.bg}`;
 
-            // 컴포넌트 렌더링
             const container = document.getElementById('playground-target');
-            const control = document.createElement('div');
-            control.className = `segmented-control ${state.size}`;
 
-            state.items.forEach((label, index) => {
-                const item = document.createElement('div');
-                item.className = `segmented-control__item ${index === state.activeIndex ? 'segmented-control__item--active' : ''}`;
-                item.textContent = label;
-                item.onclick = () => {
-                    state.activeIndex = index;
-                    renderPlayground();
-                };
-                control.appendChild(item);
+            // Recreate DOM if structure changes (count or size)
+            if (recreate || !playgroundControl) {
+                container.innerHTML = '';
+                playgroundControl = document.createElement('div');
+                playgroundControl.className = `segmented-control ${state.size}`;
+
+                const indicator = document.createElement('div');
+                indicator.className = 'segmented-control__indicator';
+                playgroundControl.appendChild(indicator);
+
+                state.items.forEach((itemData, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'segmented-control__item';
+
+                    const labelSpan = document.createElement('span');
+                    labelSpan.className = 'item-label-text';
+                    item.appendChild(labelSpan);
+
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'segmented-control__number';
+                    item.appendChild(numSpan);
+
+                    item.onclick = () => {
+                        state.activeIndex = index;
+                        updatePlaygroundActiveState();
+                    };
+                    playgroundControl.appendChild(item);
+                });
+                container.appendChild(playgroundControl);
+            }
+
+            // Update content without recreating nodes
+            const items = playgroundControl.querySelectorAll('.segmented-control__item');
+            state.items.forEach((itemData, index) => {
+                const item = items[index];
+                item.querySelector('.item-label-text').textContent = itemData.label || 'Label';
+                const numSpan = item.querySelector('.segmented-control__number');
+                numSpan.textContent = itemData.number;
+                numSpan.style.display = itemData.number ? 'inline' : 'none';
             });
 
-            container.innerHTML = '';
-            container.appendChild(control);
+            updatePlaygroundActiveState();
             updateCode();
             renderLabelInputs();
         }
 
-        function renderLabelInputs() {
-            const container = document.getElementById('label-inputs');
-            if (container.children.length === state.items.length) return; // 최적화: 개수 같으면 패스
+        function updatePlaygroundActiveState() {
+            if (!playgroundControl) return;
+            const items = playgroundControl.querySelectorAll('.segmented-control__item');
+            let activeElement = null;
 
-            container.innerHTML = '';
-            state.items.forEach((label, index) => {
-                const row = document.createElement('div');
-                row.className = 'label-input-row';
+            items.forEach((item, index) => {
+                if (index === state.activeIndex) {
+                    item.classList.add('segmented-control__item--active');
+                    activeElement = item;
+                } else {
+                    item.classList.remove('segmented-control__item--active');
+                }
+            });
 
-                const input = document.createElement('input');
-                input.className = 'label-input';
-                input.value = label;
-                input.placeholder = `Item ${index + 1}`;
-                input.oninput = (e) => {
-                    state.items[index] = e.target.value;
-                    renderPlayground();
+            if (activeElement) {
+                // Use requestAnimationFrame to ensure offsetWidth/offsetLeft are ready
+                requestAnimationFrame(() => {
+                    updateIndicator(playgroundControl, activeElement);
+                });
+            }
+        }
+
+        function initGalleryAnimations() {
+            const syncGallery = (id) => {
+                const control = document.getElementById(id);
+                const items = control.querySelectorAll('.segmented-control__item');
+                const indicator = control.querySelector('.segmented-control__indicator');
+
+                const update = (target) => {
+                    indicator.style.width = `${target.offsetWidth}px`;
+                    indicator.style.transform = `translateX(${target.offsetLeft - 2}px)`;
                 };
 
-                row.appendChild(input);
-                container.appendChild(row);
-            });
+                items.forEach((item, idx) => {
+                    if (item.classList.contains('segmented-control__item--active')) {
+                        update(item);
+                    }
+                    item.onclick = () => {
+                        items.forEach(i => i.classList.remove('segmented-control__item--active'));
+                        item.classList.add('segmented-control__item--active');
+                        update(item);
+                    };
+                });
+            };
+
+            syncGallery('gallery-sc-medium');
+            syncGallery('gallery-sc-small');
+        }
+
+        function renderLabelInputs() {
+            const container = document.getElementById('label-inputs');
+            if (container.children.length === state.items.length) {
+                state.items.forEach((item, index) => {
+                    const row = container.children[index];
+                    row.querySelector('.label-input').value = item.label;
+                    row.querySelector('.number-input').value = item.number;
+                });
+            } else {
+                container.innerHTML = '';
+                state.items.forEach((item, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'label-input-row';
+
+                    const labelInput = document.createElement('input');
+                    labelInput.className = 'label-input';
+                    labelInput.value = item.label;
+                    labelInput.placeholder = `Label ${index + 1}`;
+                    labelInput.oninput = (e) => {
+                        state.items[index].label = e.target.value;
+                        renderPlayground(); // Content only update
+                    };
+
+                    const numInput = document.createElement('input');
+                    numInput.className = 'number-input';
+                    numInput.value = item.number;
+                    numInput.placeholder = `No.`;
+                    numInput.oninput = (e) => {
+                        state.items[index].number = e.target.value;
+                        renderPlayground(); // Content only update
+                    };
+
+                    row.appendChild(labelInput);
+                    row.appendChild(numInput);
+                    container.appendChild(row);
+                });
+            }
             document.getElementById('current-count').textContent = state.items.length;
         }
 
         function updateCode() {
-            const itemsHtml = state.items.map((label, index) =>
-                `    <div class="segmented-control__item${index === state.activeIndex ? ' segmented-control__item--active' : ''}">${label || 'Label'}</div>`
-            ).join('\n');
-            const code = `<div class="segmented-control ${state.size}">\n${itemsHtml}\n</div>`;
+            const itemsHtml = state.items.map((item, index) => {
+                const activeClass = index === state.activeIndex ? ' segmented-control__item--active' : '';
+                const numberHtml = item.number ? ` <span class="segmented-control__number">${item.number}</span>` : '';
+                return `    <div class="segmented-control__item${activeClass}">${item.label || 'Label'}${numberHtml}</div>`;
+            }).join('\n');
+            const code = `<div class="segmented-control ${state.size}">\n    <div class="segmented-control__indicator"></div>\n${itemsHtml}\n</div>`;
             document.getElementById('generated-code').textContent = code;
         }
 
@@ -272,7 +396,7 @@
                 document.querySelectorAll('#size-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 state.size = btn.dataset.value;
-                renderPlayground();
+                renderPlayground(true); // Structure change, recreate
             };
         });
 
@@ -281,14 +405,14 @@
                 document.querySelectorAll('#bg-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 state.bg = btn.dataset.value;
-                renderPlayground();
+                renderPlayground(); // BG only change
             };
         });
 
         document.getElementById('increase-items').onclick = () => {
             if (state.items.length < 6) {
-                state.items.push(`Label ${state.items.length + 1}`);
-                renderPlayground();
+                state.items.push({ label: `Label ${state.items.length + 1}`, number: '' });
+                renderPlayground(true); // Count change, recreate
             }
         };
 
@@ -296,7 +420,7 @@
             if (state.items.length > 2) {
                 state.items.pop();
                 if (state.activeIndex >= state.items.length) state.activeIndex = state.items.length - 1;
-                renderPlayground();
+                renderPlayground(true); // Count change, recreate
             }
         };
 
@@ -314,9 +438,20 @@
         document.getElementById('theme-toggle').onclick = () => {
             const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', theme);
+            setTimeout(() => {
+                updatePlaygroundActiveState();
+                initGalleryAnimations();
+            }, 100); // Wait for CSS vars to apply
         };
 
         renderPlayground();
+        initGalleryAnimations();
+
+        // 윈도우 리사이즈 대응
+        window.onresize = () => {
+            updatePlaygroundActiveState();
+            initGalleryAnimations();
+        };
     </script>
 </body>
 
