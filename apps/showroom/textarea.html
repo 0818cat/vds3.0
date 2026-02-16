@@ -68,9 +68,6 @@
                                     <input type="checkbox" id="state-disabled"> Disabled
                                 </label>
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="state-readonly"> ReadOnly
-                                </label>
-                                <label class="checkbox-label">
                                     <input type="checkbox" id="state-error"> Error
                                 </label>
                                 <label class="checkbox-label">
@@ -176,15 +173,7 @@
                         </div>
                     </div>
 
-                    <!-- ReadOnly -->
-                    <div class="gallery-item">
-                        <div class="item-label">ReadOnly</div>
-                        <div class="textarea textarea--readonly">
-                            <div class="textarea__container">
-                                <textarea class="textarea__input" readonly>This content cannot be edited.</textarea>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
             </section>
@@ -209,7 +198,6 @@
             const counterEl = document.getElementById('pg-counter');
 
             const stateDisabled = document.getElementById('state-disabled');
-            const stateReadOnly = document.getElementById('state-readonly');
             const stateError = document.getElementById('state-error');
             const stateSuccess = document.getElementById('state-success');
 
@@ -224,7 +212,6 @@
 
             let state = {
                 disabled: false,
-                readonly: false,
                 error: false,
                 success: false,
                 showHelper: true,
@@ -252,14 +239,12 @@
                 if (state.error) classes += ' textarea--error';
                 if (state.success) classes += ' textarea--success';
                 if (state.disabled) classes += ' textarea--disabled';
-                if (state.readonly) classes += ' textarea--readonly';
 
                 container.className = classes;
 
                 // Elements Visibility & Content
                 inputEl.placeholder = state.placeholder;
                 inputEl.disabled = state.disabled;
-                inputEl.readOnly = state.readonly;
 
                 // Accessibility
                 inputEl.setAttribute('aria-invalid', state.error);
@@ -283,7 +268,7 @@
                 // Code Generation
                 let code = `<div class="${classes}">\n`;
                 code += `    <div class="textarea__container">\n`;
-                code += `        <textarea class="textarea__input" placeholder="${state.placeholder}" maxlength="500"${state.disabled ? ' disabled aria-disabled="true"' : ''}${state.readonly ? ' readonly' : ''}${state.error ? ' aria-invalid="true"' : ''}></textarea>\n`;
+                code += `        <textarea class="textarea__input" placeholder="${state.placeholder}" maxlength="500"${state.disabled ? ' disabled aria-disabled="true"' : ''}${state.error ? ' aria-invalid="true"' : ''}></textarea>\n`;
                 if (state.showCounter) {
                     code += `        <span class="textarea__counter">0/500</span>\n`;
                 }
@@ -302,11 +287,6 @@
             // Event Listeners
             stateDisabled.addEventListener('change', (e) => {
                 state.disabled = e.target.checked;
-                updateUI();
-            });
-
-            stateReadOnly.addEventListener('change', (e) => {
-                state.readonly = e.target.checked;
                 updateUI();
             });
 
