@@ -75,7 +75,7 @@ body {
 .sidebar-link {
     display: block;
     padding: 10px 24px;
-    @include text-style-body-body-14-r(); // 믹스인 이름 수정됨
+    @include body-14-r(); // 믹스인 이름 수정됨
     color: var(--label-secondary);
     text-decoration: none;
     transition: all 0.2s;
@@ -255,7 +255,7 @@ body {
     padding: 10px 12px;
     border-radius: 8px;
     border: 1px solid var(--line-tertiary);
-    @include text-style-body-body-14-r();
+    @include body-14-r();
     color: var(--label-primary);
     background-color: var(--static-white);
     appearance: none;
@@ -279,7 +279,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    @include text-style-body-body-14-r();
+    @include body-14-r();
     color: var(--label-primary);
     cursor: pointer;
 
@@ -298,7 +298,7 @@ body {
     padding: 16px;
     position: relative;
     color: var(--colors-grey-100);
-    @include text-style-mono-mono-14-r();
+    @include mono-14-r();
     overflow-x: auto;
 
     code {

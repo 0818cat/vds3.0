@@ -1,0 +1,169 @@
+@use "sass:map";
+@use "sass:list";
+@import "../core/index";
+
+// Textarea 스타일 정의
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__label {
+        display: block;
+        @include label-12-sb();
+        color: var(--label-secondary);
+        margin-bottom: 8px;
+
+        .textarea--disabled & {
+            color: var(--label-quinary);
+        }
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--fill-surface-secondary);
+        border: 1px solid var(--line-secondary);
+        border-radius: $radius-8;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        &:hover {
+            border-color: var(--line-primary);
+        }
+
+        &:focus-within {
+            border-color: var(--line-accent);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
+            z-index: 1;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        min-height: 86px; // Medium size default height
+        border: none;
+        background: transparent;
+        color: var(--label-primary);
+        @include body-14-r(); // Medium size text
+        padding: 12px 16px; // Internal padding
+        box-sizing: border-box;
+        outline: none;
+        resize: vertical; // Allow vertical resizing
+        font-family: var(--font-family-base);
+
+        &::placeholder {
+            color: var(--label-quaternary);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: var(--label-quinary);
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 4px;
+        min-height: 18px; // Prevent layout shift
+    }
+
+    &__helper-text {
+        @include caption-12-r();
+        color: var(--label-tertiary);
+        margin: 0;
+        flex: 1;
+
+        .textarea--error & {
+            color: var(--status-negative);
+        }
+
+        .textarea--success & {
+            color: var(--static-primary);
+        }
+
+        .textarea--disabled & {
+            color: var(--label-quinary);
+        }
+    }
+
+    &__counter {
+        @include caption-12-r();
+        color: var(--label-quaternary);
+        text-align: right;
+        margin-left: 16px;
+        white-space: nowrap;
+
+        .textarea--disabled & {
+            color: var(--label-quinary);
+        }
+    }
+
+    // 상태 (States)
+    &--error &__container {
+        border-color: var(--status-negative);
+
+        &:hover {
+            border-color: var(--status-negative);
+        }
+
+        &:focus-within {
+            border-color: var(--status-negative);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-negative), transparent 90%);
+        }
+    }
+
+    &--success &__container {
+        border-color: var(--static-primary);
+
+        &:hover {
+            border-color: var(--static-primary);
+        }
+
+        &:focus-within {
+            border-color: var(--static-primary);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--static-primary), transparent 90%);
+        }
+    }
+
+    &--disabled {
+        .textarea__container {
+            background-color: var(--interaction-disabled);
+            border-color: var(--line-tertiary);
+            cursor: not-allowed;
+
+            &:hover,
+            &:focus-within {
+                border-color: var(--line-tertiary);
+                box-shadow: none;
+            }
+        }
+
+        .textarea__input {
+            cursor: not-allowed;
+        }
+    }
+
+    &--readonly {
+        .textarea__container {
+            border-color: var(--line-tertiary);
+            background-color: var(--fill-surface-tertiary); // Readonly specific styling
+
+            &:hover,
+            &:focus-within {
+                border-color: var(--line-tertiary);
+                box-shadow: none;
+            }
+        }
+
+        .textarea__input {
+            cursor: default;
+        }
+    }
+}

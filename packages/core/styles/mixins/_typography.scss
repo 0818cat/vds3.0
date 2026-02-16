@@ -1,5 +1,5 @@
 /* Typography Tokens (SCSS Mixins) */
-@mixin text-style-display-display-56-b() {
+@mixin display-56-b() {
     font-size: $text-display-56-b-size;
     font-family: Pretendard;
     font-weight: $text-display-56-b-weight;
@@ -9,7 +9,7 @@
     text-transform: none;
 }
 
-@mixin text-style-display-display-44-b() {
+@mixin display-44-b() {
     font-size: $text-display-44-b-size;
     font-family: Pretendard;
     font-weight: $text-display-44-b-weight;
@@ -19,7 +19,7 @@
     text-transform: none;
 }
 
-@mixin text-style-display-display-32-b() {
+@mixin display-32-b() {
     font-size: $text-display-32-b-size;
     font-family: Pretendard;
     font-weight: $text-display-32-b-weight;
@@ -29,7 +29,7 @@
     text-transform: none;
 }
 
-@mixin text-style-display-display-28-b() {
+@mixin display-28-b() {
     font-size: $text-display-28-b-size;
     font-family: Pretendard;
     font-weight: $text-display-28-b-weight;
@@ -39,7 +39,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-24-b() {
+@mixin title-24-b() {
     font-size: $text-title-24-b-size;
     font-family: Pretendard;
     font-weight: $text-title-24-b-weight;
@@ -49,7 +49,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-24-r() {
+@mixin title-24-r() {
     font-size: $text-title-24-r-size;
     font-family: Pretendard;
     font-weight: $text-title-24-r-weight;
@@ -59,7 +59,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-20-b() {
+@mixin title-20-b() {
     font-size: $text-title-20-b-size;
     font-family: Pretendard;
     font-weight: $text-title-20-b-weight;
@@ -69,7 +69,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-20-r() {
+@mixin title-20-r() {
     font-size: $text-title-20-r-size;
     font-family: Pretendard;
     font-weight: $text-title-20-r-weight;
@@ -79,7 +79,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-18-sb() {
+@mixin title-18-sb() {
     font-size: $text-title-18-sb-size;
     font-family: Pretendard;
     font-weight: $text-title-18-sb-weight;
@@ -89,7 +89,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-18-r() {
+@mixin title-18-r() {
     font-size: $text-title-18-r-size;
     font-family: Pretendard;
     font-weight: $text-title-18-r-weight;
@@ -99,7 +99,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-16-sb() {
+@mixin title-16-sb() {
     font-size: $text-title-16-sb-size;
     font-family: Pretendard;
     font-weight: $text-title-16-sb-weight;
@@ -109,7 +109,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-16-r() {
+@mixin title-16-r() {
     font-size: $text-title-16-r-size;
     font-family: Pretendard;
     font-weight: $text-title-16-r-weight;
@@ -119,7 +119,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-15-sb() {
+@mixin title-15-sb() {
     font-size: $text-title-15-sb-size;
     font-family: Pretendard;
     font-weight: $text-title-15-sb-weight;
@@ -129,7 +129,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-15-r() {
+@mixin title-15-r() {
     font-size: $text-title-15-r-size;
     font-family: Pretendard;
     font-weight: $text-title-15-r-weight;
@@ -139,7 +139,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-14-sb() {
+@mixin title-14-sb() {
     font-size: $text-title-14-sb-size;
     font-family: Pretendard;
     font-weight: $text-title-14-sb-weight;
@@ -149,7 +149,7 @@
     text-transform: none;
 }
 
-@mixin text-style-title-title-14-r() {
+@mixin title-14-r() {
     font-size: $text-title-14-r-size;
     font-family: Pretendard;
     font-weight: $text-title-14-r-weight;
@@ -159,7 +159,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-16-sb() {
+@mixin body-16-sb() {
     font-size: $text-body-16-sb-size;
     font-family: Pretendard;
     font-weight: $text-body-16-sb-weight;
@@ -169,7 +169,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-16-r() {
+@mixin body-16-r() {
     font-size: $text-body-16-r-size;
     font-family: Pretendard;
     font-weight: $text-body-16-r-weight;
@@ -179,7 +179,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-15-sb() {
+@mixin body-15-sb() {
     font-size: $text-body-15-sb-size;
     font-family: Pretendard;
     font-weight: $text-body-15-sb-weight;
@@ -189,7 +189,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-15-r() {
+@mixin body-15-r() {
     font-size: $text-body-15-r-size;
     font-family: Pretendard;
     font-weight: $text-body-15-r-weight;
@@ -199,7 +199,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-14-sb() {
+@mixin body-14-sb() {
     font-size: $text-body-14-sb-size;
     font-family: Pretendard;
     font-weight: $text-body-14-sb-weight;
@@ -209,7 +209,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-14-r() {
+@mixin body-14-r() {
     font-size: $text-body-14-r-size;
     font-family: Pretendard;
     font-weight: $text-body-14-r-weight;
@@ -219,7 +219,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-13-sb() {
+@mixin body-13-sb() {
     font-size: $text-body-13-sb-size;
     font-family: Pretendard;
     font-weight: $text-body-13-sb-weight;
@@ -229,7 +229,7 @@
     text-transform: none;
 }
 
-@mixin text-style-body-body-13-r() {
+@mixin body-13-r() {
     font-size: $text-body-13-r-size;
     font-family: Pretendard;
     font-weight: $text-body-13-r-weight;
@@ -239,7 +239,7 @@
     text-transform: none;
 }
 
-@mixin text-style-caption-caption-13-sb() {
+@mixin caption-13-sb() {
     font-size: $text-caption-13-sb-size;
     font-family: Pretendard;
     font-weight: $text-caption-13-sb-weight;
@@ -249,7 +249,7 @@
     text-transform: none;
 }
 
-@mixin text-style-caption-caption-13-r() {
+@mixin caption-13-r() {
     font-size: $text-caption-13-r-size;
     font-family: Pretendard;
     font-weight: $text-caption-13-r-weight;
@@ -259,7 +259,7 @@
     text-transform: none;
 }
 
-@mixin text-style-caption-caption-12-sb() {
+@mixin caption-12-sb() {
     font-size: $text-caption-12-sb-size;
     font-family: Pretendard;
     font-weight: $text-caption-12-sb-weight;
@@ -269,7 +269,7 @@
     text-transform: none;
 }
 
-@mixin text-style-caption-caption-12-r() {
+@mixin caption-12-r() {
     font-size: $text-caption-12-r-size;
     font-family: Pretendard;
     font-weight: $text-caption-12-r-weight;
@@ -279,7 +279,7 @@
     text-transform: none;
 }
 
-@mixin text-style-caption-caption-11-sb() {
+@mixin caption-11-sb() {
     font-size: $text-caption-11-sb-size;
     font-family: Pretendard;
     font-weight: $text-caption-11-sb-weight;
@@ -289,7 +289,7 @@
     text-transform: none;
 }
 
-@mixin text-style-caption-caption-11-r() {
+@mixin caption-11-r() {
     font-size: $text-caption-11-r-size;
     font-family: Pretendard;
     font-weight: $text-caption-11-r-weight;
@@ -299,7 +299,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-15-sb() {
+@mixin label-15-sb() {
     font-size: $text-label-15-sb-size;
     font-family: Pretendard;
     font-weight: $text-label-15-sb-weight;
@@ -309,7 +309,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-15-r() {
+@mixin label-15-r() {
     font-size: $text-label-15-r-size;
     font-family: Pretendard;
     font-weight: $text-label-15-r-weight;
@@ -319,7 +319,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-14-sb() {
+@mixin label-14-sb() {
     font-size: $text-label-14-sb-size;
     font-family: Pretendard;
     font-weight: $text-label-14-sb-weight;
@@ -329,7 +329,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-14-r() {
+@mixin label-14-r() {
     font-size: $text-label-14-r-size;
     font-family: Pretendard;
     font-weight: $text-label-14-r-weight;
@@ -339,7 +339,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-13-sb() {
+@mixin label-13-sb() {
     font-size: $text-label-13-sb-size;
     font-family: Pretendard;
     font-weight: $text-label-13-sb-weight;
@@ -349,7 +349,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-13-r() {
+@mixin label-13-r() {
     font-size: $text-label-13-r-size;
     font-family: Pretendard;
     font-weight: $text-label-13-r-weight;
@@ -359,7 +359,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-12-sb() {
+@mixin label-12-sb() {
     font-size: $text-label-12-sb-size;
     font-family: Pretendard;
     font-weight: $text-label-12-sb-weight;
@@ -369,7 +369,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-12-r() {
+@mixin label-12-r() {
     font-size: $text-label-12-r-size;
     font-family: Pretendard;
     font-weight: $text-label-12-r-weight;
@@ -379,7 +379,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-10-sb() {
+@mixin label-10-sb() {
     font-size: $text-label-10-sb-size;
     font-family: Pretendard;
     font-weight: $text-label-10-sb-weight;
@@ -389,7 +389,7 @@
     text-transform: none;
 }
 
-@mixin text-style-label-label-10-r() {
+@mixin label-10-r() {
     font-size: $text-label-10-r-size;
     font-family: Pretendard;
     font-weight: $text-label-10-r-weight;
@@ -399,7 +399,7 @@
     text-transform: none;
 }
 
-@mixin text-style-mono-mono-14-r() {
+@mixin mono-14-r() {
     font-family: 'SF Mono', monospace;
     font-size: 14px;
     font-weight: 400;

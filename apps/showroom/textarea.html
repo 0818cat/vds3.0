@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - Textarea</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/theme.js"></script>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="textarea.html" class="sidebar-link">Textarea</a></li>
+                    <li><a href="textarea.html" class="sidebar-link active">Textarea</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar-link">SegmentedControl</a></li>
+                    <li><a href="chips.html" class="sidebar-link">Chips</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">Textarea 컴포넌트의 다양한 상태와 옵션을 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas">
+                            <div id="playground-textarea-container" class="textarea"
+                                style="max-width: 400px; width: 100%;">
+                                <label class="textarea__label" id="pg-label">Label</label>
+                                <div class="textarea__container">
+                                    <textarea class="textarea__input" placeholder="Placeholder Text"
+                                        id="pg-input"></textarea>
+                                </div>
+                                <div class="textarea__bottom">
+                                    <p class="textarea__helper-text" id="pg-helper">Helper text goes here</p>
+                                    <span class="textarea__counter" id="pg-counter">0/500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Status</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-disabled"> Disabled
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-readonly"> ReadOnly
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-error"> Error
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-success"> Success
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Options</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-label" checked> Show Label
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-helper" checked> Show Helper Text
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-counter" checked> Show Character Counter
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Content</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <input type="text" id="input-label" class="control-select" placeholder="Label Text"
+                                    value="Label" style="padding: 8px;">
+                                <input type="text" id="input-placeholder" class="control-select"
+                                    placeholder="Placeholder Text" value="Placeholder Text" style="padding: 8px;">
+                                <input type="text" id="input-helper" class="control-select" placeholder="Helper Text"
+                                    value="Helper text goes here" style="padding: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code"></code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="component-section" id="all-variants">
+                <h2 class="section-title">Textarea Variants</h2>
+                <p class="section-desc">Medium 사이즈 Textarea의 다양한 상태입니다.</p>
+
+                <div class="gallery-grid"
+                    style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: start;">
+
+                    <!-- Default -->
+                    <div class="gallery-item">
+                        <div class="item-label">Default</div>
+                        <div class="textarea">
+                            <label class="textarea__label">Label</label>
+                            <div class="textarea__container">
+                                <textarea class="textarea__input" placeholder="Placeholder"></textarea>
+                            </div>
+                            <div class="textarea__bottom">
+                                <p class="textarea__helper-text">Helper text</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- With Content -->
+                    <div class="gallery-item">
+                        <div class="item-label">With Content & Counter</div>
+                        <div class="textarea">
+                            <label class="textarea__label">Description</label>
+                            <div class="textarea__container">
+                                <textarea class="textarea__input">This is some input text content.</textarea>
+                            </div>
+                            <div class="textarea__bottom">
+                                <p class="textarea__helper-text">Enter description</p>
+                                <span class="textarea__counter">28/500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error -->
+                    <div class="gallery-item">
+                        <div class="item-label">Error</div>
+                        <div class="textarea textarea--error">
+                            <label class="textarea__label">Label</label>
+                            <div class="textarea__container">
+                                <textarea class="textarea__input">Invalid content</textarea>
+                            </div>
+                            <div class="textarea__bottom">
+                                <p class="textarea__helper-text">Error message</p>
+                                <span class="textarea__counter">15/500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disabled -->
+                    <div class="gallery-item">
+                        <div class="item-label">Disabled</div>
+                        <div class="textarea textarea--disabled">
+                            <label class="textarea__label">Label</label>
+                            <div class="textarea__container">
+                                <textarea class="textarea__input" disabled>Disabled content</textarea>
+                            </div>
+                            <div class="textarea__bottom">
+                                <p class="textarea__helper-text">Helper text</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ReadOnly -->
+                    <div class="gallery-item">
+                        <div class="item-label">ReadOnly</div>
+                        <div class="textarea textarea--readonly">
+                            <label class="textarea__label">Read only</label>
+                            <div class="textarea__container">
+                                <textarea class="textarea__input" readonly>This content cannot be edited.</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayground();
+            initThemeToggle();
+        });
+
+        function initThemeToggle() {
+            // Theme handling handled by theme.js, just need to bind if custom logic needed
+            // theme.js handles #theme-toggle click automatically if ID matches
+        }
+
+        function initPlayground() {
+            const container = document.getElementById('playground-textarea-container');
+            const labelEl = document.getElementById('pg-label');
+            const inputEl = document.getElementById('pg-input');
+            const helperEl = document.getElementById('pg-helper');
+            const counterEl = document.getElementById('pg-counter');
+
+            const stateDisabled = document.getElementById('state-disabled');
+            const stateReadOnly = document.getElementById('state-readonly');
+            const stateError = document.getElementById('state-error');
+            const stateSuccess = document.getElementById('state-success');
+
+            const optLabel = document.getElementById('opt-label');
+            const optHelper = document.getElementById('opt-helper');
+            const optCounter = document.getElementById('opt-counter');
+
+            const inputLabel = document.getElementById('input-label');
+            const inputPlaceholder = document.getElementById('input-placeholder');
+            const inputHelper = document.getElementById('input-helper');
+
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
+
+            let state = {
+                disabled: false,
+                readonly: false,
+                error: false,
+                success: false,
+                showLabel: true,
+                showHelper: true,
+                showCounter: true,
+                labelText: 'Label',
+                placeholder: 'Placeholder Text',
+                helperText: 'Helper text goes here',
+                value: ''
+            };
+
+            // Character Counter Logic
+            inputEl.addEventListener('input', (e) => {
+                state.value = e.target.value;
+                updateCounter();
+            });
+
+            function updateCounter() {
+                if (state.showCounter) {
+                    counterEl.innerText = `${state.value.length}/500`;
+                }
+            }
+
+            function updateUI() {
+                // Classes
+                let classes = 'textarea';
+                if (state.error) classes += ' textarea--error';
+                if (state.success) classes += ' textarea--success';
+                if (state.disabled) classes += ' textarea--disabled';
+                if (state.readonly) classes += ' textarea--readonly';
+
+                container.className = classes;
+
+                // Elements Visibility & Content
+                labelEl.style.display = state.showLabel ? 'block' : 'none';
+                labelEl.innerText = state.labelText;
+
+                inputEl.placeholder = state.placeholder;
+                inputEl.disabled = state.disabled;
+                inputEl.readOnly = state.readonly;
+                // Don't overwrite value if user is typing, unless programmatic reset?
+                // inputEl.value = state.value; 
+
+                const bottomEl = container.querySelector('.textarea__bottom');
+                if (!state.showHelper && !state.showCounter) {
+                    bottomEl.style.display = 'none';
+                } else {
+                    bottomEl.style.display = 'flex';
+                    helperEl.style.display = state.showHelper ? 'block' : 'none';
+                    helperEl.innerText = state.helperText;
+
+                    counterEl.style.display = state.showCounter ? 'block' : 'none';
+                    updateCounter();
+                }
+
+                // Code Generation
+                let code = `<div class="${classes}">\n`;
+                if (state.showLabel) {
+                    code += `    <label class="textarea__label">${state.labelText}</label>\n`;
+                }
+                code += `    <div class="textarea__container">\n`;
+                code += `        <textarea class="textarea__input" placeholder="${state.placeholder}"${state.disabled ? ' disabled' : ''}${state.readonly ? ' readonly' : ''}></textarea>\n`;
+                code += `    </div>\n`;
+
+                if (state.showHelper || state.showCounter) {
+                    code += `    <div class="textarea__bottom">\n`;
+                    if (state.showHelper) {
+                        code += `        <p class="textarea__helper-text">${state.helperText}</p>\n`;
+                    }
+                    if (state.showCounter) {
+                        code += `        <span class="textarea__counter">0/500</span>\n`;
+                    }
+                    code += `    </div>\n`;
+                }
+                code += `</div>`;
+
+                generatedCode.innerText = code;
+            }
+
+            // Event Listeners
+            stateDisabled.addEventListener('change', (e) => {
+                state.disabled = e.target.checked;
+                updateUI();
+            });
+
+            stateReadOnly.addEventListener('change', (e) => {
+                state.readonly = e.target.checked;
+                updateUI();
+            });
+
+            stateError.addEventListener('change', (e) => {
+                state.error = e.target.checked;
+                if (state.error) {
+                    state.success = false;
+                    stateSuccess.checked = false;
+                }
+                updateUI();
+            });
+
+            stateSuccess.addEventListener('change', (e) => {
+                state.success = e.target.checked;
+                if (state.success) {
+                    state.error = false;
+                    stateError.checked = false;
+                }
+                updateUI();
+            });
+
+            optLabel.addEventListener('change', (e) => {
+                state.showLabel = e.target.checked;
+                updateUI();
+            });
+
+            optHelper.addEventListener('change', (e) => {
+                state.showHelper = e.target.checked;
+                updateUI();
+            });
+
+            optCounter.addEventListener('change', (e) => {
+                state.showCounter = e.target.checked;
+                updateUI();
+            });
+
+            inputLabel.addEventListener('input', (e) => {
+                state.labelText = e.target.value;
+                updateUI();
+            });
+
+            inputPlaceholder.addEventListener('input', (e) => {
+                state.placeholder = e.target.value;
+                updateUI();
+            });
+
+            inputHelper.addEventListener('input', (e) => {
+                state.helperText = e.target.value;
+                updateUI();
+            });
+
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    setTimeout(() => copyBtn.innerHTML = originalHTML, 1500);
+                });
+            });
+
+            updateUI();
+        }
+    </script>
+</body>
+
+</html>

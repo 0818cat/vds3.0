@@ -1,23 +1,23 @@
-@mixin effect-style-elevation-10() {
+@mixin elevation-10() {
     box-shadow: 0px 3px 6px -1px var(--elevation-10-color), 0px 3px 6px rgba(0, 0, 0, 0.020);
 }
 
-@mixin effect-style-elevation-20() {
+@mixin elevation-20() {
     box-shadow: 0px 4px 8px -1px var(--elevation-20-color), 0px 6px 8px rgba(0, 0, 0, 0.040);
 }
 
-@mixin effect-style-elevation-30() {
+@mixin elevation-30() {
     box-shadow: 0px 6px 10px -1px var(--elevation-30-color), 0px 8px 10px rgba(0, 0, 0, 0.060);
 }
 
-@mixin effect-style-elevation-40() {
+@mixin elevation-40() {
     box-shadow: 0px 8px 12px -1px var(--elevation-40-color), 0px 10px 12px rgba(0, 0, 0, 0.080);
 }
 
-@mixin effect-style-elevation-ambient() {
+@mixin elevation-ambient() {
     box-shadow: 0px 0px 8px -1px var(--colors-grey-100), 0px 0px 8px rgba(0, 0, 0, 0.040);
 }
 
-@mixin effect-style-elevation-depth() {
+@mixin elevation-depth() {
     box-shadow: 0px 2px 4px -1px var(--dimmed-tertiary), 0px 14px 28px -6px var(--dimmed-secondary);
 }
