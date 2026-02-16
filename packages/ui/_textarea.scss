@@ -84,14 +84,17 @@
         @include caption-12-r();
         color: var(--label-quaternary);
         position: absolute;
-        bottom: 8px;
-        right: 12px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: right;
         pointer-events: none;
+        box-sizing: border-box;
 
-        // Counter background to prevent text overlap during scroll
+        // Counter background to prevent text overlap during scroll (Full width)
         background-color: var(--fill-surface-secondary);
-        padding: 2px 6px;
-        border-radius: 4px;
+        padding: 4px 12px 8px; // Matches input horizontal padding
+        border-radius: 0 0 $radius-8 $radius-8; // Match container bottom radius
         z-index: 2;
 
         .textarea--disabled & {
@@ -110,7 +113,6 @@
 
         &:focus-within {
             border-color: var(--status-negative);
-            box-shadow: 0 0 0 2px var(--status-negative); // Fallback
             box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-negative), transparent 90%);
         }
     }
@@ -124,7 +126,6 @@
 
         &:focus-within {
             border-color: var(--line-accent);
-            box-shadow: 0 0 0 2px var(--line-accent); // Fallback
             box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
         }
     }
