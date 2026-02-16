@@ -49,7 +49,6 @@
                         <div class="preview-canvas">
                             <div id="playground-textarea-container" class="textarea"
                                 style="max-width: 400px; width: 100%;">
-                                <label class="textarea__label" id="pg-label">Label</label>
                                 <div class="textarea__container">
                                     <textarea class="textarea__input" placeholder="Placeholder Text"
                                         id="pg-input"></textarea>
@@ -84,9 +83,6 @@
                             <label class="control-label">Options</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="opt-label" checked> Show Label
-                                </label>
-                                <label class="checkbox-label">
                                     <input type="checkbox" id="opt-helper" checked> Show Helper Text
                                 </label>
                                 <label class="checkbox-label">
@@ -98,8 +94,6 @@
                         <div class="control-group">
                             <label class="control-label">Content</label>
                             <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <input type="text" id="input-label" class="control-select" placeholder="Label Text"
-                                    value="Label" style="padding: 8px;">
                                 <input type="text" id="input-placeholder" class="control-select"
                                     placeholder="Placeholder Text" value="Placeholder Text" style="padding: 8px;">
                                 <input type="text" id="input-helper" class="control-select" placeholder="Helper Text"
@@ -132,7 +126,6 @@
                     <div class="gallery-item">
                         <div class="item-label">Default</div>
                         <div class="textarea">
-                            <label class="textarea__label">Label</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input" placeholder="Placeholder"></textarea>
                             </div>
@@ -146,7 +139,6 @@
                     <div class="gallery-item">
                         <div class="item-label">With Content & Counter</div>
                         <div class="textarea">
-                            <label class="textarea__label">Description</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input">This is some input text content.</textarea>
                                 <span class="textarea__counter">28/500</span>
@@ -161,7 +153,6 @@
                     <div class="gallery-item">
                         <div class="item-label">Error</div>
                         <div class="textarea textarea--error">
-                            <label class="textarea__label">Label</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input">Invalid content</textarea>
                                 <span class="textarea__counter">15/500</span>
@@ -176,7 +167,6 @@
                     <div class="gallery-item">
                         <div class="item-label">Disabled</div>
                         <div class="textarea textarea--disabled">
-                            <label class="textarea__label">Label</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input" disabled>Disabled content</textarea>
                             </div>
@@ -190,7 +180,6 @@
                     <div class="gallery-item">
                         <div class="item-label">ReadOnly</div>
                         <div class="textarea textarea--readonly">
-                            <label class="textarea__label">Read only</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input" readonly>This content cannot be edited.</textarea>
                             </div>
@@ -215,7 +204,6 @@
 
         function initPlayground() {
             const container = document.getElementById('playground-textarea-container');
-            const labelEl = document.getElementById('pg-label');
             const inputEl = document.getElementById('pg-input');
             const helperEl = document.getElementById('pg-helper');
             const counterEl = document.getElementById('pg-counter');
@@ -225,11 +213,9 @@
             const stateError = document.getElementById('state-error');
             const stateSuccess = document.getElementById('state-success');
 
-            const optLabel = document.getElementById('opt-label');
             const optHelper = document.getElementById('opt-helper');
             const optCounter = document.getElementById('opt-counter');
 
-            const inputLabel = document.getElementById('input-label');
             const inputPlaceholder = document.getElementById('input-placeholder');
             const inputHelper = document.getElementById('input-helper');
 
@@ -241,10 +227,8 @@
                 readonly: false,
                 error: false,
                 success: false,
-                showLabel: true,
                 showHelper: true,
                 showCounter: true,
-                labelText: 'Label',
                 placeholder: 'Placeholder Text',
                 helperText: 'Helper text goes here',
                 value: ''
@@ -273,9 +257,6 @@
                 container.className = classes;
 
                 // Elements Visibility & Content
-                labelEl.style.display = state.showLabel ? 'block' : 'none';
-                labelEl.innerText = state.labelText;
-
                 inputEl.placeholder = state.placeholder;
                 inputEl.disabled = state.disabled;
                 inputEl.readOnly = state.readonly;
@@ -296,9 +277,6 @@
 
                 // Code Generation
                 let code = `<div class="${classes}">\n`;
-                if (state.showLabel) {
-                    code += `    <label class="textarea__label">${state.labelText}</label>\n`;
-                }
                 code += `    <div class="textarea__container">\n`;
                 code += `        <textarea class="textarea__input" placeholder="${state.placeholder}"${state.disabled ? ' disabled' : ''}${state.readonly ? ' readonly' : ''}></textarea>\n`;
                 if (state.showCounter) {
@@ -345,11 +323,6 @@
                 updateUI();
             });
 
-            optLabel.addEventListener('change', (e) => {
-                state.showLabel = e.target.checked;
-                updateUI();
-            });
-
             optHelper.addEventListener('change', (e) => {
                 state.showHelper = e.target.checked;
                 updateUI();
@@ -357,11 +330,6 @@
 
             optCounter.addEventListener('change', (e) => {
                 state.showCounter = e.target.checked;
-                updateUI();
-            });
-
-            inputLabel.addEventListener('input', (e) => {
-                state.labelText = e.target.value;
                 updateUI();
             });
 
