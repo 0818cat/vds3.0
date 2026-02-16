@@ -41,7 +41,7 @@
         background: transparent;
         color: var(--label-primary);
         @include body-14-r(); // Medium size text
-        padding: 8px 12px 24px; // Internal padding (Bottom increased for counter)
+        padding: 8px 12px 36px; // Internal padding (Bottom increased for counter)
         box-sizing: border-box;
         outline: none;
         resize: none; // Disable manual resizing
@@ -83,10 +83,17 @@
         position: absolute;
         bottom: 8px;
         right: 12px;
-        pointer-events: none; // text behind it remains selectable/clickable if possible, or just preventing interaction
+        pointer-events: none;
+
+        // Counter background to prevent text overlap during scroll
+        background-color: var(--fill-surface-secondary);
+        padding: 2px 6px;
+        border-radius: 4px;
+        z-index: 2;
 
         .textarea--disabled & {
             color: var(--label-quinary);
+            background-color: var(--interaction-disabled); // Match disabled container bg
         }
     }
 
