@@ -9,16 +9,7 @@
     flex-direction: column;
     width: 100%;
 
-    &__label {
-        display: block;
-        @include label-12-sb();
-        color: var(--label-secondary);
-        margin-bottom: 8px;
 
-        .textarea--disabled & {
-            color: var(--label-quinary);
-        }
-    }
 
     &__container {
         position: relative;
@@ -50,7 +41,7 @@
         background: transparent;
         color: var(--label-primary);
         @include body-14-r(); // Medium size text
-        padding: 12px 16px; // Internal padding
+        padding: 8px 12px; // Internal padding
         box-sizing: border-box;
         outline: none;
         resize: vertical; // Allow vertical resizing
@@ -66,14 +57,6 @@
         }
     }
 
-    &__bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-top: 4px;
-        min-height: 18px; // Prevent layout shift
-    }
-
     &__helper-text {
         @include caption-12-r();
         color: var(--label-tertiary);
@@ -85,7 +68,7 @@
         }
 
         .textarea--success & {
-            color: var(--static-primary);
+            color: var(--label-accent);
         }
 
         .textarea--disabled & {
@@ -120,15 +103,15 @@
     }
 
     &--success &__container {
-        border-color: var(--static-primary);
+        border-color: var(--line-accent);
 
         &:hover {
-            border-color: var(--static-primary);
+            border-color: var(--line-accent);
         }
 
         &:focus-within {
-            border-color: var(--static-primary);
-            box-shadow: 0 0 0 2px color-mix(in srgb, var(--static-primary), transparent 90%);
+            border-color: var(--line-accent);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
         }
     }
 
