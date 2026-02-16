@@ -21,7 +21,7 @@
         border-radius: $radius-8;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: hidden; // Ensures content (like border-radius) is clipped correctly
 
         &:hover {
             border-color: var(--line-primary);
@@ -29,6 +29,9 @@
 
         &:focus-within {
             border-color: var(--line-accent);
+            // Fallback for older browsers
+            box-shadow: 0 0 0 2px var(--line-accent);
+            // Modern browsers
             box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
             z-index: 1;
         }
@@ -107,6 +110,7 @@
 
         &:focus-within {
             border-color: var(--status-negative);
+            box-shadow: 0 0 0 2px var(--status-negative); // Fallback
             box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-negative), transparent 90%);
         }
     }
@@ -120,26 +124,25 @@
 
         &:focus-within {
             border-color: var(--line-accent);
+            box-shadow: 0 0 0 2px var(--line-accent); // Fallback
             box-shadow: 0 0 0 2px color-mix(in srgb, var(--line-accent), transparent 90%);
         }
     }
 
-    &--disabled {
-        .textarea__container {
-            background-color: var(--interaction-disabled);
+    &--disabled &__container {
+        background-color: var(--interaction-disabled);
+        border-color: var(--line-tertiary);
+        cursor: not-allowed;
+
+        &:hover,
+        &:focus-within {
             border-color: var(--line-tertiary);
-            cursor: not-allowed;
-
-            &:hover,
-            &:focus-within {
-                border-color: var(--line-tertiary);
-                box-shadow: none;
-            }
+            box-shadow: none;
         }
+    }
 
-        .textarea__input {
-            cursor: not-allowed;
-        }
+    &--disabled &__input {
+        cursor: not-allowed;
     }
 
 

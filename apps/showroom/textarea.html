@@ -50,9 +50,9 @@
                             <div id="playground-textarea-container" class="textarea"
                                 style="max-width: 400px; width: 100%;">
                                 <div class="textarea__container">
-                                    <textarea class="textarea__input" placeholder="Placeholder Text"
-                                        id="pg-input"></textarea>
-                                    <span class="textarea__counter" id="pg-counter">0/500</span>
+                                    <textarea class="textarea__input" placeholder="Placeholder Text" id="pg-input"
+                                        maxlength="500" aria-describedby="pg-helper pg-counter"></textarea>
+                                    <span class="textarea__counter" id="pg-counter" aria-hidden="true">0/500</span>
                                 </div>
                                 <div class="textarea__bottom">
                                     <p class="textarea__helper-text" id="pg-helper">Helper text goes here</p>
@@ -260,6 +260,11 @@
                 inputEl.placeholder = state.placeholder;
                 inputEl.disabled = state.disabled;
                 inputEl.readOnly = state.readonly;
+
+                // Accessibility
+                inputEl.setAttribute('aria-invalid', state.error);
+                inputEl.setAttribute('aria-disabled', state.disabled);
+
                 // Don't overwrite value if user is typing, unless programmatic reset?
                 // inputEl.value = state.value; 
 
@@ -278,7 +283,7 @@
                 // Code Generation
                 let code = `<div class="${classes}">\n`;
                 code += `    <div class="textarea__container">\n`;
-                code += `        <textarea class="textarea__input" placeholder="${state.placeholder}"${state.disabled ? ' disabled' : ''}${state.readonly ? ' readonly' : ''}></textarea>\n`;
+                code += `        <textarea class="textarea__input" placeholder="${state.placeholder}" maxlength="500"${state.disabled ? ' disabled aria-disabled="true"' : ''}${state.readonly ? ' readonly' : ''}${state.error ? ' aria-invalid="true"' : ''}></textarea>\n`;
                 if (state.showCounter) {
                     code += `        <span class="textarea__counter">0/500</span>\n`;
                 }
