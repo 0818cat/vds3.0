@@ -53,10 +53,10 @@
                                 <div class="textarea__container">
                                     <textarea class="textarea__input" placeholder="Placeholder Text"
                                         id="pg-input"></textarea>
+                                    <span class="textarea__counter" id="pg-counter">0/500</span>
                                 </div>
                                 <div class="textarea__bottom">
                                     <p class="textarea__helper-text" id="pg-helper">Helper text goes here</p>
-                                    <span class="textarea__counter" id="pg-counter">0/500</span>
                                 </div>
                             </div>
                         </div>
@@ -149,10 +149,10 @@
                             <label class="textarea__label">Description</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input">This is some input text content.</textarea>
+                                <span class="textarea__counter">28/500</span>
                             </div>
                             <div class="textarea__bottom">
                                 <p class="textarea__helper-text">Enter description</p>
-                                <span class="textarea__counter">28/500</span>
                             </div>
                         </div>
                     </div>
@@ -164,10 +164,10 @@
                             <label class="textarea__label">Label</label>
                             <div class="textarea__container">
                                 <textarea class="textarea__input">Invalid content</textarea>
+                                <span class="textarea__counter">15/500</span>
                             </div>
                             <div class="textarea__bottom">
                                 <p class="textarea__helper-text">Error message</p>
-                                <span class="textarea__counter">15/500</span>
                             </div>
                         </div>
                     </div>
@@ -301,16 +301,14 @@
                 }
                 code += `    <div class="textarea__container">\n`;
                 code += `        <textarea class="textarea__input" placeholder="${state.placeholder}"${state.disabled ? ' disabled' : ''}${state.readonly ? ' readonly' : ''}></textarea>\n`;
+                if (state.showCounter) {
+                    code += `        <span class="textarea__counter">0/500</span>\n`;
+                }
                 code += `    </div>\n`;
 
-                if (state.showHelper || state.showCounter) {
+                if (state.showHelper) {
                     code += `    <div class="textarea__bottom">\n`;
-                    if (state.showHelper) {
-                        code += `        <p class="textarea__helper-text">${state.helperText}</p>\n`;
-                    }
-                    if (state.showCounter) {
-                        code += `        <span class="textarea__counter">0/500</span>\n`;
-                    }
+                    code += `        <p class="textarea__helper-text">${state.helperText}</p>\n`;
                     code += `    </div>\n`;
                 }
                 code += `</div>`;

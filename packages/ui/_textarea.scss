@@ -41,11 +41,12 @@
         background: transparent;
         color: var(--label-primary);
         @include body-14-r(); // Medium size text
-        padding: 8px 12px; // Internal padding
+        padding: 8px 12px 28px; // Internal padding (Bottom increased for counter)
         box-sizing: border-box;
         outline: none;
         resize: vertical; // Allow vertical resizing
         font-family: var(--font-family-base);
+        caret-color: var(--static-primary);
 
         &::placeholder {
             color: var(--label-quaternary);
@@ -60,7 +61,7 @@
     &__helper-text {
         @include caption-12-r();
         color: var(--label-tertiary);
-        margin: 0;
+        margin: 4px 0 0 12px;
         flex: 1;
 
         .textarea--error & {
@@ -79,9 +80,10 @@
     &__counter {
         @include caption-12-r();
         color: var(--label-quaternary);
-        text-align: right;
-        margin-left: 16px;
-        white-space: nowrap;
+        position: absolute;
+        bottom: 8px;
+        right: 12px;
+        pointer-events: none; // text behind it remains selectable/clickable if possible, or just preventing interaction
 
         .textarea--disabled & {
             color: var(--label-quinary);
@@ -133,20 +135,5 @@
         }
     }
 
-    &--readonly {
-        .textarea__container {
-            border-color: var(--line-tertiary);
-            background-color: var(--fill-surface-tertiary); // Readonly specific styling
 
-            &:hover,
-            &:focus-within {
-                border-color: var(--line-tertiary);
-                box-shadow: none;
-            }
-        }
-
-        .textarea__input {
-            cursor: default;
-        }
-    }
 }
