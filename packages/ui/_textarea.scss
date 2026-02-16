@@ -41,10 +41,10 @@
         background: transparent;
         color: var(--label-primary);
         @include body-14-r(); // Medium size text
-        padding: 8px 12px 28px; // Internal padding (Bottom increased for counter)
+        padding: 8px 12px 24px; // Internal padding (Bottom increased for counter)
         box-sizing: border-box;
         outline: none;
-        resize: vertical; // Allow vertical resizing
+        resize: none; // Disable manual resizing
         font-family: var(--font-family-base);
         caret-color: var(--static-primary);
 
