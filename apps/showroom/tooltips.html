@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - Tooltips</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
+    <style>
+        .tooltip-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            gap: 20px;
+        }
+
+        .tooltip-box {
+            background-color: var(--color-gray-100, #f5f5f5);
+            padding: 8px 16px;
+            border-radius: var(--radius-s, 8px);
+            border: 1px solid var(--color-gray-300, #e0e0e0);
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="textarea.html" class="sidebar-link">Textarea</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar-link">SegmentedControl</a></li>
+                    <li><a href="chips.html" class="sidebar-link">Chips</a></li>
+                    <li><a href="toasts.html" class="sidebar-link">Toasts</a></li>
+                    <li><a href="tooltips.html" class="sidebar-link active">Tooltips</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section" id="tooltip-directions">
+                <h2 class="section-title">Tooltip Component</h2>
+                <p class="section-desc">요소에 마우스를 올리면 추가 정보를 제공하는 툴팁입니다.</p>
+
+                <div class="tooltip-container">
+
+                    <!-- Top Tooltips -->
+                    <div style="display: flex; gap: 10px; flex-direction: column; align-items: center;">
+                        <div class="tooltip tooltip--top-start">
+                            <div class="tooltip-box">Hover (Top Start)</div>
+                            <div class="tooltip__content">Top start tooltip</div>
+                        </div>
+                        <div class="tooltip tooltip--top">
+                            <div class="tooltip-box" style="width: 150px; text-align: center;">Hover (Top Center)</div>
+                            <div class="tooltip__content">This is a top center tooltip</div>
+                        </div>
+                        <div class="tooltip tooltip--top-end">
+                            <div class="tooltip-box">Hover (Top End)</div>
+                            <div class="tooltip__content">Top end tooltip</div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Tooltips -->
+                    <div style="display: flex; gap: 10px; flex-direction: column; align-items: center;">
+                        <div class="tooltip tooltip--bottom-start">
+                            <div class="tooltip-box">Hover (Bottom Start)</div>
+                            <div class="tooltip__content">Bottom start tooltip</div>
+                        </div>
+                        <div class="tooltip tooltip--bottom">
+                            <div class="tooltip-box" style="width: 150px; text-align: center;">Hover (Bottom Center)
+                            </div>
+                            <div class="tooltip__content">This is a bottom center tooltip</div>
+                        </div>
+                        <div class="tooltip tooltip--bottom-end">
+                            <div class="tooltip-box">Hover (Bottom End)</div>
+                            <div class="tooltip__content">Bottom end tooltip</div>
+                        </div>
+                    </div>
+
+                    <!-- Left Tooltips -->
+                    <div style="display: flex; gap: 10px; flex-direction: column; align-items: center;">
+                        <div class="tooltip tooltip--left-start">
+                            <div class="tooltip-box">Hover (Left Start)</div>
+                            <div class="tooltip__content">Left start</div>
+                        </div>
+                        <div class="tooltip tooltip--left">
+                            <div class="tooltip-box">Hover (Left Center)</div>
+                            <div class="tooltip__content">Left center tooltip</div>
+                        </div>
+                        <div class="tooltip tooltip--left-end">
+                            <div class="tooltip-box">Hover (Left End)</div>
+                            <div class="tooltip__content">Left end</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Tooltips -->
+                    <div style="display: flex; gap: 10px; flex-direction: column; align-items: center;">
+                        <div class="tooltip tooltip--right-start">
+                            <div class="tooltip-box">Hover (Right Start)</div>
+                            <div class="tooltip__content">Right start</div>
+                        </div>
+                        <div class="tooltip tooltip--right">
+                            <div class="tooltip-box">Hover (Right Center)</div>
+                            <div class="tooltip__content">Right center tooltip</div>
+                        </div>
+                        <div class="tooltip tooltip--right-end">
+                            <div class="tooltip-box">Hover (Right End)</div>
+                            <div class="tooltip__content">Right end</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeDataIcons();
+        });
+    </script>
+</body>
+
+</html>

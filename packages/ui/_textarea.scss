@@ -18,7 +18,7 @@
         width: 100%;
         background-color: var(--fill-surface-secondary);
         border: 1px solid var(--line-secondary);
-        border-radius: $radius-8;
+        border-radius: var(--radius-8);
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
         box-sizing: border-box;
         overflow: hidden; // Ensures content (like border-radius) is clipped correctly
@@ -96,7 +96,7 @@
         // Counter background to prevent text overlap during scroll (Full width)
         background-color: var(--fill-surface-secondary);
         padding: 4px 12px 8px; // Matches input horizontal padding
-        border-radius: 0 0 $radius-8 $radius-8; // Match container bottom radius
+        border-radius: 0 0 var(--radius-8) var(--radius-8); // Match container bottom radius
         z-index: 2;
 
         .textarea--disabled & {

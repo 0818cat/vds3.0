@@ -43,6 +43,7 @@
                     <li><a href="segmented-controls.html" class="sidebar-link">SegmentedControl</a></li>
                     <li><a href="chips.html" class="sidebar-link">Chips</a></li>
                     <li><a href="toasts.html" class="sidebar-link">Toasts</a></li>
+                    <li><a href="tooltips.html" class="sidebar-link">Tooltips</a></li>
                 </ul>
             </nav>
         </aside>
@@ -74,13 +75,16 @@
                             <label class="control-label">Status</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="state-disabled"> Disabled
+                                    <input type="radio" name="dropdown-status" value="normal" id="state-normal" checked> Normal
                                 </label>
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="state-negative"> Negative (Error)
+                                    <input type="radio" name="dropdown-status" value="disabled" id="state-disabled"> Disabled
                                 </label>
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="state-filtered"> Filtered
+                                    <input type="radio" name="dropdown-status" value="negative" id="state-negative"> Negative (Error)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="radio" name="dropdown-status" value="filtered" id="state-filtered"> Filtered
                                 </label>
                             </div>
                         </div>
@@ -270,9 +274,7 @@
             const container = document.getElementById('playground-dropdown-container');
 
             const sizeToggles = document.getElementById('size-toggles');
-            const stateDisabled = document.getElementById('state-disabled');
-            const stateNegative = document.getElementById('state-negative');
-            const stateFiltered = document.getElementById('state-filtered');
+            const statusRadios = document.querySelectorAll('input[name="dropdown-status"]');
 
             const optIcon = document.getElementById('opt-icon');
 
@@ -362,19 +364,15 @@
                 }
             });
 
-            stateDisabled.addEventListener('change', (e) => {
-                state.disabled = e.target.checked;
-                updateUI();
-            });
-
-            stateNegative.addEventListener('change', (e) => {
-                state.negative = e.target.checked;
-                updateUI();
-            });
-
-            stateFiltered.addEventListener('change', (e) => {
-                state.filtered = e.target.checked;
-                updateUI();
+            statusRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        state.disabled = e.target.value === 'disabled';
+                        state.negative = e.target.value === 'negative';
+                        state.filtered = e.target.value === 'filtered';
+                        updateUI();
+                    }
+                });
             });
 
             optIcon.addEventListener('change', (e) => {

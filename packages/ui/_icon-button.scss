@@ -7,13 +7,13 @@
 $icon-btn-sizes: (
     large: (btn: 48px,
         icon: 24px,
-        radius: $radius-8 ),
+        radius: var(--radius-8) ),
     medium: (btn: 40px,
         icon: 20px,
-        radius: $radius-8 ),
+        radius: var(--radius-8) ),
     small: (btn: 32px,
         icon: 16px,
-        radius: $radius-6 )
+        radius: var(--radius-6) )
 );
 
 .btn.btn--icon {

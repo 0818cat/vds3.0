@@ -7,7 +7,7 @@
     position: relative;
     padding: 2px;
     background-color: var(--refine-senary);
-    border-radius: $radius-8;
+    border-radius: var(--radius-8);
     user-select: none;
 
     &--medium {
@@ -36,7 +36,7 @@
         left: 2px;
         height: calc(100% - 4px);
         background-color: var(--fill-segment);
-        border-radius: $radius-6;
+        border-radius: var(--radius-6);
         @include elevation-10();
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 0;
@@ -52,7 +52,7 @@
         flex: 1;
         cursor: pointer;
         color: var(--label-secondary);
-        border-radius: $radius-6;
+        border-radius: var(--radius-6);
         transition: color 0.2s ease;
         white-space: nowrap;
         height: 100%;

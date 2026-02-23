@@ -20,7 +20,7 @@
     padding: 12px 16px;
     box-sizing: border-box;
 
-    border-radius: $radius-10;
+    border-radius: var(--radius-10);
     color: var(--static-white);
     @include elevation-40();
 

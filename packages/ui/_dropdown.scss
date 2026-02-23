@@ -15,7 +15,7 @@
         width: 100%;
         background-color: var(--fill-surface-secondary);
         border: 1px solid var(--line-secondary);
-        border-radius: $radius-8;
+        border-radius: var(--radius-8);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         box-sizing: border-box;
         cursor: pointer;
@@ -148,7 +148,7 @@
 
 
 
-    // --- 사이즈 (Sizes) ---
+    // --- Size ---
     &--large {
         $side-padding: 18px;
 
@@ -226,7 +226,7 @@
             height: 32px;
             padding: 0 $side-padding;
             gap: 4px;
-            border-radius: $radius-6;
+            border-radius: var(--radius-6);
         }
 
         .dropdown__label {

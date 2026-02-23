@@ -5,7 +5,7 @@
 // --- 믹스인 (Mixins) ---
 @mixin menu-size-small {
     padding: 6px;
-    border-radius: $radius-8;
+    border-radius: var(--radius-8);
 
     .menu__item {
         padding: 0 10px;
@@ -36,7 +36,7 @@
     min-width: 180px;
     background-color: var(--fill-surface-primary);
     border: 1px solid var(--line-secondary);
-    border-radius: $radius-12;
+    border-radius: var(--radius-12);
     @include elevation-40();
     z-index: $z-index-dropdown;
     padding: 8px;
@@ -66,7 +66,7 @@
         box-sizing: border-box;
         padding: 0 12px;
         min-height: 40px;
-        border-radius: $radius-6;
+        border-radius: var(--radius-6);
         cursor: pointer;
         gap: 8px;
         color: var(--label-primary);

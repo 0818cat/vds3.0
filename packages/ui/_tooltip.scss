@@ -1,0 +1,221 @@
+@import "../core/index";
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+
+    // Trigger Element
+    &__trigger {
+        display: inline-flex;
+        cursor: pointer;
+    }
+
+    // Tooltip Contents
+    &__content {
+        position: absolute;
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+
+        background-color: var(--colors-grey-900);
+        color: var(--static-white, #ffffff);
+        padding: 8px 12px;
+        border-radius: var(--radius-8);
+        @include caption-12-r();
+        white-space: nowrap;
+        @include elevation-ambient();
+
+        // Arrow Tail (정사각형을 45도 회전하여 다이아몬드 형태로 만듦)
+        &::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--colors-grey-900);
+            // 툴팁 방향에 따라 위치만 이동시키고 각도는 항상 45도 유지
+            transform: rotate(45deg);
+        }
+    }
+
+    // 호버 시 툴팁 표시
+    &:hover &__content {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Direction & Alignment Modifiers (Top, Bottom, Left, Right) + (Start, End)
+    // ---------------------------------------------------------------------------
+
+    // --- 1. Top ---
+    &--top &__content,
+    &--top-start &__content,
+    &--top-end &__content {
+        bottom: calc(100% + 8px);
+
+        &::after {
+            bottom: -5px; // 툴팁 영역 바깥으로 다이아몬드 절반만 튀어나오게
+        }
+    }
+
+    // Top - Center (기본)
+    &--top &__content {
+        left: 50%;
+        transform: translateX(-50%);
+
+        &::after {
+            left: calc(50% - 5px);
+        }
+    }
+
+    // Top - Start (꼬리가 왼쪽으로 치우침)
+    &--top-start &__content {
+        left: 0;
+
+        &::after {
+            left: 8px;
+        }
+
+        // 좁은 쪽(왼쪽) 여백 8px 고정
+    }
+
+    // Top - End (꼬리가 오른쪽으로 치우침)
+    &--top-end &__content {
+        right: 0;
+
+        &::after {
+            right: 8px;
+        }
+
+        // 좁은 쪽(오른쪽) 여백 8px 고정
+    }
+
+
+    // --- 2. Bottom ---
+    &--bottom &__content,
+    &--bottom-start &__content,
+    &--bottom-end &__content {
+        top: calc(100% + 8px);
+
+        &::after {
+            top: -5px;
+        }
+    }
+
+    // Bottom - Center (기본)
+    &--bottom &__content {
+        left: 50%;
+        transform: translateX(-50%);
+
+        &::after {
+            left: calc(50% - 5px);
+        }
+    }
+
+    // Bottom - Start (꼬리가 왼쪽으로 치우침)
+    &--bottom-start &__content {
+        left: 0;
+
+        &::after {
+            left: 8px;
+        }
+
+        // 좁은 쪽 여백 8px
+    }
+
+    // Bottom - End (꼬리가 오른쪽으로 치우침)
+    &--bottom-end &__content {
+        right: 0;
+
+        &::after {
+            right: 8px;
+        }
+
+        // 좁은 쪽 여백 8px
+    }
+
+
+    // --- 3. Left ---
+    &--left &__content,
+    &--left-start &__content,
+    &--left-end &__content {
+        right: calc(100% + 8px);
+
+        &::after {
+            right: -5px;
+        }
+    }
+
+    // Left - Center (기본)
+    &--left &__content {
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after {
+            top: calc(50% - 5px);
+        }
+    }
+
+    // Left - Start (꼬리가 위쪽으로 치우침)
+    &--left-start &__content {
+        top: 0;
+
+        &::after {
+            top: 8px;
+        }
+
+        // 좁은 쪽(위) 여백 8px
+    }
+
+    // Left - End (꼬리가 아래쪽으로 치우침)
+    &--left-end &__content {
+        bottom: 0;
+
+        &::after {
+            bottom: 8px;
+        }
+
+        // 좁은 쪽(아래) 여백 8px
+    }
+
+
+    // --- 4. Right ---
+    &--right &__content,
+    &--right-start &__content,
+    &--right-end &__content {
+        left: calc(100% + 8px);
+
+        &::after {
+            left: -5px;
+        }
+    }
+
+    // Right - Center (기본)
+    &--right &__content {
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::after {
+            top: calc(50% - 5px);
+        }
+    }
+
+    // Right - Start (꼬리가 위쪽으로 치우침)
+    &--right-start &__content {
+        top: 0;
+
+        &::after {
+            top: 8px;
+        }
+    }
+
+    // Right - End (꼬리가 아래쪽으로 치우침)
+    &--right-end &__content {
+        bottom: 0;
+
+        &::after {
+            bottom: 8px;
+        }
+    }
+}

@@ -4,7 +4,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: $radius-full;
+    border-radius: var(--radius-full);
     cursor: pointer;
     transition: all 0.2s ease;
     border: none;

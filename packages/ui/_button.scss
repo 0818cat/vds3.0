@@ -23,7 +23,7 @@ $btn-configs: (
 
 
 
-// --- 기본 버튼 스타일 ---
+// --- Default Button Styles ---
 @mixin btn-base {
     display: inline-flex;
     align-items: center;
@@ -67,11 +67,11 @@ $btn-configs: (
 .btn {
     @include btn-base;
 
-    // --- 크기 ---
+    // --- Size ---
     &--large {
         height: 48px;
         padding: 0 18px;
-        border-radius: $radius-8;
+        border-radius: var(--radius-8);
         gap: 6px;
         min-width: 84px;
         @include label-15-sb();
@@ -86,7 +86,7 @@ $btn-configs: (
     &--medium {
         height: 40px;
         padding: 0 14px;
-        border-radius: $radius-8;
+        border-radius: var(--radius-8);
         gap: 6px;
         min-width: 70px;
         @include label-14-sb();
@@ -101,7 +101,7 @@ $btn-configs: (
     &--small {
         height: 32px;
         padding: 0 10px;
-        border-radius: $radius-6;
+        border-radius: var(--radius-6);
         gap: 4px;
         min-width: 56px;
         @include label-13-sb();
@@ -113,12 +113,12 @@ $btn-configs: (
         }
     }
 
-    // --- 타입 & 색상 (Declarative Generation) ---
+    // --- Variant & Color ---
     @each $variant, $styles in $btn-configs {
         &--#{$variant} {
             $filled: map.get($styles, filled);
 
-            // 1. 기본 스타일 (Filled)
+            // 1. Filled
             background-color: map.get($filled, bg);
             color: map.get($filled, text);
 
@@ -129,7 +129,7 @@ $btn-configs: (
                 @include elevation-20();
             }
 
-            // 2. 다른 타입들 (Tonal, Outlined, Ghost)
+            // 2. Tonal, Outlined, Ghost
             @each $type in (tonal, outlined, ghost) {
                 $config: map.get($styles, $type);
 
@@ -154,8 +154,7 @@ $btn-configs: (
                 }
             }
 
-            // 3. 변형별 상태 관리 (Specificity Optimized)
-            // .btn.btn--primary:disabled 형태로 선택자를 강화하여 !important 제거
+            // 3. Specificity Optimized
             &.btn:disabled,
             &.btn.btn--disabled {
                 @include btn-disabled(var(--interaction-disabled));
@@ -179,7 +178,7 @@ $btn-configs: (
         }
     }
 
-    // --- 로딩 ---
+    // --- Loading ---
     &--loading,
     &[aria-busy="true"] {
         &.btn {
@@ -195,7 +194,7 @@ $btn-configs: (
             }
         }
 
-        // 로딩 애니메이션 컨테이너
+        // Loading Animation Container
         .btn__loading-animation {
             position: absolute;
             top: 50%;
@@ -218,7 +217,7 @@ $btn-configs: (
         }
     }
 
-    // --- 아이콘 ---
+    // --- Icon ---
     &__leading-icon,
     &__trailing-icon {
         display: inline-flex;
