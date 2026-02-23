@@ -280,17 +280,6 @@
             'Security': 'ic_security_line'
         };
 
-        // Initialize icons for elements with data-icon attribute
-        async function initializeDataIcons() {
-            const elements = document.querySelectorAll('[data-icon]');
-            for (const el of elements) {
-                const iconName = el.getAttribute('data-icon');
-                if (iconName) {
-                    const svg = await loadIcon(iconName);
-                    el.innerHTML = svg;
-                }
-            }
-        }
 
         // Playground Logic for Menu
         function initPlayground() {
@@ -351,7 +340,7 @@
                     iconSelect.style.borderRadius = '6px';
                     iconSelect.style.fontSize = '12px';
 
-                    availableIconFiles.forEach(iconName => {
+                    Object.values(availableIcons).forEach(iconName => {
                         const option = document.createElement('option');
                         option.value = iconName;
                         option.textContent = iconName.replace('ic_', '');
