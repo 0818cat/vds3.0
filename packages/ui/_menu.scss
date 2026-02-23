@@ -8,7 +8,8 @@
     border-radius: $radius-8;
 
     .menu__item {
-        padding: 8px 10px;
+        padding: 0 10px;
+        min-height: 32px;
         gap: 6px;
         @include body-13-r();
     }
@@ -63,7 +64,8 @@
         display: flex;
         align-items: center;
         box-sizing: border-box;
-        padding: 10px 12px;
+        padding: 0 12px;
+        min-height: 40px;
         border-radius: $radius-6;
         cursor: pointer;
         gap: 8px;
