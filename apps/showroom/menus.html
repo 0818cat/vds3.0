@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
     <style>
         /* Custom styles for menu preview */
         .menu-preview {
@@ -174,44 +175,20 @@
                     <div class="variant-item">
                         <h3 class="variant-title">Complex Menu</h3>
                         <div class="menu preview-mode">
-                            <div class="menu__group-title">ACTIONS</div>
+                            <div class="menu__group-title">Actions</div>
                             <div class="menu__item">
-                                <div class="menu__icon">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M2.99971 20.9998L3.11007 21.994C2.80834 22.0273 2.50735 21.9215 2.29268 21.7069C2.07804 21.4922 1.97217 21.1912 2.00557 20.8895L2.99971 20.9998Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M21.1023 20.0047C21.6064 20.0561 21.9997 20.4822 21.9997 20.9998C21.9996 21.5175 21.6063 21.9436 21.1023 21.995L2.10233 21.9946L2.99971 20.9998L2.00557 20.8895L20.9997 19.9998H14.9997C14.4476 21.9997 13.9998 21.552 13.9997 20.9998C13.9997 20.4476 14.4475 20 14.9997 19.9998H20.9997L21.1023 20.0047Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M15.9099 3.04476C17.3031 1.65178 19.5616 1.65171 20.9548 3.04476C22.348 4.43792 22.3478 6.69643 20.9548 8.08968L10.0612 18.9832C8.75575 20.2885 6.9827 21.0305 5.6169 21.4461C4.92204 21.6576 4.30331 21.7936 3.85714 21.8768C3.63368 21.9184 3.45096 21.9471 3.32296 21.9657C3.25933 21.9749 3.20839 21.9816 3.17257 21.9862C3.1548 21.9884 3.13994 21.9898 3.1296 21.9911C3.12461 21.9917 3.12006 21.9926 3.1169 21.993C3.1156 21.9931 3.11396 21.9929 3.113 21.993L3.11007 21.994L2.99971 20.9998L2.00557 20.8895L2.00655 20.8866C2.00666 20.8856 2.00644 20.884 2.00655 20.8827C2.00692 20.8795 2.00788 20.875 2.0085 20.87C2.00974 20.8596 2.01112 20.8448 2.01339 20.827C2.01795 20.7911 2.02466 20.7403 2.03389 20.6766C2.05246 20.5486 2.08109 20.366 2.12276 20.1424C2.20596 19.6962 2.34196 19.0776 2.55343 18.3827C2.9691 17.0169 3.71102 15.2438 5.01632 13.9383L15.9099 3.04476ZM6.43038 15.3524C5.46669 16.3163 4.84605 17.7209 4.46749 18.9647C4.38361 19.2403 4.31327 19.5032 4.2546 19.744C4.49551 19.6853 4.75903 19.616 5.03487 19.5321C6.27863 19.1535 7.68329 18.5329 8.64718 17.5692L15.7165 10.4998L13.4997 8.28304L6.43038 15.3524ZM19.5407 4.45882C18.9286 3.84682 17.9361 3.8469 17.3239 4.45882L14.9138 6.86898L17.1306 9.08578L19.5407 6.67562C20.1527 6.06341 20.1528 5.07094 19.5407 4.45882Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__icon" data-icon="ic_pencil"></div>
                                 <span class="menu__text">Edit</span>
                             </div>
                             <div class="menu__item">
-                                <div class="menu__icon">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.5 9.7002C16.5 9.12364 16.4987 8.75111 16.4756 8.46777C16.4534 8.19619 16.4158 8.09534 16.3906 8.0459C16.2948 7.85793 16.1421 7.70522 15.9541 7.60938C15.9047 7.58419 15.8038 7.54661 15.5322 7.52442C15.2489 7.50127 14.8764 7.5 14.2998 7.5H6.2002C5.62365 7.5 5.25112 7.50127 4.96778 7.52442C4.69619 7.54661 4.59534 7.58419 4.5459 7.60938C4.35793 7.70522 4.20522 7.85793 4.10938 8.0459C4.08419 8.09534 4.04662 8.19619 4.02442 8.46777C4.00127 8.75111 4 9.12364 4 9.7002V17.7998C4 18.3764 4.00127 18.7489 4.02442 19.0322C4.04662 19.3038 4.08419 19.4047 4.10938 19.4541C4.20522 19.6421 4.35793 19.7948 4.5459 19.8906C4.59534 19.9158 4.69619 19.9534 4.96778 19.9756C5.25112 19.9987 5.62365 20 6.2002 20H14.2998C14.8764 20 15.2489 19.9987 15.5322 19.9756C15.8038 19.9534 15.9047 19.9158 15.9541 19.8906C16.1421 19.7948 16.2948 19.6421 16.3906 19.4541C16.4158 19.4047 16.4534 19.3038 16.4756 19.0322C16.4987 18.7489 16.5 18.3764 16.5 17.7998V9.7002ZM20 16.5V9.40039C20 8.26396 19.9996 7.47129 19.9492 6.85449C19.8998 6.24933 19.807 5.90105 19.6729 5.6377C19.3853 5.07347 18.9265 4.61472 18.3623 4.32715C18.099 4.19296 17.7507 4.10023 17.1455 4.05078C16.5287 4.00041 15.736 4 14.5996 4H7.5C6.94772 4 6.5 3.55229 6.5 3C6.5 2.44772 6.94772 2 7.5 2H14.5996C15.7032 2 16.5914 1.99903 17.3086 2.05762C18.0373 2.11716 18.6773 2.24327 19.2695 2.54492C20.2103 3.02429 20.9757 3.78966 21.4551 4.73047C21.7567 5.32266 21.8828 5.9627 21.9424 6.69141C22.001 7.40857 22 8.29681 22 9.40039V16.5C22 17.0523 21.5523 17.5 21 17.5C20.4477 17.5 20 17.0523 20 16.5ZM18.5 17.7998C18.5 18.3434 18.5011 18.8116 18.4697 19.1953C18.4374 19.5906 18.3656 19.984 18.1729 20.3623C17.8853 20.9265 17.4265 21.3853 16.8623 21.6729C16.484 21.8656 16.0906 21.9374 15.6953 21.9697C15.3116 22.0011 14.8434 22 14.2998 22H6.2002C5.65665 22 5.18836 22.0011 4.80469 21.9697C4.40943 21.9374 4.016 21.8656 3.6377 21.6729C3.07348 21.3853 2.61473 20.9265 2.32715 20.3623C2.1344 19.984 2.06259 19.5906 2.03028 19.1953C1.99893 18.8116 2 18.3434 2 17.7998V9.7002C2 9.15664 1.99893 8.68836 2.03028 8.30469C2.06259 7.90943 2.1344 7.51599 2.32715 7.1377C2.61473 6.57347 3.07348 6.11472 3.6377 5.82715C4.016 5.6344 4.40943 5.56259 4.80469 5.53027C5.18836 5.49893 5.65665 5.5 6.2002 5.5H14.2998C14.8434 5.5 15.3116 5.49893 15.6953 5.53027C16.0906 5.56259 16.484 5.6344 16.8623 5.82715C17.4265 6.11472 17.8853 6.57347 18.1729 7.1377C18.3656 7.51599 18.4374 7.90943 18.4697 8.30469C18.5011 8.68836 18.5 9.15664 18.5 9.7002V17.7998Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__icon" data-icon="ic_copy"></div>
                                 <span class="menu__text">Duplicate</span>
                                 <div class="menu__selected-check"></div>
                             </div>
                             <div class="menu__divider"></div>
-                            <div class="menu__group-title">DANGER ZONE</div>
+                            <div class="menu__group-title">DangerZone</div>
                             <div class="menu__item menu__item--negative">
-                                <div class="menu__icon">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M17.4004 7.59961H6.7998V16.6797C6.7998 17.4523 6.80032 17.972 6.83301 18.3721C6.86474 18.7604 6.92202 18.948 6.98535 19.0723C7.14835 19.392 7.40878 19.6515 7.72852 19.8145C7.8528 19.8777 8.0397 19.9351 8.42773 19.9668C8.8278 19.9995 9.34755 20 10.1201 20H14.0801C14.8523 20 15.3715 19.9994 15.7715 19.9668C16.1599 19.9351 16.3474 19.8778 16.4717 19.8145C16.7914 19.6515 17.0519 19.392 17.2148 19.0723C17.2782 18.948 17.3345 18.7603 17.3662 18.3721C17.3989 17.972 17.4004 17.4523 17.4004 16.6797V7.59961ZM9.2998 16.0498V11.5498C9.29991 10.9977 9.74767 10.5499 10.2998 10.5498C10.852 10.5498 11.2997 10.9976 11.2998 11.5498V16.0498C11.2998 16.602 10.8521 17.0498 10.2998 17.0498C9.74761 17.0497 9.2998 16.602 9.2998 16.0498ZM12.9004 16.0498V11.5498C12.9005 10.9976 13.3482 10.5498 13.9004 10.5498C14.4524 10.55 14.9003 10.9977 14.9004 11.5498V16.0498C14.9004 16.602 14.4525 17.0496 13.9004 17.0498C13.3481 17.0498 12.9004 16.6021 12.9004 16.0498ZM11.3799 4C10.8595 4 10.5293 4.00107 10.2793 4.02148C10.041 4.04096 9.96458 4.07262 9.93652 4.08691C9.78608 4.1636 9.6636 4.28608 9.58691 4.43652C9.57262 4.46458 9.54096 4.54098 9.52148 4.7793C9.505 4.98112 9.50178 5.23525 9.50098 5.59961H14.6992C14.6984 5.23526 14.6952 4.98112 14.6787 4.7793C14.6592 4.54098 14.6276 4.46458 14.6133 4.43652C14.5366 4.2861 14.4141 4.16362 14.2637 4.08691C14.2356 4.07262 14.1591 4.04096 13.9209 4.02148C13.671 4.00106 13.3407 4 12.8203 4H11.3799ZM19.4004 16.6797C19.4004 17.4193 19.4012 18.0348 19.3604 18.5352C19.3185 19.047 19.2278 19.5264 18.9971 19.9795C18.6424 20.6757 18.076 21.2419 17.3799 21.5967C16.9266 21.8276 16.4466 21.9181 15.9346 21.96C15.4342 22.0008 14.8195 22 14.0801 22H10.1201C9.38075 22 8.76595 22.0008 8.26562 21.96C7.75357 21.9181 7.27355 21.8276 6.82031 21.5967C6.12411 21.2419 5.55786 20.6757 5.20312 19.9795C4.97234 19.5264 4.88169 19.047 4.83984 18.5352C4.79896 18.0348 4.7998 17.4193 4.7998 16.6797V7.59961H4C3.44772 7.59961 3 7.15189 3 6.59961C3.00021 6.0475 3.44785 5.59961 4 5.59961H7.50098C7.50167 5.22789 7.50533 4.89763 7.52832 4.61621C7.5579 4.25433 7.62386 3.88618 7.80566 3.5293C8.07411 3.00244 8.50244 2.57411 9.0293 2.30566C9.38618 2.12386 9.75433 2.0579 10.1162 2.02832C10.4665 1.9997 10.8924 2 11.3799 2H12.8203C13.3077 2 13.7337 1.9997 14.084 2.02832C14.4459 2.05791 14.814 2.12384 15.1709 2.30566C15.6978 2.57411 16.1261 3.00244 16.3945 3.5293C16.5763 3.88616 16.6423 4.25435 16.6719 4.61621C16.6949 4.89763 16.6985 5.22789 16.6992 5.59961H20.2002C20.7523 5.59971 21.2 6.04757 21.2002 6.59961C21.2002 7.15183 20.7524 7.5995 20.2002 7.59961H19.4004V16.6797Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__icon" data-icon="ic_trash_line"></div>
                                 <span class="menu__text">Delete</span>
                                 <div class="menu__selected-check"></div>
                             </div>
@@ -240,23 +217,11 @@
                         <div class="menu preview-mode">
                             <div class="menu__item">
                                 <span class="menu__text">Display</span>
-                                <div class="menu__chevron">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.29314 4.29289C8.68366 3.90237 9.31668 3.90237 9.7072 4.29289L16.7072 11.2929C16.8946 11.4804 17.0002 11.7348 17.0002 11.9999C17.0001 12.2651 16.8947 12.5195 16.7072 12.707L9.7072 19.707C9.31673 20.0974 8.68367 20.0973 8.29314 19.707C7.90261 19.3164 7.90261 18.6834 8.29314 18.2929L14.5861 11.9999L8.29314 5.70696C7.90261 5.31643 7.90261 4.68342 8.29314 4.29289Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__chevron" data-icon="ic_chevron_right_large"></div>
                             </div>
                             <div class="menu__item">
                                 <span class="menu__text">Theme</span>
-                                <div class="menu__chevron">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.29314 4.29289C8.68366 3.90237 9.31668 3.90237 9.7072 4.29289L16.7072 11.2929C16.8946 11.4804 17.0002 11.7348 17.0002 11.9999C17.0001 12.2651 16.8947 12.5195 16.7072 12.707L9.7072 19.707C9.31673 20.0974 8.68367 20.0973 8.29314 19.707C7.90261 19.3164 7.90261 18.6834 8.29314 18.2929L14.5861 11.9999L8.29314 5.70696C7.90261 5.31643 7.90261 4.68342 8.29314 4.29289Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__chevron" data-icon="ic_chevron_right_large"></div>
                             </div>
                             <div class="menu__item">
                                 <span class="menu__text">Zoom</span>
@@ -271,13 +236,7 @@
                             <!-- Parent Item with Active State & Overflow Visible -->
                             <div class="menu__item has-sub" style="background-color: var(--fill-surface-secondary);">
                                 <span class="menu__text">Display</span>
-                                <div class="menu__chevron">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.29314 4.29289C8.68366 3.90237 9.31668 3.90237 9.7072 4.29289L16.7072 11.2929C16.8946 11.4804 17.0002 11.7348 17.0002 11.9999C17.0001 12.2651 16.8947 12.5195 16.7072 12.707L9.7072 19.707C9.31673 20.0974 8.68367 20.0973 8.29314 19.707C7.90261 19.3164 7.90261 18.6834 8.29314 18.2929L14.5861 11.9999L8.29314 5.70696C7.90261 5.31643 7.90261 4.68342 8.29314 4.29289Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__chevron" data-icon="ic_chevron_right_large"></div>
                                 <!-- Sub Menu -->
                                 <div class="menu menu--sub" style="display: block; opacity: 1;">
                                     <div class="menu__item">
@@ -293,13 +252,7 @@
                             </div>
                             <div class="menu__item">
                                 <span class="menu__text">Theme</span>
-                                <div class="menu__chevron">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.29314 4.29289C8.68366 3.90237 9.31668 3.90237 9.7072 4.29289L16.7072 11.2929C16.8946 11.4804 17.0002 11.7348 17.0002 11.9999C17.0001 12.2651 16.8947 12.5195 16.7072 12.707L9.7072 19.707C9.31673 20.0974 8.68367 20.0973 8.29314 19.707C7.90261 19.3164 7.90261 18.6834 8.29314 18.2929L14.5861 11.9999L8.29314 5.70696C7.90261 5.31643 7.90261 4.68342 8.29314 4.29289Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </div>
+                                <div class="menu__chevron" data-icon="ic_chevron_right_large"></div>
                             </div>
                             <div class="menu__item">
                                 <span class="menu__text">Zoom</span>
@@ -314,35 +267,30 @@
 
     <script src="assets/js/theme.js"></script>
     <script>
-        const availableIconFiles = ["ic_QR", "ic_alarm", "ic_alert", "ic_alert_circle_line", "ic_arrow_down_large", "ic_arrow_left_large", "ic_arrow_narrow_up_right", "ic_arrow_right_large", "ic_arrow_up_large", "ic_at_sign", "ic_beaker", "ic_book_cover", "ic_book_open", "ic_bookmark_line", "ic_calendar", "ic_camera", "ic_check", "ic_check_circle_line", "ic_chevron_down_large", "ic_chevron_down_medium", "ic_chevron_left_large", "ic_chevron_left_medium", "ic_chevron_left_medium_double", "ic_chevron_right_large", "ic_chevron_right_medium", "ic_chevron_right_medium_double", "ic_chevron_up_large", "ic_chevron_up_medium", "ic_circle", "ic_clip", "ic_clipboard_copy", "ic_clipboard_paste", "ic_close", "ic_console", "ic_copy", "ic_copy_plus", "ic_delete_line", "ic_document", "ic_download", "ic_drag", "ic_exitFullscreen", "ic_externallink", "ic_file_zip", "ic_folder_line", "ic_fullscreen", "ic_generate_star", "ic_globe", "ic_grid_list", "ic_grid_tiles", "ic_heart_line", "ic_home", "ic_ic_zoom_in", "ic_image_add", "ic_image_line", "ic_image_upscale", "ic_information", "ic_inputedit", "ic_key", "ic_layout", "ic_layout_alt", "ic_link", "ic_logout_line", "ic_loop", "ic_mail", "ic_mannequin", "ic_member", "ic_message_text_square", "ic_minus", "ic_monitoring", "ic_monster", "ic_more", "ic_more2", "ic_more_vertical", "ic_note", "ic_panel_collapse", "ic_panel_expand", "ic_pencil", "ic_pencil_generate", "ic_plan_line", "ic_plus", "ic_profile", "ic_profile2", "ic_redo", "ic_refresh", "ic_refresh2", "ic_save", "ic_scissors", "ic_scriptdetail", "ic_search", "ic_security_line", "ic_send", "ic_setting", "ic_share_line", "ic_sort", "ic_sound_generate", "ic_sparkles", "ic_star_line", "ic_table", "ic_table_plus", "ic_tag", "ic_theme", "ic_thumbs_down", "ic_thumbs_up", "ic_translate", "ic_trash_line", "ic_tshirts", "ic_undo", "ic_upload", "ic_usage", "ic_webscreen", "ic_zoom_out"];
-        const iconCache = {};
+        const availableIcons = {
+            'Edit': 'ic_pencil',
+            'Copy': 'ic_copy',
+            'Bookmark': 'ic_bookmark_line',
+            'Delete': 'ic_trash_line',
+            'Settings': 'ic_setting',
+            'Folder': 'ic_folder_line',
+            'Image': 'ic_image_line',
+            'Logout': 'ic_logout_line',
+            'Check': 'ic_check',
+            'Security': 'ic_security_line'
+        };
 
-        async function loadIcon(iconName) {
-            if (iconCache[iconName]) return iconCache[iconName];
-            try {
-                const response = await fetch(`../../packages/ui/assets/icons/${iconName}.svg`);
-                const svgText = await response.text();
-                iconCache[iconName] = svgText;
-                return svgText;
-            } catch (e) {
-                console.error('Failed to load icon:', iconName, e);
-                return '';
+        // Initialize icons for elements with data-icon attribute
+        async function initializeDataIcons() {
+            const elements = document.querySelectorAll('[data-icon]');
+            for (const el of elements) {
+                const iconName = el.getAttribute('data-icon');
+                if (iconName) {
+                    const svg = await loadIcon(iconName);
+                    el.innerHTML = svg;
+                }
             }
         }
-    </script>
-    <script>
-        const availableIcons = {
-            'Edit': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.9099 3.04476C17.3031 1.65178 19.5616 1.65171 20.9548 3.04476C22.348 4.43792 22.3478 6.69643 20.9548 8.08968L10.0612 18.9832C8.75575 20.2885 6.9827 21.0305 5.6169 21.4461C4.92204 21.6576 4.30331 21.7936 3.85714 21.8768C3.63368 21.9184 3.45096 21.9471 3.32296 21.9657C3.25933 21.9749 3.20839 21.9816 3.17257 21.9862C3.1548 21.9884 3.13994 21.9898 3.1296 21.9911C3.12461 21.9917 3.12006 21.9926 3.1169 21.993C3.1156 21.9931 3.11396 21.9929 3.113 21.993L3.11007 21.994L2.99971 20.9998L2.00557 20.8895L2.00655 20.8866C2.00666 20.8856 2.00644 20.884 2.00655 20.8827C2.00692 20.8795 2.00788 20.875 2.0085 20.87C2.00974 20.8596 2.01112 20.8448 2.01339 20.827C2.01795 20.7911 2.02466 20.7403 2.03389 20.6766C2.05246 20.5486 2.08109 20.366 2.12276 20.1424C2.20596 19.6962 2.34196 19.0776 2.55343 18.3827C2.9691 17.0169 3.71102 15.2438 5.01632 13.9383L15.9099 3.04476ZM19.5407 4.45882C18.9286 3.84682 17.9361 3.8469 17.3239 4.45882L14.9138 6.86898L17.1306 9.08578L19.5407 6.67562C20.1527 6.06341 20.1528 5.07094 19.5407 4.45882Z" fill="currentColor"/></svg>`,
-            'Copy': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 9.7002C16.5 9.12364 16.4987 8.75111 16.4756 8.46777C16.4534 8.19619 16.4158 8.09534 16.3906 8.0459C16.2948 7.85793 16.1421 7.70522 15.9541 7.60938C15.9047 7.58419 15.8038 7.54661 15.5322 7.52442C15.2489 7.50127 14.8764 7.5 14.2998 7.5V17.7998C14.2998 18.3764 14.2985 18.7489 14.2754 19.0322C14.2532 19.3038 14.2156 19.4047 14.1904 19.4541C14.0946 19.6421 13.9419 19.7948 13.7539 19.8906C13.7045 19.9158 13.6036 19.9534 13.332 19.9756C13.0487 19.9987 12.6762 20 12.0996 20H4C3.42345 20 3.05092 19.9987 2.76758 19.9756C2.49599 19.9534 2.39514 19.9158 2.34571 19.8906C2.15773 19.7948 2.00502 19.6421 1.90918 19.4541C1.88399 19.4047 1.84642 19.3038 1.82422 19.0322C1.80107 18.7489 1.8 18.3764 1.8 17.7998V9.7002C1.8 9.12364 1.80107 8.75111 1.82422 8.46777C1.84642 8.19619 1.88399 8.09534 1.90918 8.0459C2.00502 7.85793 2.15773 7.70522 2.34571 7.60938C2.39514 7.58419 2.49599 7.54661 2.76758 7.52442C3.05092 7.50127 3.42345 7.5 4 7.5H12.0996C12.6762 7.5 13.0487 7.50127 13.332 7.52442C13.6036 7.54661 13.7045 7.58419 13.7539 7.60938C13.9419 7.70522 14.0946 7.85793 14.1904 8.0459C14.2156 8.09534 14.2532 8.19619 14.2754 8.46777C14.2985 8.75111 14.2998 9.12364 14.2998 9.7002V17.7998V9.7002Z" fill="currentColor"/></svg>`,
-            'Bookmark': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H7C6.20435 2 5.44152 2.3163 4.87891 2.87891C5.44152 2.3163 6.20435 2 7 2H17ZM7 4H17C17.2652 4 17.8946 4.48051 17.707 4.29297L13.4883 17.4219C13.0351 17.163 12.5219 17.0264 12 17.0264L6.29297 4.29297C6.4805 4.10543 6.73478 4 7 4Z" fill="currentColor"/></svg>`,
-            'Delete': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.4004 7.59961H6.7998V16.6797C6.7998 17.4523 6.80032 17.972 6.83301 18.3721C7.14835 19.392 7.40878 19.6515 7.72852 19.8145C8.42773 19.9668 8.8278 19.9995 10.1201 20H14.0801C14.8523 20 15.3715 19.9994 15.7715 19.9668C16.4717 19.8145 16.7914 19.6515 17.2148 19.0723V7.59961ZM11.3799 4H12.8203V5.59961H9.50098C9.50178 5.23525 9.58691 4.43652 9.6636 4.28608 10.2793 4.02148 11.3799 4ZM19.4004 7.59961H4V6.59961H7.50098C7.50533 4.89763 7.80566 3.5293 9.0293 2.30566C10.1162 2.02832 11.3799 2 12.8203V5.59961H20.2002V7.59961H19.4004V16.6797Z" fill="currentColor"/></svg>`,
-            'Settings': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 7.2002C14.651 7.2002 16.7998 9.34904 16.7998 12C16.7998 14.651 14.651 16.7998 12 16.7998C9.34904 16.7998 7.2002 14.651 7.2002 12C7.2002 9.34904 9.34904 7.2002 12 7.2002ZM12 9.2002C10.4536 9.2002 9.2002 10.4536 9.2002 12C9.2002 13.5464 10.4536 14.7998 12 14.7998C13.5464 14.7998 14.7998 13.5464 14.7998 12C14.7998 10.4536 13.5464 9.2002 12 9.2002Z" fill="currentColor"/></svg>`,
-            'Folder': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.64062 3C10.7477 3 11.7803 3.55787 12.3877 4.4834L13.2842 5.84863C13.5219 6.21061 13.9263 6.42871 14.3594 6.42871H18.7139C20.5284 6.42871 21.9998 7.89941 22 9.71387V17.7139C22 19.5285 20.5285 21 18.7139 21H5.28613C3.47148 21 2 19.5285 2 17.7139V6.28613C2 4.47148 3.47148 3 5.28613 3H9.64062ZM18.7139 8.42871C19.4239 8.42871 20 18.4239 18.7139 19H5.28613C4.57605 19 4 18.4239 4 17.7139V8.42871H18.7139Z" fill="currentColor"/></svg>`,
-            'Image': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.625 5.375C10.4199 5.375 11.875 6.83007 11.875 8.625C11.875 10.4199 10.4199 11.875 8.625 11.875C6.83007 11.875 5.375 10.4199 5.375 8.625C5.375 6.83007 6.83007 5.375 8.625 5.375ZM8.625 7.375C7.93464 7.375 7.375 7.93464 7.375 8.625C7.375 9.31536 7.93464 9.875 8.625 9.875C9.31536 9.875 9.875 9.31536 9.875 8.625C9.875 7.93464 9.31536 7.375 8.625 7.375Z" fill="currentColor"/></svg>`,
-            'Logout': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.4032 15.5917C15.0399 16.0073 15.0824 16.6392 15.4979 17.0028C15.9136 17.3662 16.5455 17.3236 16.9091 16.9081L20.6278 12.6581C20.9574 12.2812 20.9574 11.7186 20.6278 11.3417L16.9091 7.0917C16.5455 6.67619 15.9136 6.63362 15.498 6.99697C15.0824 7.36056 15.0399 7.99247 15.4032 8.40811L18.5468 11.9999L15.4032 15.5917Z" fill="currentColor"/><path d="M19.875 11C20.4273 11 20.875 11.4477 20.875 12C20.875 12.5523 20.4273 13 19.875 13H10.9502V11H19.875ZM6 6.6875V17.3125C6 18.5206 6.97938 19.5 8.1875 19.5H12.4375V21.5H8.1875C5.87481 21.5 4 19.6252 4 17.3125V6.6875C4 4.37481 5.87481 2.5 8.1875 2.5H12.4375V4.5H8.1875C6.97938 4.5 6 5.47938 6 6.6875Z" fill="currentColor"/></svg>`,
-            'Check': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"/></svg>`,
-            'Security': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.2747 7.68264C18.2747 6.87438 5.72489 7.68264V12.0322C5.72497 13.8916 6.74303 15.5825 8.10184 16.9981C9.44957 18.4021 11.0217 19.4176 11.8694 19.9121C11.9905 19.9815 12.01 19.9815 12.1311 19.9121C12.9788 19.4176 14.5501 18.4019 15.8977 16.9981C17.2566 15.5825 18.2746 13.8916 18.2747 12.0322V7.68264ZM20.2747 12.0322C20.2746 14.6363 18.8594 16.801 17.3411 18.3828C15.8116 19.9762 14.0628 21.1007 13.139 21.6397C12.7275 21.8898 12.4007 21.96C11.5999 21.96 10.8616 21.6397C9.9378 21.1007 8.18896 19.9762 6.65946 18.3828C5.14109 16.801 3.72497 14.6364 3.72489 12.0322V7.68264C3.72488 7.03755 3.90946 5.92385C4.07228 5.49619 4.33665 5.1141 4.67997 4.81154C5.10197 4.43974 5.65797 4.24801 6.262 4.0215L11.138 2.19338C11.2868 2.13755 11.8636 2.0049 12.137 2.0049L12.4407 2.05275C12.75 2.15151 12.8616 2.19338L17.7376 4.0215C18.3415 4.24798 19.3196 4.81154 19.663 5.11415 20.0911 5.92385 20.2747 7.21V12.0322Z" fill="currentColor"/></svg>`
-        };
 
         // Playground Logic for Menu
         function initPlayground() {
@@ -442,20 +390,14 @@
 
                     if (state.icons) {
                         const iconPlaceholderId = `icon-placeholder-${i}`;
-                        innerHTML += `<div class="menu__icon" id="${iconPlaceholderId}">...</div>`;
-
-                        // Async load icon
-                        loadIcon(currentItem.icon).then(svg => {
-                            const placeholder = document.getElementById(iconPlaceholderId);
-                            if (placeholder) placeholder.innerHTML = svg || '';
-                        });
+                        innerHTML += `<div class="menu__icon" data-icon="${currentItem.icon}">...</div>`;
                     }
 
                     innerHTML += `<span class="menu__text">${currentItem.label}</span>`;
                     innerHTML += `<div class="menu__selected-check"></div>`;
 
                     if (hasSub) {
-                        innerHTML += `<div class="menu__chevron"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.29314 4.29289C8.68366 3.90237 9.31668 3.90237 9.7072 4.29289L16.7072 11.2929C16.8946 11.4804 17.0002 11.7348 17.0002 11.9999C17.0001 12.2651 16.8947 12.5195 16.7072 12.707L9.7072 19.707C9.31673 20.0974 8.68367 20.0973 8.29314 19.707C7.90261 19.3164 7.90261 18.6834 8.29314 18.2929L14.5861 11.9999L8.29314 5.70696C7.90261 5.31643 7.90261 4.68342 8.29314 4.29289Z" fill="currentColor"/></svg></div>`;
+                        innerHTML += `<div class="menu__chevron" data-icon="ic_chevron_right_large"></div>`;
 
                         innerHTML += `
                             <div class="menu menu--sub">
@@ -477,12 +419,7 @@
                     }
                     innerHTML += `<div class="menu__item menu__item--negative">`;
                     if (state.icons) {
-                        const negIconId = `icon-negative-delete`;
-                        innerHTML += `<div class="menu__icon" id="${negIconId}">...</div>`;
-                        loadIcon('ic_trash_line').then(svg => {
-                            const placeholder = document.getElementById(negIconId);
-                            if (placeholder) placeholder.innerHTML = svg || '';
-                        });
+                        innerHTML += `<div class="menu__icon" data-icon="ic_trash_line">...</div>`;
                     }
                     innerHTML += `<span class="menu__text">Delete</span>`;
                     innerHTML += `</div>`;
@@ -490,6 +427,7 @@
                 innerHTML += `</div>`;
 
                 container.innerHTML = innerHTML;
+                initializeDataIcons();
 
                 // Code Generation
                 let codeClasses = `menu ${state.size}`;
@@ -507,7 +445,7 @@
                     if (state.icons) code += `        <div class="menu__icon"><!-- Icon: ${currentItem.icon} --></div>\n`;
                     code += `        <span class="menu__text">${currentItem.label}</span>\n`;
                     if (hasSub) {
-                        code += `        <div class="menu__chevron"><!-- Chevron --></div>\n`;
+                        code += `        <div class="menu__chevron" data-icon="ic_chevron_right_large"></div>\n`;
                         code += `        <div class="menu menu--sub">\n`;
                         code += `            <div class="menu__item"><span class="menu__text">Undo</span></div>\n`;
                         code += `            <div class="menu__item"><span class="menu__text">Redo</span></div>\n`;
@@ -585,9 +523,13 @@
             });
 
             updateUI();
+            initializeDataIcons();
         }
 
-        document.addEventListener('DOMContentLoaded', initPlayground);
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayground();
+            initializeDataIcons();
+        });
     </script>
 </body>
 

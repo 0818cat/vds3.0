@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
     <style>
         .preview-wrapper {
             display: flex;
@@ -185,7 +186,9 @@
                 </div>
                 <div class="code-viewer">
                     <pre><code id="generated-code"></code></pre>
-                    <button class="copy-btn" id="copy-code">📋</button>
+                    <button class="copy-btn" id="copy-code" title="Copy Code">
+                        <div data-icon="ic_copy"></div>
+                    </button>
                 </div>
             </section>
 
@@ -446,9 +449,13 @@
             const code = document.getElementById('generated-code').textContent;
             navigator.clipboard.writeText(code).then(() => {
                 const btn = document.getElementById('copy-code');
-                const originalText = btn.textContent;
-                btn.textContent = '✅';
-                setTimeout(() => btn.textContent = originalText, 2000);
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = `<div data-icon="ic_check"></div>`;
+                initializeDataIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    initializeDataIcons();
+                }, 2000);
             });
         };
 
@@ -460,8 +467,11 @@
             }, 100); // Wait for CSS vars to apply from theme.js class change
         });
 
-        renderPlayground();
-        initGalleryAnimations();
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPlayground();
+            initGalleryAnimations();
+            initializeDataIcons();
+        });
 
         // 윈도우 리사이즈 대응
         window.onresize = () => {

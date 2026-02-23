@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
 </head>
 
 <body>
@@ -106,11 +107,7 @@
                 <div class="code-viewer">
                     <pre><code id="generated-code"></code></pre>
                     <button class="copy-btn" id="copy-code-btn" title="Copy Code">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
+                        <div data-icon="ic_copy"></div>
                     </button>
                 </div>
             </section>
@@ -152,39 +149,21 @@
                     <div class="grid-side-label">With Icon</div>
                     <div class="input input--large">
                         <div class="input__container">
-                            <div class="input__icon">
-                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                            </div>
+                            <div class="input__icon" data-icon="ic_search"></div>
                             <input type="text" class="input__input" placeholder="Search...">
                         </div>
                         <p class="input__helper-text">Helper text</p>
                     </div>
                     <div class="input input--medium">
                         <div class="input__container">
-                            <div class="input__icon">
-                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                            </div>
+                            <div class="input__icon" data-icon="ic_search"></div>
                             <input type="text" class="input__input" placeholder="Search...">
                         </div>
                         <p class="input__helper-text">Helper text</p>
                     </div>
                     <div class="input input--small">
                         <div class="input__container">
-                            <div class="input__icon">
-                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                            </div>
+                            <div class="input__icon" data-icon="ic_search"></div>
                             <input type="text" class="input__input" placeholder="Search...">
                         </div>
                         <p class="input__helper-text">Helper text</p>
@@ -195,42 +174,21 @@
                     <div class="input input--large">
                         <div class="input__container">
                             <input type="text" class="input__input" value="Text to clear">
-                            <div class="input__clear-icon">
-                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="input__clear-icon"></div>
                         </div>
                         <p class="input__helper-text">Helper text</p>
                     </div>
                     <div class="input input--medium">
                         <div class="input__container">
                             <input type="text" class="input__input" value="Text to clear">
-                            <div class="input__clear-icon">
-                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="input__clear-icon"></div>
                         </div>
                         <p class="input__helper-text">Helper text</p>
                     </div>
                     <div class="input input--small">
                         <div class="input__container">
                             <input type="text" class="input__input" value="Text to clear">
-                            <div class="input__clear-icon">
-                                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="input__clear-icon"></div>
                         </div>
                         <p class="input__helper-text">Helper text</p>
                     </div>
@@ -388,6 +346,9 @@
                 if (state.disabled) classes += ' input--disabled';
                 // We let the global listener handle has-content for the preview element to avoid state sync issues, 
                 // BUT we need it for the code snippet.
+                const inputVal = document.getElementById('pg-input') ? document.getElementById('pg-input').value : '';
+                const showHasContent = inputVal.length > 0;
+                if (showHasContent) classes += ' has-content';
 
                 container.className = classes;
 
@@ -396,37 +357,27 @@
                 innerHTML += `<div class="input__container">`;
 
                 if (state.icon) {
-                    innerHTML += `
-                        <div class="input__icon">
-                            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </div>`;
+                    innerHTML += `<div class="input__icon" data-icon="ic_search"></div>`;
                 }
 
                 innerHTML += `<input type="text" class="input__input" placeholder="${state.placeholder}" id="pg-input" ${state.disabled ? 'disabled' : ''}>`;
 
                 if (state.clear) {
-                    innerHTML += `
-                        <div class="input__clear-icon">
-                            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C17.5228 2 21.9999 6.47726 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2.00013 6.47727 6.47723 2 12 2ZM15.5654 8.43457C15.253 8.12227 14.747 8.12227 14.4346 8.43457L12 10.8691L9.56543 8.43457C9.25303 8.12227 8.74697 8.12227 8.43457 8.43457C8.12218 8.74696 8.12224 9.253 8.43457 9.56543L10.8691 12L8.43457 14.4346C8.12218 14.747 8.12224 15.253 8.43457 15.5654C8.74699 15.8778 9.25301 15.8778 9.56543 15.5654L12 13.1309L14.4346 15.5654C14.747 15.8778 15.253 15.8778 15.5654 15.5654C15.8778 15.253 15.8778 14.747 15.5654 14.4346L13.1309 12L15.5654 9.56543C15.8778 9.253 15.8778 8.74696 15.5654 8.43457Z" fill="currentColor"/>
-                            </svg>
-                        </div>`;
+                    innerHTML += `<div class="input__clear-icon"></div>`;
                 }
 
                 innerHTML += `</div>`;
                 innerHTML += `<p class="input__helper-text" id="pg-helper">${state.helper}</p>`;
 
                 container.innerHTML = innerHTML;
+                initializeDataIcons();
 
                 // Re-bind input event if needed, or rely on bubble? 
                 // We need to re-bind if we want to track value for something? 
                 // No, just visual test.
 
                 // Code Generation
-                let code = `<div class="input ${state.size}${state.error ? ' input--error' : ''}${state.success ? ' input--success' : ''}${state.disabled ? ' input--disabled' : ''}">\n`;
+                let code = `<div class="input ${state.size}${state.error ? ' input--error' : ''}${state.success ? ' input--success' : ''}${state.disabled ? ' input--disabled' : ''}${showHasContent ? ' has-content' : ''}">\n`;
                 code += `    <div class="input__container">\n`;
                 if (state.icon) {
                     code += `        <div class="input__icon">\n`;
@@ -435,9 +386,7 @@
                 }
                 code += `        <input type="text" class="input__input" placeholder="${state.placeholder}"${state.disabled ? ' disabled' : ''}>\n`;
                 if (state.clear) {
-                    code += `        <div class="input__clear-icon">\n`;
-                    code += `            <!-- Clear Icon SVG -->\n`;
-                    code += `        </div>\n`;
+                    code += `        <div class="input__clear-icon"></div>\n`;
                 }
                 code += `    </div>\n`;
                 code += `    <p class="input__helper-text">${state.helper}</p>\n`;
@@ -501,15 +450,22 @@
             copyBtn.addEventListener('click', () => {
                 navigator.clipboard.writeText(generatedCode.innerText).then(() => {
                     const originalHTML = copyBtn.innerHTML;
-                    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-                    setTimeout(() => copyBtn.innerHTML = originalHTML, 1500);
+                    copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                    initializeDataIcons();
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        initializeDataIcons();
+                    }, 1500);
                 });
             });
 
             updateUI();
         }
 
-        document.addEventListener('DOMContentLoaded', initPlayground);
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayground();
+            initializeDataIcons();
+        });
     </script>
 </body>
 

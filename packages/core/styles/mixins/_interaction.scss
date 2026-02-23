@@ -1,4 +1,4 @@
-/* 상호작용 관련 믹스인 */
+/* intraction 관련 믹스인 */
 @mixin interaction-overlay($color, $level: 'light') {
     $hover-opacity: 0.04;
     $active-opacity: 0.08;

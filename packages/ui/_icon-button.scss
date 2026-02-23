@@ -1,10 +1,9 @@
 @use "sass:map";
 
 // 아이콘 버튼 스타일
-// VDS 3.0 디자인 가이드라인 기준
 // 모든 사이즈 및 형태 정책은 $icon-btn-sizes 맵에서 중앙 관리됩니다.
 
-// 아이콘 버튼 사이즈 및 곡률 토큰 정의
+// 아이콘 버튼 사이즈 및 radius 토큰 정의
 $icon-btn-sizes: (
     large: (btn: 48px,
         icon: 24px,

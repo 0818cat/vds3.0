@@ -1,4 +1,5 @@
 // Input Field 스타일 정의
+@import "../core/index";
 
 .input {
     display: flex;
@@ -39,6 +40,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 18px;
+        height: 18px;
         color: var(--label-quaternary);
         cursor: pointer;
         opacity: 0;
@@ -47,11 +50,16 @@
         transition: opacity 0.2s ease, visibility 0.2s ease;
         z-index: 2;
 
+        @include icon-mask("../../packages/ui/assets/icons/ic_delete_fill.svg");
+        background-color: currentColor;
+
         .input.has-content & {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
         }
+
+
     }
 
     &__input {

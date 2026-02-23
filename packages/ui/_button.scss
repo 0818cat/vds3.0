@@ -2,7 +2,9 @@
 @use "sass:list";
 @import "../core/index";
 
-// --- 버튼 아키텍처 설정 (Advanced DS Configuration) ---
+// Button 스타일 정의
+
+// --- Button 아키텍처 설정 (Advanced DS Configuration) ---
 $btn-configs: (
     primary: (filled: (bg: var(--refine-accent), text: var(--static-white), overlay: (var(--interaction-surface), 'normal')),
         tonal: (bg: var(--colors-blue-25), text: var(--static-primary), overlay: (var(--static-primary), 'light')),

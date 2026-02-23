@@ -8,6 +8,8 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
 
 <body>
@@ -46,8 +48,9 @@
                 <div class="playground-container">
                     <div class="preview-area">
                         <div class="preview-canvas">
-                            <button id="playground-btn" class="btn btn--filled btn--primary btn--large">
-                                BUTTON
+                            <button id="playground-btn" class="btn btn--icon btn--filled btn--primary btn--large"
+                                aria-label="아이콘 버튼">
+                                <div data-icon="ic_plus"></div>
                             </button>
                         </div>
                     </div>
@@ -109,11 +112,7 @@
                 <div class="code-viewer">
                     <pre><code id="generated-code">&lt;button class="btn btn--filled btn--primary btn--large"&gt;BUTTON&lt;/button&gt;</code></pre>
                     <button class="copy-btn" id="copy-code-btn" title="Copy Code">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
+                        <div data-icon="ic_copy"></div>
                     </button>
                 </div>
             </section>
@@ -144,101 +143,101 @@
                     <!-- Primary Row -->
                     <div class="grid-side-label">Primary</div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--filled btn--primary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--primary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--primary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--filled btn--primary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--primary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--primary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--tonal btn--primary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--tonal btn--primary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--tonal btn--primary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--tonal btn--primary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--tonal btn--primary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--tonal btn--primary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--outlined btn--primary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--outlined btn--primary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--outlined btn--primary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--outlined btn--primary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--outlined btn--primary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--outlined btn--primary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--ghost btn--primary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--ghost btn--primary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--ghost btn--primary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--ghost btn--primary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--ghost btn--primary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--ghost btn--primary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
 
                     <!-- Secondary Row -->
                     <div class="grid-side-label">Secondary</div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--filled btn--secondary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--secondary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--secondary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--filled btn--secondary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--secondary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--secondary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
                         <!-- Removed Tonal Secondary -->
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--outlined btn--secondary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--outlined btn--secondary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--outlined btn--secondary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--outlined btn--secondary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--outlined btn--secondary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--outlined btn--secondary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--ghost btn--secondary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--ghost btn--secondary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--ghost btn--secondary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--ghost btn--secondary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--ghost btn--secondary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--ghost btn--secondary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
 
                     <!-- Tertiary Row -->
                     <div class="grid-side-label">Tertiary</div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--filled btn--tertiary btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--tertiary btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--tertiary btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--filled btn--tertiary btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--tertiary btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--tertiary btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <!-- Empty Columns for Tertiary -->
                     <div></div>
@@ -248,48 +247,48 @@
                     <!-- Negative Row -->
                     <div class="grid-side-label">Negative</div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--filled btn--negative btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--negative btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--filled btn--negative btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--filled btn--negative btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--negative btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--filled btn--negative btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--tonal btn--negative btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--tonal btn--negative btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--tonal btn--negative btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--tonal btn--negative btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--tonal btn--negative btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--tonal btn--negative btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--outlined btn--negative btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--outlined btn--negative btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--outlined btn--negative btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--outlined btn--negative btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--outlined btn--negative btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--outlined btn--negative btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <button class="btn btn--icon btn--ghost btn--negative btn--large"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--ghost btn--negative btn--medium"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
-                        <button class="btn btn--icon btn--ghost btn--negative btn--small"><svg viewBox="0 0 24 24">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
-                            </svg></button>
+                        <button class="btn btn--icon btn--ghost btn--negative btn--large">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--ghost btn--negative btn--medium">
+                            <div data-icon="ic_plus"></div>
+                        </button>
+                        <button class="btn btn--icon btn--ghost btn--negative btn--small">
+                            <div data-icon="ic_plus"></div>
+                        </button>
                     </div>
 
                     <!-- Disabled Row -->
@@ -435,21 +434,15 @@
 
                     <div style="width: 1px; height: 40px; background: var(--line-tertiary); margin: 0 10px;"></div>
 
-                    <button class="btn btn--icon btn--filled btn--negative btn--large btn--round" aria-label="삭제"><svg
-                            viewBox="0 0 24 24">
-                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                                fill="currentColor" />
-                        </svg></button>
-                    <button class="btn btn--icon btn--tonal btn--negative btn--medium btn--round" aria-label="삭제"><svg
-                            viewBox="0 0 24 24">
-                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                                fill="currentColor" />
-                        </svg></button>
-                    <button class="btn btn--icon btn--outlined btn--negative btn--small btn--round" aria-label="삭제"><svg
-                            viewBox="0 0 24 24">
-                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                                fill="currentColor" />
-                        </svg></button>
+                    <button class="btn btn--icon btn--filled btn--negative btn--large btn--round" aria-label="삭제">
+                        <div data-icon="ic_trash_line"></div>
+                    </button>
+                    <button class="btn btn--icon btn--tonal btn--negative btn--medium btn--round" aria-label="삭제">
+                        <div data-icon="ic_trash_line"></div>
+                    </button>
+                    <button class="btn btn--icon btn--outlined btn--negative btn--small btn--round" aria-label="삭제">
+                        <div data-icon="ic_trash_line"></div>
+                    </button>
                 </div>
             </section>
         </main>
@@ -496,7 +489,7 @@
         }
 
         function initLoadingButtons() {
-            const loadingButtons = document.querySelectorAll('.btn--loading');
+            const loadingButtons = document.querySelectorAll('.btn--loading, .btn[aria-busy="true"]');
             loadingButtons.forEach((button) => {
                 if (button.querySelector('.btn__loading-animation')) return;
 
@@ -547,8 +540,6 @@
                 loading: false
             };
 
-            const plusIcon = `<svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></svg>`;
-
             function updateButton() {
                 // 기본 클래스
                 let classes = ['btn', 'btn--icon', state.style, state.variant, state.size];
@@ -562,8 +553,15 @@
                 playgroundBtn.disabled = state.disabled;
                 playgroundBtn.setAttribute('aria-label', '아이콘 버튼');
 
+                if (state.loading) {
+                    playgroundBtn.setAttribute('aria-busy', 'true');
+                } else {
+                    playgroundBtn.removeAttribute('aria-busy');
+                }
+
                 // 내부 HTML 업데이트
-                playgroundBtn.innerHTML = plusIcon;
+                playgroundBtn.innerHTML = `<div data-icon="ic_plus"></div>`;
+                if (window.initializeDataIcons) initializeDataIcons();
 
                 // 필요시 로딩 애니메이션 재초기화
                 if (state.loading) {
@@ -573,7 +571,8 @@
                 }
 
                 // 코드 블록 업데이트
-                let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''} aria-label="아이콘 버튼">\n    ${plusIcon}\n</button>`;
+                const ariaBusyAttr = state.loading ? ' aria-busy="true"' : '';
+                let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr} aria-label="아이콘 버튼">\n    <div data-icon="ic_plus"></div>\n</button>`;
                 generatedCode.innerText = codeStr;
             }
 
@@ -632,20 +631,29 @@
             copyBtn.addEventListener('click', () => {
                 navigator.clipboard.writeText(generatedCode.innerText).then(() => {
                     const originalHTML = copyBtn.innerHTML;
-                    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                    initializeDataIcons();
                     setTimeout(() => {
                         copyBtn.innerHTML = originalHTML;
+                        initializeDataIcons();
                     }, 1500);
                 });
             });
+
+            // 초기 상태 적용
+            updateButton();
         }
 
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initLoadingButtons);
-            document.addEventListener('DOMContentLoaded', initPlayground);
+            document.addEventListener('DOMContentLoaded', () => {
+                initLoadingButtons();
+                initPlayground();
+                initializeDataIcons();
+            });
         } else {
             initLoadingButtons();
             initPlayground();
+            initializeDataIcons();
         }
     </script>
 </body>

@@ -1,6 +1,5 @@
 /**
  * VDS 3.0 Dropdown Component Logic
- * 피그마 디자인(node-id=1039-8824) 사양에 맞춘 드롭다운 상호작용을 처리합니다.
  */
 
 class Dropdown {

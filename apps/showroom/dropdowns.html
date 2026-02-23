@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
     <style>
         /* Custom styles for dropdown preview if needed */
         .dropdown {
@@ -109,11 +110,7 @@
                 <div class="code-viewer">
                     <pre><code id="generated-code"></code></pre>
                     <button class="copy-btn" id="copy-code-btn" title="Copy Code">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
+                        <div data-icon="ic_copy"></div>
                     </button>
                 </div>
             </section>
@@ -137,13 +134,7 @@
                         <div class="dropdown__trigger">
                             <span class="dropdown__label">Select an option</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Helper text</p>
                     </div>
@@ -152,13 +143,7 @@
                         <div class="dropdown__trigger">
                             <span class="dropdown__label">Select an option</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Helper text</p>
                     </div>
@@ -167,13 +152,7 @@
                         <div class="dropdown__trigger">
                             <span class="dropdown__label">Select an option</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Helper text</p>
                     </div>
@@ -185,13 +164,7 @@
                         <div class="dropdown__trigger">
                             <span class="dropdown__label">Error State</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Error message</p>
                     </div>
@@ -200,13 +173,7 @@
                         <div class="dropdown__trigger">
                             <span class="dropdown__label">Error State</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Error message</p>
                     </div>
@@ -215,13 +182,7 @@
                         <div class="dropdown__trigger">
                             <span class="dropdown__label">Error State</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Error message</p>
                     </div>
@@ -231,60 +192,30 @@
                     <!-- Large -->
                     <div class="dropdown dropdown--large dropdown--filtered">
                         <div class="dropdown__trigger">
-                            <div class="dropdown__leading-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__leading-icon" data-icon="ic_filter"></div>
                             <span class="dropdown__label">Filtered Option</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Filtered state</p>
                     </div>
                     <!-- Medium -->
                     <div class="dropdown dropdown--medium dropdown--filtered">
                         <div class="dropdown__trigger">
-                            <div class="dropdown__leading-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__leading-icon" data-icon="ic_filter"></div>
                             <span class="dropdown__label">Filtered Option</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Filtered state</p>
                     </div>
                     <!-- Small -->
                     <div class="dropdown dropdown--small dropdown--filtered">
                         <div class="dropdown__trigger">
-                            <div class="dropdown__leading-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__leading-icon" data-icon="ic_filter"></div>
                             <span class="dropdown__label">Filtered Option</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Filtered state</p>
                     </div>
@@ -296,13 +227,7 @@
                         <div class="dropdown__trigger" disabled>
                             <span class="dropdown__label">Disabled Dropdown</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Helper text</p>
                     </div>
@@ -311,13 +236,7 @@
                         <div class="dropdown__trigger" disabled>
                             <span class="dropdown__label">Disabled Dropdown</span>
                             <span class="dropdown__caption">Caption</span>
-                            <div class="dropdown__arrow">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </div>
+                            <div class="dropdown__arrow"></div>
                         </div>
                         <p class="dropdown__helper-text">Helper text</p>
                     </div>
@@ -386,23 +305,13 @@
                 innerHTML += `<div class="dropdown__trigger"${state.disabled ? ' disabled' : ''}>`;
 
                 if (state.icon) {
-                    innerHTML += `
-                        <div class="dropdown__leading-icon">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor"/>
-                            </svg>
-                        </div>`;
+                    innerHTML += `<div class="dropdown__leading-icon" data-icon="ic_search"></div>`;
                 }
 
                 innerHTML += `<span class="dropdown__label">${state.label}</span>`;
                 innerHTML += `<span class="dropdown__caption">${state.caption}</span>`;
 
-                innerHTML += `
-                    <div class="dropdown__arrow">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M18.2931 8.29289C18.6837 7.90237 19.3167 7.90237 19.7072 8.29289C20.0976 8.68343 20.0977 9.31648 19.7072 9.70696L12.7072 16.707C12.3167 17.0974 11.6837 17.0973 11.2931 16.707L4.29314 9.70696C3.90261 9.31643 3.90261 8.68342 4.29314 8.29289C4.68366 7.90237 5.31668 7.90237 5.7072 8.29289L12.0002 14.5859L18.2931 8.29289Z" fill="currentColor" />
-                        </svg>
-                    </div>`;
+                innerHTML += `<div class="dropdown__arrow"></div>`;
 
                 innerHTML += `</div>`; // Close trigger
 
@@ -418,6 +327,7 @@
                 innerHTML += `</div>`; // Close dropdown
 
                 container.innerHTML = innerHTML;
+                initializeDataIcons();
 
                 // Code Generation
                 let code = `<div class="${classes}">\n`;
@@ -489,15 +399,22 @@
             copyBtn.addEventListener('click', () => {
                 navigator.clipboard.writeText(generatedCode.innerText).then(() => {
                     const originalHTML = copyBtn.innerHTML;
-                    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-                    setTimeout(() => copyBtn.innerHTML = originalHTML, 1500);
+                    copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                    initializeDataIcons();
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        initializeDataIcons();
+                    }, 1500);
                 });
             });
 
             updateUI();
         }
 
-        document.addEventListener('DOMContentLoaded', initPlayground);
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayground();
+            initializeDataIcons();
+        });
     </script>
 </body>
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
     <style>
         .tab-preview {
             width: 100%;
@@ -102,11 +103,7 @@
                 <div class="code-viewer">
                     <pre><code id="generated-code"></code></pre>
                     <button class="copy-btn" id="copy-code-btn" title="Copy Code">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
+                        <div data-icon="ic_copy"></div>
                     </button>
                 </div>
             </section>
@@ -149,7 +146,6 @@
 
     <script src="assets/js/theme.js"></script>
     <script>
-        const iconSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"/></svg>`;
 
         function initPlayground() {
             const container = document.getElementById('playground-tab-container');
@@ -195,12 +191,13 @@
 
                     html += `
                         <div class="${itemClasses}" onclick="window.setTabActive(${index})">
-                            ${state.showIcons ? `<div class="tab-item__icon">${iconSvg}</div>` : ''}
+                            ${state.showIcons ? `<div class="tab-item__icon" data-icon="ic_check_circle_line"></div>` : ''}
                             <span class="tab-item__text">${item}</span>
                         </div>`;
                 });
                 html += `</div>`;
                 container.innerHTML = html;
+                initializeDataIcons();
 
                 // Code Render
                 const codeListClasses = ['tab-list', state.size, state.underline, state.useAccent ? 'tab-list--accent' : ''].filter(Boolean).join(' ');
@@ -219,6 +216,19 @@
                 });
                 code += `</div>`;
                 generatedCode.innerText = code;
+
+                // Copy button logic
+                document.getElementById('copy-code-btn').onclick = () => {
+                    navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                        const originalHTML = document.getElementById('copy-code-btn').innerHTML;
+                        document.getElementById('copy-code-btn').innerHTML = `<div data-icon="ic_check"></div>`;
+                        initializeDataIcons();
+                        setTimeout(() => {
+                            document.getElementById('copy-code-btn').innerHTML = originalHTML;
+                            initializeDataIcons();
+                        }, 1500);
+                    });
+                };
             }
 
             window.setTabActive = (index) => {
@@ -254,7 +264,10 @@
             updateUI();
         }
 
-        document.addEventListener('DOMContentLoaded', initPlayground);
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayground();
+            initializeDataIcons();
+        });
     </script>
 </body>
 

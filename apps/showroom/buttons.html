@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
 </head>
 
 <body>
@@ -103,14 +104,11 @@
                     </div>
                 </div>
 
+
                 <div class="code-viewer">
                     <pre><code id="generated-code">&lt;button class="btn btn--filled btn--primary btn--large"&gt;BUTTON&lt;/button&gt;</code></pre>
                     <button class="copy-btn" id="copy-code-btn" title="Copy Code">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
+                        <div data-icon="ic_copy"></div>
                     </button>
                 </div>
             </section>
@@ -360,27 +358,15 @@
                             <div style="display: flex; gap: 10px; align-items: center;">
                                 <span class="grid-side-label" style="width: 120px;">Leading</span>
                                 <button class="btn btn--outlined btn--primary btn--large">
-                                    <span class="btn__leading-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__leading-icon" data-icon="ic_plus"></span>
                                     BUTTON
                                 </button>
                                 <button class="btn btn--outlined btn--primary btn--medium">
-                                    <span class="btn__leading-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__leading-icon" data-icon="ic_plus"></span>
                                     BUTTON
                                 </button>
                                 <button class="btn btn--outlined btn--primary btn--small">
-                                    <span class="btn__leading-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__leading-icon" data-icon="ic_plus"></span>
                                     BUTTON
                                 </button>
                             </div>
@@ -390,27 +376,15 @@
                                 <span class="grid-side-label" style="width: 120px;">Trailing</span>
                                 <button class="btn btn--outlined btn--primary btn--large">
                                     BUTTON
-                                    <span class="btn__trailing-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__trailing-icon" data-icon="ic_plus"></span>
                                 </button>
                                 <button class="btn btn--outlined btn--primary btn--medium">
                                     BUTTON
-                                    <span class="btn__trailing-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__trailing-icon" data-icon="ic_plus"></span>
                                 </button>
                                 <button class="btn btn--outlined btn--primary btn--small">
                                     BUTTON
-                                    <span class="btn__trailing-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__trailing-icon" data-icon="ic_plus"></span>
                                 </button>
                             </div>
 
@@ -418,259 +392,242 @@
                             <div style="display: flex; gap: 10px; align-items: center;">
                                 <span class="grid-side-label" style="width: 120px;">Both</span>
                                 <button class="btn btn--outlined btn--primary btn--large">
-                                    <span class="btn__leading-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                        </svg>
-                                    </span>
+                                    <span class="btn__leading-icon" data-icon="ic_plus"></span>
                                     BUTTON
-                                    <span class="btn__trailing-icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"" />
-                                    </svg>
-                                </span>
-                            </button>
+                                    <span class="btn__trailing-icon" data-icon="ic_plus"></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
 
 
 
 
-        
 
-<!-- 아이콘 버튼 컴포넌트 섹션 (새로운 매트릭스 레이아웃) -->
+
+            <!-- 아이콘 버튼 컴포넌트 섹션 (새로운 매트릭스 레이아웃) -->
         </main>
     </div> <!-- .app-container -->
 
     <script src=" assets/js/theme.js">
     </script>
-                                                <script
-                                                    src=" https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js">
-                                                    </script>
-                                                <script>
-                                                    // Lottie 애니메이션 데이터
-                                                    const loadingAnimationData = { "nm": "Loading2", "ddd": 0, "h": 256, "w": 256, "meta": { "g": "@lottiefiles/toolkit-js 0.64.0" }, "layers": [{ "ty": 4, "nm": "Shape Layer 2", "sr": 1, "st": 0, "op": 30, "ip": 0, "ln": "51", "hasMask": false, "ao": 0, "ks": { "a": { "a": 0, "k": [13, 13.016, 0] }, "s": { "a": 0, "k": [100, 100] }, "p": { "a": 0, "k": [128, 128.016, 0] }, "r": { "a": 0, "k": 0 }, "sa": { "a": 0, "k": 0 }, "o": { "a": 0, "k": 100 } }, "shapes": [{ "ty": "gr", "nm": "Ellipse 1", "it": [{ "ty": "el", "nm": "Ellipse Path 1", "d": 1, "p": { "a": 0, "k": [0, 0] }, "s": { "a": 0, "k": [200, 200] } }, { "ty": "tm", "nm": "Trim Paths 1", "e": { "a": 1, "k": [{ "o": { "x": 0.333, "y": 0 }, "i": { "x": 0.667, "y": 1 }, "s": [0], "t": 0 }, { "o": { "x": 0.333, "y": 0 }, "i": { "x": 0.667, "y": 1.056 }, "s": [10], "t": 10 }, { "o": { "x": 0.333, "y": -0.049 }, "i": { "x": 0.667, "y": 1 }, "s": [50], "t": 20 }, { "s": [100], "t": 31 }] }, "o": { "a": 0, "k": 0 }, "s": { "a": 1, "k": [{ "o": { "x": 0.333, "y": 0 }, "i": { "x": 0.667, "y": 1 }, "s": [0], "t": 0 }, { "s": [100], "t": 31 }] }, "m": 2 }, { "ty": "st", "nm": "Stroke 1", "lc": 2, "lj": 1, "ml": 4, "o": { "a": 0, "k": 100 }, "w": { "a": 0, "k": 20 }, "c": { "a": 0, "k": [0, 0.4314, 1] } }, { "ty": "tr", "a": { "a": 0, "k": [0, 0] }, "s": { "a": 0, "k": [100, 100] }, "p": { "a": 0, "k": [12, 13] }, "r": { "a": 0, "k": 0 }, "sa": { "a": 0, "k": 0 }, "o": { "a": 0, "k": 100 } }] }], "ind": 1 }], "v": "5.7.0", "fr": 29.97, "op": 29.97, "ip": 0, "assets": [] };
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js">
+    </script>
+    <script>
+        // Lottie 애니메이션 데이터
+        const loadingAnimationData = { "nm": "Loading2", "ddd": 0, "h": 256, "w": 256, "meta": { "g": "@lottiefiles/toolkit-js 0.64.0" }, "layers": [{ "ty": 4, "nm": "Shape Layer 2", "sr": 1, "st": 0, "op": 30, "ip": 0, "ln": "51", "hasMask": false, "ao": 0, "ks": { "a": { "a": 0, "k": [13, 13.016, 0] }, "s": { "a": 0, "k": [100, 100] }, "p": { "a": 0, "k": [128, 128.016, 0] }, "r": { "a": 0, "k": 0 }, "sa": { "a": 0, "k": 0 }, "o": { "a": 0, "k": 100 } }, "shapes": [{ "ty": "gr", "nm": "Ellipse 1", "it": [{ "ty": "el", "nm": "Ellipse Path 1", "d": 1, "p": { "a": 0, "k": [0, 0] }, "s": { "a": 0, "k": [200, 200] } }, { "ty": "tm", "nm": "Trim Paths 1", "e": { "a": 1, "k": [{ "o": { "x": 0.333, "y": 0 }, "i": { "x": 0.667, "y": 1 }, "s": [0], "t": 0 }, { "o": { "x": 0.333, "y": 0 }, "i": { "x": 0.667, "y": 1.056 }, "s": [10], "t": 10 }, { "o": { "x": 0.333, "y": -0.049 }, "i": { "x": 0.667, "y": 1 }, "s": [50], "t": 20 }, { "s": [100], "t": 31 }] }, "o": { "a": 0, "k": 0 }, "s": { "a": 1, "k": [{ "o": { "x": 0.333, "y": 0 }, "i": { "x": 0.667, "y": 1 }, "s": [0], "t": 0 }, { "s": [100], "t": 31 }] }, "m": 2 }, { "ty": "st", "nm": "Stroke 1", "lc": 2, "lj": 1, "ml": 4, "o": { "a": 0, "k": 100 }, "w": { "a": 0, "k": 20 }, "c": { "a": 0, "k": [0, 0.4314, 1] } }, { "ty": "tr", "a": { "a": 0, "k": [0, 0] }, "s": { "a": 0, "k": [100, 100] }, "p": { "a": 0, "k": [12, 13] }, "r": { "a": 0, "k": 0 }, "sa": { "a": 0, "k": 0 }, "o": { "a": 0, "k": 100 } }] }], "ind": 1 }], "v": "5.7.0", "fr": 29.97, "op": 29.97, "ip": 0, "assets": [] };
 
-                                                    function parseColor(colorString) {
-                                                        const rgbMatch = colorString.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-                                                        if (rgbMatch) {
-                                                            return [parseInt(rgbMatch[1]) / 255, parseInt(rgbMatch[2]) / 255, parseInt(rgbMatch[3]) / 255];
-                                                        }
-                                                        const hexMatch = colorString.match(/^#([0-9a-f]{6})$/i);
-                                                        if (hexMatch) {
-                                                            const hex = hexMatch[1];
-                                                            return [parseInt(hex.substr(0, 2), 16) / 255, parseInt(hex.substr(2, 2), 16) / 255, parseInt(hex.substr(4, 2), 16) / 255];
-                                                        }
-                                                        return [0, 0.4314, 1];
-                                                    }
+        function parseColor(colorString) {
+            const rgbMatch = colorString.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+            if (rgbMatch) {
+                return [parseInt(rgbMatch[1]) / 255, parseInt(rgbMatch[2]) / 255, parseInt(rgbMatch[3]) / 255];
+            }
+            const hexMatch = colorString.match(/^#([0-9a-f]{6})$/i);
+            if (hexMatch) {
+                const hex = hexMatch[1];
+                return [parseInt(hex.substr(0, 2), 16) / 255, parseInt(hex.substr(2, 2), 16) / 255, parseInt(hex.substr(4, 2), 16) / 255];
+            }
+            return [0, 0.4314, 1];
+        }
 
-                                                    function getButtonLabelColor(button) {
-                                                        // Secondary 버튼은 모든 타입(Filled 포함)에서 label primary 색상 사용
-                                                        if (button.classList.contains('btn--secondary')) {
-                                                            return [22 / 255, 24 / 255, 26 / 255]; // label primary rgb(22, 24, 26)
-                                                        }
+        function getButtonLabelColor(button) {
+            // Secondary 버튼은 모든 타입(Filled 포함)에서 label primary 색상 사용
+            if (button.classList.contains('btn--secondary')) {
+                return [22 / 255, 24 / 255, 26 / 255]; // label primary rgb(22, 24, 26)
+            }
 
-                                                        // Filled 버튼 (Primary, Tertiary, Negative)은 흰색
-                                                        // Tonal, Outlined, Ghost가 아니면 Filled로 간주
-                                                        if (!button.classList.contains('btn--tonal') &&
-                                                            !button.classList.contains('btn--outlined') &&
-                                                            !button.classList.contains('btn--ghost')) {
-                                                            return [1, 1, 1]; // 흰색
-                                                        }
-
+            // Filled 버튼 (Primary, Tertiary, Negative)은 흰색
+            // Tonal, Outlined, Ghost가 아니면 Filled로 간주
+            if (!button.classList.contains('btn--tonal') &&
+                !button.classList.contains('btn--outlined') &&
+                !button.classList.contains('btn--ghost')) {
+                return [1, 1, 1]; // 흰색
+            }
 
 
-                                                        // Negative 버튼 (Tonal, Outlined, Ghost)은 빨간색
-                                                        if (button.classList.contains('btn--negative')) {
-                                                            return [243 / 255, 57 / 255, 66 / 255]; // 빨간색 rgb(243, 57, 66)
-                                                        }
 
-                                                        // 나머지 (Primary, Tertiary의 Tonal/Outlined/Ghost)는 파란색
-                                                        return [0, 0.4314, 1]; // 파란색
-                                                    }
+            // Negative 버튼 (Tonal, Outlined, Ghost)은 빨간색
+            if (button.classList.contains('btn--negative')) {
+                return [243 / 255, 57 / 255, 66 / 255]; // 빨간색 rgb(243, 57, 66)
+            }
 
-                                                    function initLoadingButtons() {
-                                                        const loadingButtons = document.querySelectorAll('.btn--loading, .btn[aria-busy="true"]');
-                                                        loadingButtons.forEach((button) => {
-                                                            if (button.querySelector('.btn__loading-animation')) return;
+            // 나머지 (Primary, Tertiary의 Tonal/Outlined/Ghost)는 파란색
+            return [0, 0.4314, 1]; // 파란색
+        }
 
-                                                            const container = document.createElement('div');
-                                                            container.className = 'btn__loading-animation';
-                                                            button.appendChild(container);
+        function initLoadingButtons() {
+            const loadingButtons = document.querySelectorAll('.btn--loading, .btn[aria-busy="true"]');
+            loadingButtons.forEach((button) => {
+                if (button.querySelector('.btn__loading-animation')) return;
 
-                                                            const normalizedColor = getButtonLabelColor(button);
+                const container = document.createElement('div');
+                container.className = 'btn__loading-animation';
+                button.appendChild(container);
 
-                                                            const animationData = JSON.parse(JSON.stringify(loadingAnimationData));
-                                                            const strokeLayer = animationData.layers[0].shapes[0].it.find(item => item.ty === 'st');
-                                                            if (strokeLayer) {
-                                                                strokeLayer.c.k = normalizedColor;
-                                                            }
+                const normalizedColor = getButtonLabelColor(button);
 
-                                                            lottie.loadAnimation({
-                                                                container: container,
-                                                                renderer: 'svg',
-                                                                loop: true,
-                                                                autoplay: true,
-                                                                animationData: animationData
-                                                            });
-                                                        });
-                                                    }
+                const animationData = JSON.parse(JSON.stringify(loadingAnimationData));
+                const strokeLayer = animationData.layers[0].shapes[0].it.find(item => item.ty === 'st');
+                if (strokeLayer) {
+                    strokeLayer.c.k = normalizedColor;
+                }
 
-                                                    // ... initLoadingButtons implementation ...
+                lottie.loadAnimation({
+                    container: container,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    animationData: animationData
+                });
+            });
+        }
 
-                                                    function initPlayground() {
-                                                        const playgroundBtn = document.getElementById('playground-btn');
-                                                        const variantToggles = document.getElementById('variant-toggles');
-                                                        const styleSelect = document.getElementById('style-select');
-                                                        const sizeToggles = document.getElementById('size-toggles');
-                                                        const generatedCode = document.getElementById('generated-code');
-                                                        const copyBtn = document.getElementById('copy-code-btn');
+        // ... initLoadingButtons implementation ...
 
-                                                        // 상태 체크박스
-                                                        const stateDisabled = document.getElementById('state-disabled');
-                                                        const stateLoading = document.getElementById('state-loading');
-                                                        const iconLeading = document.getElementById('icon-leading');
-                                                        const iconTrailing = document.getElementById('icon-trailing');
+        function initPlayground() {
+            const playgroundBtn = document.getElementById('playground-btn');
+            const variantToggles = document.getElementById('variant-toggles');
+            const styleSelect = document.getElementById('style-select');
+            const sizeToggles = document.getElementById('size-toggles');
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
 
-                                                        // 초기 상태
-                                                        let state = {
-                                                            variant: 'btn--primary',
-                                                            style: 'btn--filled',
-                                                            size: 'btn--large',
-                                                            disabled: false,
-                                                            loading: false,
-                                                            leadingIcon: false,
-                                                            trailingIcon: false
-                                                        };
+            // 상태 체크박스
+            const stateDisabled = document.getElementById('state-disabled');
+            const stateLoading = document.getElementById('state-loading');
+            const iconLeading = document.getElementById('icon-leading');
+            const iconTrailing = document.getElementById('icon-trailing');
 
-                                                        // Leading 아이콘 SVG
-                                                        const starIcon = `<span class="btn__leading-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/></svg></span>`;
+            // 초기 상태
+            let state = {
+                variant: 'btn--primary',
+                style: 'btn--filled',
+                size: 'btn--large',
+                disabled: false,
+                loading: false,
+                leadingIcon: false,
+                trailingIcon: false
+            };
 
-                                                        // Trailing Icon SVG (Arrow Right)
-                                                        const arrowIcon = `<span class="btn__trailing-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
+            function updateButton() {
+                // 기본 클래스
+                let classes = ['btn', state.style, state.variant, state.size];
+                if (state.loading) classes.push('btn--loading');
 
-                                                        function updateButton() {
-                                                            // 기본 클래스
-                                                            let classes = ['btn', state.style, state.variant, state.size];
+                // UI 업데이트
+                playgroundBtn.className = classes.join(' ');
+                playgroundBtn.disabled = state.disabled;
+                if (state.loading) {
+                    playgroundBtn.setAttribute('aria-busy', 'true');
+                } else {
+                    playgroundBtn.removeAttribute('aria-busy');
+                }
 
-                                                            // 상태 클래스
-                                                            if (state.loading) classes.push('btn--loading');
+                // 내부 HTML 업데이트
+                let innerHTML = 'BUTTON';
+                if (state.leadingIcon) innerHTML = `<span class="btn__leading-icon" data-icon="ic_star_line"></span>` + innerHTML;
+                if (state.trailingIcon) innerHTML = innerHTML + `<span class="btn__trailing-icon" data-icon="ic_arrow_right_large"></span>`;
 
-                                                            // 클래스 적용
-                                                            playgroundBtn.className = classes.join(' ');
-                                                            playgroundBtn.disabled = state.disabled;
+                playgroundBtn.innerHTML = innerHTML;
+                if (window.initializeDataIcons) initializeDataIcons();
 
-                                                            // 접근성: aria-busy 적용
-                                                            if (state.loading) {
-                                                                playgroundBtn.setAttribute('aria-busy', 'true');
-                                                            } else {
-                                                                playgroundBtn.removeAttribute('aria-busy');
-                                                            }
+                // 필요시 로딩 애니메이션 재초기화
+                if (state.loading) {
+                    const existingAnim = playgroundBtn.querySelector('.btn__loading-animation');
+                    if (existingAnim) existingAnim.remove();
+                    initLoadingButtons();
+                }
 
-                                                            // 내부 HTML 업데이트
-                                                            let innerHTML = 'BUTTON';
-                                                            if (state.leadingIcon) innerHTML = starIcon + innerHTML;
-                                                            if (state.trailingIcon) innerHTML = innerHTML + arrowIcon;
+                // 코드 블록 업데이트
+                const ariaBusyAttr = state.loading ? ' aria-busy="true"' : '';
+                let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr}>` +
+                    (state.leadingIcon ? '\n    <span class="btn__leading-icon">...</span>' : '') +
+                    '\n    BUTTON' +
+                    (state.trailingIcon ? '\n    <span class="btn__trailing-icon">...</span>' : '') +
+                    '\n</button>';
 
-                                                            playgroundBtn.innerHTML = innerHTML;
+                if (!state.leadingIcon && !state.trailingIcon) {
+                    codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr}>BUTTON</button>`;
+                }
 
-                                                            // 필요시 로딩 애니메이션 재초기화
-                                                            if (state.loading) {
-                                                                // 중복 방지를 위해 기존 애니메이션 컨테이너 제거
-                                                                const existingAnim = playgroundBtn.querySelector('.btn__loading-animation');
-                                                                if (existingAnim) existingAnim.remove();
-                                                                initLoadingButtons();
-                                                            }
+                generatedCode.innerText = codeStr;
+            }
 
-                                                            // 코드 블록 업데이트
-                                                            const ariaBusyAttr = state.loading ? ' aria-busy="true"' : '';
-                                                            let codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr}>` +
-                                                                (state.leadingIcon ? '\n    <span class="btn__leading-icon">...</span>' : '') +
-                                                                '\n    BUTTON' +
-                                                                (state.trailingIcon ? '\n    <span class="btn__trailing-icon">...</span>' : '') +
-                                                                '\n</button>';
+            // 이벤트 리스너 설정
+            variantToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    variantToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.variant = e.target.dataset.value;
+                    updateButton();
+                }
+            });
 
-                                                            // 기본형을 위한 간단한 한 줄
-                                                            if (!state.leadingIcon && !state.trailingIcon) {
-                                                                codeStr = `<button class="${classes.join(' ')}"${state.disabled ? ' disabled' : ''}${ariaBusyAttr}>BUTTON</button>`;
-                                                            }
+            sizeToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    sizeToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.size = e.target.dataset.value;
+                    updateButton();
+                }
+            });
 
-                                                            generatedCode.innerText = codeStr;
-                                                        }
+            styleSelect.addEventListener('change', (e) => {
+                state.style = e.target.value;
+                updateButton();
+            });
 
-                                                        // 이벤트 리스너: Variant 토글
-                                                        variantToggles.addEventListener('click', (e) => {
-                                                            if (e.target.classList.contains('toggle-btn')) {
-                                                                // UI 업데이트
-                                                                variantToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-                                                                e.target.classList.add('active');
-                                                                // 상태 업데이트
-                                                                state.variant = e.target.dataset.value;
-                                                                updateButton();
-                                                            }
-                                                        });
+            stateDisabled.addEventListener('change', (e) => {
+                state.disabled = e.target.checked;
+                updateButton();
+            });
 
-                                                        // 이벤트 리스너: 크기 토글
-                                                        sizeToggles.addEventListener('click', (e) => {
-                                                            if (e.target.classList.contains('toggle-btn')) {
-                                                                sizeToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-                                                                e.target.classList.add('active');
-                                                                state.size = e.target.dataset.value;
-                                                                updateButton();
-                                                            }
-                                                        });
+            stateLoading.addEventListener('change', (e) => {
+                state.loading = e.target.checked;
+                updateButton();
+            });
 
-                                                        // 이벤트 리스너: 선택
-                                                        styleSelect.addEventListener('change', (e) => {
-                                                            state.style = e.target.value;
-                                                            updateButton();
-                                                        });
+            iconLeading.addEventListener('change', (e) => {
+                state.leadingIcon = e.target.checked;
+                updateButton();
+            });
 
-                                                        // 이벤트 리스너: 체크박스
-                                                        stateDisabled.addEventListener('change', (e) => {
-                                                            state.disabled = e.target.checked;
-                                                            updateButton();
-                                                        });
+            iconTrailing.addEventListener('change', (e) => {
+                state.trailingIcon = e.target.checked;
+                updateButton();
+            });
 
-                                                        stateLoading.addEventListener('change', (e) => {
-                                                            state.loading = e.target.checked;
-                                                            updateButton();
-                                                        });
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                    if (window.initializeDataIcons) initializeDataIcons();
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        if (window.initializeDataIcons) initializeDataIcons();
+                    }, 1500);
+                });
+            });
 
-                                                        iconLeading.addEventListener('change', (e) => {
-                                                            state.leadingIcon = e.target.checked;
-                                                            updateButton();
-                                                        });
+            // 초기 실행
+            updateButton();
+        }
 
-                                                        iconTrailing.addEventListener('change', (e) => {
-                                                            state.trailingIcon = e.target.checked;
-                                                            updateButton();
-                                                        });
-
-                                                        // 코드 복사
-                                                        copyBtn.addEventListener('click', () => {
-                                                            navigator.clipboard.writeText(generatedCode.innerText).then(() => {
-                                                                const originalHTML = copyBtn.innerHTML;
-                                                                copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-                                                                setTimeout(() => {
-                                                                    copyBtn.innerHTML = originalHTML;
-                                                                }, 1500);
-                                                            });
-                                                        });
-                                                    }
-
-                                                    if (document.readyState === 'loading') {
-                                                        document.addEventListener('DOMContentLoaded', initLoadingButtons);
-                                                        document.addEventListener('DOMContentLoaded', initPlayground);
-                                                    } else {
-                                                        initLoadingButtons();
-                                                        initPlayground();
-                                                    }
-                                                </script>
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initLoadingButtons();
+                initPlayground();
+                initializeDataIcons();
+            });
+        } else {
+            initLoadingButtons();
+            initPlayground();
+            initializeDataIcons();
+        }
+    </script>
 </body>
 
 </html>

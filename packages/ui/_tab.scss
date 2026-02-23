@@ -1,6 +1,6 @@
 @import "../core/index";
 
-// VDS 3.0 Tab 컴포넌트 스타일
+// Tab 스타일 정의
 
 @mixin tab-large {
     height: 48px;
@@ -19,6 +19,8 @@
     padding: 0 10px;
     @include label-13-sb();
 }
+
+
 
 .tab-list {
     display: flex;
