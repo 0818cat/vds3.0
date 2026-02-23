@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Component Gallery - Toasts</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
+    <style>
+        .preview-canvas {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px !important;
+        }
+
+        /* 쇼룸용 정적 토스트 데모 스타일 */
+        .toast-demo {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            opacity: 1;
+            pointer-events: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="textarea.html" class="sidebar-link">Textarea</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar-link">SegmentedControl</a></li>
+                    <li><a href="chips.html" class="sidebar-link">Chips</a></li>
+                    <li><a href="toasts.html" class="sidebar-link active">Toasts</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">다양한 옵션을 조합하여 토스트를 생성하고 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas" id="toast-preview-canvas">
+                            <!-- Toast will be rendered here for preview -->
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Sentiment</label>
+                            <div class="toggle-group" id="sentiment-toggles">
+                                <button class="toggle-btn active" data-value="positive">Positive</button>
+                                <button class="toggle-btn" data-value="negative">Negative</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">CONFIGURATION</label>
+                            <div class="segmented-control" id="config-control">
+                                <button class="segmented-control__item is-selected" data-value="textOnly">Text
+                                    Only</button>
+                                <button class="segmented-control__item" data-value="action">Action</button>
+                                <button class="segmented-control__item" data-value="close">Close</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Text Content</label>
+                            <input type="text" id="toast-text" class="control-input" value="알림 메시지가 이곳에 표시됩니다."
+                                placeholder="메시지 입력">
+                        </div>
+
+                        <div id="action-label-group" class="control-group" style="display: none;">
+                            <label class="control-label">Action Label</label>
+                            <input type="text" id="action-label" class="control-input" value="취소" placeholder="액션 이름">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="component-section">
+                <h2 class="section-title">Examples</h2>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <h3 class="example-name">Positive Text Only</h3>
+                        <div class="toast toast--positive toast-demo">
+                            <div class="toast__icon"></div>
+                            <div class="toast__text">성공적으로 저장되었습니다.</div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <h3 class="example-name">Negative with Action</h3>
+                        <div class="toast toast--negative toast-demo">
+                            <div class="toast__icon"></div>
+                            <div class="toast__text">네트워크 연결이 고르지 않습니다.</div>
+                            <div class="toast__action">다시 시도</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Active Toast Container -->
+    <div id="toast-container"></div>
+
+    <script>
+        // State Management
+        const state = {
+            sentiment: 'positive',
+            config: 'textOnly',
+            text: '알림 메시지가 이곳에 표시됩니다.',
+            actionLabel: '취소',
+            hasLeadingIcon: true // Icon is now always present
+        };
+
+        const previewCanvas = document.getElementById('toast-preview-canvas');
+        const generatedCode = document.getElementById('generated-code');
+
+        function updateUI() {
+            // Update Action Label Group Visibility
+            document.getElementById('action-label-group').style.display = state.config === 'action' ? 'block' : 'none';
+
+            // Generate HTML for Preview
+            const iconName = state.sentiment === 'positive' ? 'ic_check_circle_fill' : 'ic_alert_circle_fill';
+            let iconHTML = `<div class="toast__icon"></div>\n        `;
+
+            let extraHTML = '';
+            if (state.config === 'action') {
+                extraHTML = `\n        <div class="toast__action">${state.actionLabel}</div>`;
+            } else if (state.config === 'close') {
+                extraHTML = `\n        <div class="toast__close" data-icon="ic_close"></div>`;
+            }
+
+            const classes = `toast toast--${state.sentiment} toast-demo`;
+            const previewHTML = `
+                <div class="${classes}">
+                    ${iconHTML}<div class="toast__text">${state.text}</div>${extraHTML}
+                </div>
+            `;
+
+            previewCanvas.innerHTML = previewHTML;
+            if (window.initializeDataIcons) initializeDataIcons(previewCanvas);
+
+        }
+
+        // --- 실시간 노출용 기능 ---
+        function triggerToast() {
+            const container = document.getElementById('toast-container');
+
+            // Generate toast element
+            const toast = document.createElement('div');
+            toast.className = `toast toast--${state.sentiment}`;
+
+            let iconHTML = `<div class="toast__icon"></div>`;
+
+            let extraHTML = '';
+            if (state.config === 'action') {
+                extraHTML = `<div class="toast__action">${state.actionLabel}</div>`;
+            } else if (state.config === 'close') {
+                extraHTML = `<div class="toast__close"></div>`;
+            }
+
+            toast.innerHTML = `
+                ${iconHTML}
+                <div class="toast__text">${state.text}</div>
+                ${extraHTML}
+            `;
+
+            container.appendChild(toast);
+            if (window.initializeDataIcons) initializeDataIcons(toast);
+
+            // Animation
+            setTimeout(() => toast.classList.add('is-visible'), 10);
+
+            // Auto hide
+            const timer = setTimeout(() => {
+                toast.classList.remove('is-visible');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+
+            // Manual close
+            const closeBtn = toast.querySelector('.toast__close');
+            if (closeBtn) {
+                closeBtn.onclick = () => {
+                    clearTimeout(timer);
+                    toast.classList.remove('is-visible');
+                    setTimeout(() => toast.remove(), 300);
+                };
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('sentiment-toggles').onclick = (e) => {
+            if (e.target.dataset.value) {
+                document.querySelectorAll('#sentiment-toggles .toggle-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                state.sentiment = e.target.dataset.value;
+                updateUI();
+            }
+        };
+
+        // Segmented Controls
+        document.querySelectorAll('.segmented-control__item').forEach(btn => {
+            btn.onclick = (e) => {
+                const group = e.target.closest('.segmented-control');
+                group.querySelectorAll('.segmented-control__item').forEach(b => b.classList.remove('is-selected'));
+                e.target.classList.add('is-selected');
+
+                const value = e.target.dataset.value;
+                if (group.id === 'sentiment-control') state.sentiment = value;
+                if (group.id === 'config-control') state.config = value;
+                updateUI();
+            };
+        });
+
+        document.getElementById('toast-text').oninput = (e) => {
+            state.text = e.target.value;
+            updateUI();
+        };
+
+        document.getElementById('action-label').oninput = (e) => {
+            state.actionLabel = e.target.value;
+            updateUI();
+        };
+
+
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.onclick = () => {
+                document.body.classList.toggle('dark-theme');
+            };
+        });
+    </script>
+</body>
+
+</html>

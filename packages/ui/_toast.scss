@@ -1,0 +1,106 @@
+@import "../core/index";
+
+// Toast 스타일 정의
+
+.toast {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: $z-index-toast;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 400px;
+    max-width: 440px;
+    min-height: 52px;
+    max-height: 96px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+
+    border-radius: $radius-10;
+    color: var(--static-white);
+    @include elevation-40();
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    // --- Variants ---
+    &--positive {
+        background-color: var(--status-positive);
+
+        .toast__icon {
+            @include icon-mask("../../packages/ui/assets/icons/ic_check_circle_fill.svg");
+        }
+    }
+
+    &--negative {
+        background-color: var(--status-negative);
+
+        .toast__icon {
+            @include icon-mask("../../packages/ui/assets/icons/ic_alert_circle_fill.svg");
+        }
+    }
+
+    // --- Internal Elements ---
+    &__icon {
+        width: 20px;
+        height: 20px;
+        display: block;
+        flex-shrink: 0;
+        background-color: currentColor;
+    }
+
+    &__text {
+        flex: 1;
+        @include body-14-sb();
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: 12px;
+        border-radius: 6px;
+        @include label-14-sb();
+        cursor: pointer;
+        transition: background-color 0.2s;
+        flex-shrink: 0;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 14px;
+            background-color: color-mix(in srgb, var(--static-white) 25%, transparent);
+        }
+    }
+
+
+
+    &__close {
+        width: 24px;
+        height: 24px;
+        margin-left: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+        flex-shrink: 0;
+
+        @include icon-mask("../../packages/ui/assets/icons/ic_close.svg");
+    }
+}
