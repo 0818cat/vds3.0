@@ -370,7 +370,7 @@
                 innerHTML += `<p class="input__helper-text" id="pg-helper">${state.helper}</p>`;
 
                 container.innerHTML = innerHTML;
-                initializeDataIcons();
+                if (window.initializeDataIcons) initializeDataIcons(container);
 
                 // Re-bind input event if needed, or rely on bubble? 
                 // We need to re-bind if we want to track value for something? 
@@ -451,10 +451,10 @@
                 navigator.clipboard.writeText(generatedCode.innerText).then(() => {
                     const originalHTML = copyBtn.innerHTML;
                     copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
-                    initializeDataIcons();
+                    if (window.initializeDataIcons) initializeDataIcons(copyBtn);
                     setTimeout(() => {
                         copyBtn.innerHTML = originalHTML;
-                        initializeDataIcons();
+                        if (window.initializeDataIcons) initializeDataIcons(copyBtn);
                     }, 1500);
                 });
             });

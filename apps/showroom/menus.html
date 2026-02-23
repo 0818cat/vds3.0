@@ -427,7 +427,7 @@
                 innerHTML += `</div>`;
 
                 container.innerHTML = innerHTML;
-                initializeDataIcons();
+                if (window.initializeDataIcons) initializeDataIcons(container);
 
                 // Code Generation
                 let codeClasses = `menu ${state.size}`;

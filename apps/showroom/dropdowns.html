@@ -327,7 +327,7 @@
                 innerHTML += `</div>`; // Close dropdown
 
                 container.innerHTML = innerHTML;
-                initializeDataIcons();
+                if (window.initializeDataIcons) initializeDataIcons(container);
 
                 // Code Generation
                 let code = `<div class="${classes}">\n`;
@@ -400,10 +400,10 @@
                 navigator.clipboard.writeText(generatedCode.innerText).then(() => {
                     const originalHTML = copyBtn.innerHTML;
                     copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
-                    initializeDataIcons();
+                    if (window.initializeDataIcons) initializeDataIcons(copyBtn);
                     setTimeout(() => {
                         copyBtn.innerHTML = originalHTML;
-                        initializeDataIcons();
+                        if (window.initializeDataIcons) initializeDataIcons(copyBtn);
                     }, 1500);
                 });
             });

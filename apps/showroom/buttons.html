@@ -532,7 +532,7 @@
                 if (state.trailingIcon) innerHTML = innerHTML + `<span class="btn__trailing-icon" data-icon="ic_arrow_right_large"></span>`;
 
                 playgroundBtn.innerHTML = innerHTML;
-                if (window.initializeDataIcons) initializeDataIcons();
+                if (window.initializeDataIcons) initializeDataIcons(playgroundBtn);
 
                 // 필요시 로딩 애니메이션 재초기화
                 if (state.loading) {
