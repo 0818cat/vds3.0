@@ -40,9 +40,13 @@ $icon-btn-sizes: (
             border-radius: map.get($values, radius);
 
             svg,
+            [data-icon],
             .btn__loading-animation {
                 width: map.get($values, icon);
                 height: map.get($values, icon);
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }
