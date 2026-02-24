@@ -19,7 +19,7 @@
         transition: opacity 0.2s ease, visibility 0.2s ease;
 
         background-color: var(--colors-grey-900);
-        color: var(--static-white);
+        color: var(--inverse-white);
         padding: 8px 10px;
         border-radius: var(--radius-8);
         @include caption-12-r();
@@ -87,8 +87,6 @@
         &::after {
             left: 10px;
         }
-
-
     }
 
     // Top - End (꼬리가 오른쪽으로 치우침)
@@ -98,8 +96,6 @@
         &::after {
             right: 10px;
         }
-
-
     }
 
 
@@ -182,7 +178,7 @@
         top: 0;
 
         &::after {
-            top: 13.5px; // 12px + 1.5px (8대5 차이 보정)
+            top: 10px; // 모서리 곡률과 시각적 균형을 맞춘 여백
         }
 
         // 좁은 쪽(위) 여백 8px
@@ -193,7 +189,7 @@
         bottom: 0;
 
         &::after {
-            bottom: 13.5px;
+            bottom: 10px;
         }
 
         // 좁은 쪽(아래) 여백 8px
@@ -232,7 +228,7 @@
         top: 0;
 
         &::after {
-            top: 12px;
+            top: 10px;
         }
     }
 
@@ -241,7 +237,7 @@
         bottom: 0;
 
         &::after {
-            bottom: 12px;
+            bottom: 10px;
         }
     }
 }
