@@ -135,7 +135,6 @@
             left: 10px;
         }
 
-        // 좁은 쪽 여백 8px
     }
 
     // Bottom - End (꼬리가 오른쪽으로 치우침)
@@ -146,7 +145,6 @@
             right: 10px;
         }
 
-        // 좁은 쪽 여백 8px
     }
 
 
@@ -158,11 +156,12 @@
         right: calc(100% + 5px); // 화살표 높이(5px)가 우측으로 삐져나옴
 
         &::after {
-            right: -5px;
-            // 가로형 꼬리로 변경 (width 5, height 8)
-            width: 5px;
-            height: 8px;
-            // 오른쪽으로 뾰족 ▷
+            // 요소를 8x5 크기로 놔둔 채로 회전시키므로 
+            // 우측으로 5px만큼 튀어나가려면 위치 조정이 필요함
+            right: -6.5px;
+            width: 8px;
+            height: 5px;
+            // 오른쪽으로 뾰족 ▷ (정중앙을 기준으로 회전)
             transform: rotate(90deg);
         }
     }
@@ -173,7 +172,8 @@
         transform: translateY(-50%);
 
         &::after {
-            top: calc(50% - 4px);
+            // width가 8px이므로 높이 방향 중앙정렬은 위아래가 바뀜
+            top: calc(50% - 2.5px); // height 5px의 절반
         }
     }
 
@@ -182,7 +182,7 @@
         top: 0;
 
         &::after {
-            top: 12px;
+            top: 13.5px; // 12px + 1.5px (8대5 차이 보정)
         }
 
         // 좁은 쪽(위) 여백 8px
@@ -193,7 +193,7 @@
         bottom: 0;
 
         &::after {
-            bottom: 12px;
+            bottom: 13.5px;
         }
 
         // 좁은 쪽(아래) 여백 8px
@@ -201,16 +201,17 @@
 
 
     // --- 4. Right ---
-    // 툴팁 본체가 오른쪽에 있고, 꼬리가 왼쪽을 향함 (◁)
+    // 툴팁 본체가 왼쪽에 있고, 꼬리가 왼쪽을 향함 (◁)
     &--right &__content,
     &--right-start &__content,
     &--right-end &__content {
         left: calc(100% + 5px);
 
         &::after {
-            left: -5px;
-            width: 5px;
-            height: 8px;
+            // 요소를 8x5 로 유지한 채 -90도 회전
+            left: -6.5px;
+            width: 8px;
+            height: 5px;
             // 왼쪽으로 뾰족 ◁
             transform: rotate(-90deg);
         }
