@@ -26,15 +26,15 @@
         white-space: nowrap;
         @include elevation-ambient();
 
-        // Arrow Tail (8x5 사이즈, 팁 부분 1px 라운딩 처리된 SVG 마스크)
+        // Arrow Tail (바닥은 직각, 팁 부분만 1px 라운딩 처리된 SVG 마스크)
         &::after {
             content: '';
             position: absolute;
             background-color: var(--colors-grey-900);
             width: 8px;
             height: 5px;
-            // 위로 뾰족한 삼각형(팁 1px 라운드) SVG Data URI
-            --tooltip-arrow-mask: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.29289 0.707107C3.68342 0.316583 4.31658 0.316583 4.70711 0.707107L8 4V5H0V4L3.29289 0.707107Z' fill='black'/%3E%3C/svg%3E");
+            // 밑변은 붙어있고(Sharp), 꼭지점만 둥근 형태의 SVG Data URI
+            --tooltip-arrow-mask: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.63188 0.505118C4.30504 0.096417 3.69496 0.096417 3.36812 0.505118L0 4.71512V5H8V4.71512L4.63188 0.505118Z' fill='black'/%3E%3C/svg%3E");
             -webkit-mask-image: var(--tooltip-arrow-mask);
             mask-image: var(--tooltip-arrow-mask);
             -webkit-mask-size: contain;
