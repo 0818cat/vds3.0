@@ -19,22 +19,20 @@
         transition: opacity 0.2s ease, visibility 0.2s ease;
 
         background-color: var(--colors-grey-900);
-        color: var(--static-white, #ffffff);
-        padding: 8px 12px;
+        color: var(--static-white);
+        padding: 8px 10px;
         border-radius: var(--radius-8);
         @include caption-12-r();
         white-space: nowrap;
         @include elevation-ambient();
 
-        // Arrow Tail (정사각형을 45도 회전하여 다이아몬드 형태로 만듦)
+        // Arrow Tail (순수 CSS Border 트릭을 이용한 8x5 삼각형)
         &::after {
             content: '';
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: var(--colors-grey-900);
-            // 툴팁 방향에 따라 위치만 이동시키고 각도는 항상 45도 유지
-            transform: rotate(45deg);
+            width: 0;
+            height: 0;
+            border-style: solid;
         }
     }
 
@@ -49,13 +47,16 @@
     // ---------------------------------------------------------------------------
 
     // --- 1. Top ---
+    // 툴팁 본체가 위에 있고, 꼬리가 아래를 향함 (▽)
     &--top &__content,
     &--top-start &__content,
     &--top-end &__content {
-        bottom: calc(100% + 8px);
+        bottom: calc(100% + 5px); // 화살표 높이(5px)만큼 띄움
 
         &::after {
-            bottom: -5px; // 툴팁 영역 바깥으로 다이아몬드 절반만 튀어나오게
+            bottom: -5px; // 툴팁 영역 바깥으로 빼기
+            border-width: 5px 4px 0 4px; // 위쪽 테두리만 색상 적용, 좌우 4px(합 8px)
+            border-color: var(--colors-grey-900) transparent transparent transparent;
         }
     }
 
@@ -65,7 +66,7 @@
         transform: translateX(-50%);
 
         &::after {
-            left: calc(50% - 5px);
+            left: calc(50% - 4px); // 너비(8px)의 절반
         }
     }
 
@@ -74,10 +75,10 @@
         left: 0;
 
         &::after {
-            left: 8px;
+            left: 10px;
         }
 
-        // 좁은 쪽(왼쪽) 여백 8px 고정
+
     }
 
     // Top - End (꼬리가 오른쪽으로 치우침)
@@ -85,21 +86,24 @@
         right: 0;
 
         &::after {
-            right: 8px;
+            right: 10px;
         }
 
-        // 좁은 쪽(오른쪽) 여백 8px 고정
+
     }
 
 
     // --- 2. Bottom ---
+    // 툴팁 본체가 아래에 있고, 꼬리가 위를 향함 (△)
     &--bottom &__content,
     &--bottom-start &__content,
     &--bottom-end &__content {
-        top: calc(100% + 8px);
+        top: calc(100% + 5px); // 화살표 높이(5px)
 
         &::after {
             top: -5px;
+            border-width: 0 4px 5px 4px; // 아래쪽 테두리에 색상
+            border-color: transparent transparent var(--colors-grey-900) transparent;
         }
     }
 
@@ -109,7 +113,7 @@
         transform: translateX(-50%);
 
         &::after {
-            left: calc(50% - 5px);
+            left: calc(50% - 4px);
         }
     }
 
@@ -118,7 +122,7 @@
         left: 0;
 
         &::after {
-            left: 8px;
+            left: 10px;
         }
 
         // 좁은 쪽 여백 8px
@@ -129,7 +133,7 @@
         right: 0;
 
         &::after {
-            right: 8px;
+            right: 10px;
         }
 
         // 좁은 쪽 여백 8px
@@ -137,13 +141,16 @@
 
 
     // --- 3. Left ---
+    // 툴팁 본체가 왼쪽에 있고, 꼬리가 오른쪽을 향함 (▷)
     &--left &__content,
     &--left-start &__content,
     &--left-end &__content {
-        right: calc(100% + 8px);
+        right: calc(100% + 5px); // 화살표 높이(5px)가 우측으로 삐져나옴
 
         &::after {
             right: -5px;
+            border-width: 4px 0 4px 5px; // 왼쪽 테두리에 색상. 상하 4px(높이 8px), 우측 돌출 5px
+            border-color: transparent transparent transparent var(--colors-grey-900);
         }
     }
 
@@ -153,7 +160,7 @@
         transform: translateY(-50%);
 
         &::after {
-            top: calc(50% - 5px);
+            top: calc(50% - 4px);
         }
     }
 
@@ -162,7 +169,7 @@
         top: 0;
 
         &::after {
-            top: 8px;
+            top: 12px;
         }
 
         // 좁은 쪽(위) 여백 8px
@@ -173,7 +180,7 @@
         bottom: 0;
 
         &::after {
-            bottom: 8px;
+            bottom: 12px;
         }
 
         // 좁은 쪽(아래) 여백 8px
@@ -181,13 +188,16 @@
 
 
     // --- 4. Right ---
+    // 툴팁 본체가 오른쪽에 있고, 꼬리가 왼쪽을 향함 (◁)
     &--right &__content,
     &--right-start &__content,
     &--right-end &__content {
-        left: calc(100% + 8px);
+        left: calc(100% + 5px);
 
         &::after {
             left: -5px;
+            border-width: 4px 5px 4px 0; // 오른쪽 테두리에 색상
+            border-color: transparent var(--colors-grey-900) transparent transparent;
         }
     }
 
@@ -197,7 +207,7 @@
         transform: translateY(-50%);
 
         &::after {
-            top: calc(50% - 5px);
+            top: calc(50% - 4px);
         }
     }
 
@@ -206,7 +216,7 @@
         top: 0;
 
         &::after {
-            top: 8px;
+            top: 12px;
         }
     }
 
@@ -215,7 +225,7 @@
         bottom: 0;
 
         &::after {
-            bottom: 8px;
+            bottom: 12px;
         }
     }
 }
