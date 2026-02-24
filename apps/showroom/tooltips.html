@@ -61,10 +61,60 @@
         </aside>
 
         <main class="showroom-main">
-            <section class="component-section" id="tooltip-directions">
-                <h2 class="section-title">Tooltip Component</h2>
-                <p class="section-desc">요소에 마우스를 올리면 추가 정보를 제공하는 툴팁입니다.</p>
+            <div class="showroom-header" style="margin-bottom: 0; padding-bottom: 0;">
+                <h1 class="showroom-title">Tooltip Component</h1>
+                <p>요소에 마우스를 올리면 추가 정보를 제공하는 툴팁입니다.</p>
+            </div>
 
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">방향과 정렬 옵션을 조합하여 툴팁을 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas"
+                            style="display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <div class="tooltip tooltip--top" id="playground-tooltip-wrapper">
+                                <div class="tooltip-box" style="padding: 12px 24px; font-weight: 500;">Hover Me!</div>
+                                <div class="tooltip__content">This is a tooltip</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Position</label>
+                            <div class="toggle-group" id="tooltip-position">
+                                <button class="toggle-btn active" data-value="top">Top</button>
+                                <button class="toggle-btn" data-value="bottom">Bottom</button>
+                                <button class="toggle-btn" data-value="left">Left</button>
+                                <button class="toggle-btn" data-value="right">Right</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Alignment</label>
+                            <div class="toggle-group" id="tooltip-align">
+                                <button class="toggle-btn" data-value="-start">Start</button>
+                                <button class="toggle-btn active" data-value="">Center</button>
+                                <button class="toggle-btn" data-value="-end">End</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code">&lt;div class="tooltip tooltip--top"&gt;
+    &lt;div class="tooltip-box"&gt;Hover Me!&lt;/div&gt;
+    &lt;div class="tooltip__content"&gt;This is a tooltip&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <div data-icon="ic_copy"></div>
+                    </button>
+                </div>
+            </section>
+
+            <section class="component-section" id="tooltip-directions">
+                <h2 class="section-title">Tooltip Variants</h2>
                 <div class="tooltip-container">
 
                     <!-- Top Tooltips -->
@@ -139,8 +189,62 @@
 
     <script src="assets/js/theme.js"></script>
     <script>
+        function initTooltipPlayground() {
+            const wrapper = document.getElementById('playground-tooltip-wrapper');
+            const positionToggles = document.getElementById('tooltip-position');
+            const alignToggles = document.getElementById('tooltip-align');
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
+
+            let state = {
+                position: 'top',
+                align: '' // '', '-start', '-end'
+            };
+
+            function updateTooltip() {
+                const modifier = `${state.position}${state.align}`;
+                wrapper.className = `tooltip tooltip--${modifier}`;
+
+                const codeStr = `<div class="tooltip tooltip--${modifier}">\n    <div class="tooltip-box">Hover Me!</div>\n    <div class="tooltip__content">This is a tooltip</div>\n</div>`;
+                generatedCode.innerText = codeStr;
+            }
+
+            positionToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    positionToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.position = e.target.dataset.value;
+                    updateTooltip();
+                }
+            });
+
+            alignToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    alignToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.align = e.target.dataset.value;
+                    updateTooltip();
+                }
+            });
+
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                    if (window.initializeDataIcons) initializeDataIcons();
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        if (window.initializeDataIcons) initializeDataIcons();
+                    }, 1500);
+                });
+            });
+
+            updateTooltip();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initializeDataIcons();
+            initTooltipPlayground();
         });
     </script>
 </body>
