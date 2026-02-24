@@ -22,8 +22,8 @@
     &__track {
         display: inline-block;
         position: relative;
-        background-color: var(--refine-quaternary, #A0A2A4);
-        border-radius: 999px; // 완전 둥근 원형
+        background-color: var(--refine-quinary, #D0D1D2);
+        border-radius: var(--radius-full);
         transition: background-color 0.2s ease;
         flex-shrink: 0;
 
@@ -34,7 +34,7 @@
             top: 2px;
             left: 2px;
             background-color: var(--static-white, #FFFFFF);
-            border-radius: 50%;
+            border-radius: var(--radius-full);
             transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
             @include elevation-ambient();
         }
@@ -101,30 +101,23 @@
         cursor: not-allowed;
     }
 
+    // 기본 비활성화 처리 (Checked/Unchecked 공통)
     &__input:disabled~&__track {
         cursor: not-allowed;
-        background-color: var(--interaction-disabled, rgba(56, 58, 58, 0.1));
-        opacity: 0.5;
+        opacity: 0.6; // 디자인 스펙: 기존 색상에서 60% 투명도
 
         &::after {
-            box-shadow: none; // 비활성화 시 그림자 제거
+            box-shadow: none; // 비활성화 시 입체감 감쇄
         }
     }
 
-    // Disabled + Checked
-    // 배경색은 유지하되 opacity로 흐리게 처리하거나 기획 스펙에 맞춤
-    &__input:disabled:checked~&__track {
-        background-color: var(--static-primary);
-        opacity: 0.4;
-    }
-
-    // 비활성화 시 Hover 이펙트 방지
+    // 비활성화 시 Hover 시에도 색상이 진해지지 않도록
+    // (hover보다 disabled 선택자의 명시도를 높이거나, 색상을 강제로 기존 상태로 묶음)
     &:hover &__input:disabled~&__track {
-        // 기존 상태 유지
-        background-color: var(--interaction-disabled, rgba(56, 58, 58, 0.1));
+        background-color: var(--refine-quinary, #D0D1D2);
     }
 
     &:hover &__input:disabled:checked~&__track {
-        background-color: var(--static-primary);
+        background-color: var(--static-primary, #006EFF);
     }
 }
