@@ -45,7 +45,7 @@
     // ---------------------------------------------------------------------------
 
     &--m &__track {
-        width: 44px;
+        width: 40px;
         height: 24px;
 
         &::after {
@@ -55,7 +55,7 @@
     }
 
     &--s &__track {
-        width: 36px;
+        width: 32px;
         height: 20px;
 
         &::after {
@@ -86,11 +86,11 @@
 
     // 썸 이동 애니메이션 (Checked)
     &--m &__input:checked+&__track::after {
-        transform: translateX(20px); // 44(전체) - 2(좌) - 20(썸) - 2(우여백) = 20px 이동
+        transform: translateX(16px); // 40(전체) - 2(좌) - 20(썸) - 2(우여백) = 16px 이동
     }
 
     &--s &__input:checked+&__track::after {
-        transform: translateX(16px); // 36(전체) - 2(좌) - 16(썸) - 2(우여백) = 16px 이동
+        transform: translateX(12px); // 32(전체) - 2(좌) - 16(썸) - 2(우여백) = 12px 이동
     }
 
     // ---------------------------------------------------------------------------
