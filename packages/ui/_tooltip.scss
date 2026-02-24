@@ -26,13 +26,23 @@
         white-space: nowrap;
         @include elevation-ambient();
 
-        // Arrow Tail (순수 CSS Border 트릭을 이용한 8x5 삼각형)
+        // Arrow Tail (8x5 사이즈, 팁 부분 1px 라운딩 처리된 SVG 마스크)
         &::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 0;
-            border-style: solid;
+            background-color: var(--colors-grey-900);
+            width: 8px;
+            height: 5px;
+            // 위로 뾰족한 삼각형(팁 1px 라운드) SVG Data URI
+            --tooltip-arrow-mask: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.29289 0.707107C3.68342 0.316583 4.31658 0.316583 4.70711 0.707107L8 4V5H0V4L3.29289 0.707107Z' fill='black'/%3E%3C/svg%3E");
+            -webkit-mask-image: var(--tooltip-arrow-mask);
+            mask-image: var(--tooltip-arrow-mask);
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
         }
     }
 
@@ -55,8 +65,8 @@
 
         &::after {
             bottom: -5px; // 툴팁 영역 바깥으로 빼기
-            border-width: 5px 4px 0 4px; // 총 너비 8px (좌/우 4px), 높이 5px
-            border-color: var(--colors-grey-900) transparent transparent transparent;
+            // 아래로 뾰족해야 하므로 상하 반전 ▽
+            transform: scaleY(-1);
         }
     }
 
@@ -102,8 +112,8 @@
 
         &::after {
             top: -5px;
-            border-width: 0 4px 5px 4px; // 총 너비 8px, 높이 5px
-            border-color: transparent transparent var(--colors-grey-900) transparent;
+            // 위로 뾰족해야 하므로 기본 형태 유지 △
+            transform: none;
         }
     }
 
@@ -149,8 +159,11 @@
 
         &::after {
             right: -5px;
-            border-width: 4px 0 4px 5px; // 상하 4px (총 넓이 8px), 우측 돌출 5px
-            border-color: transparent transparent transparent var(--colors-grey-900);
+            // 가로형 꼬리로 변경 (width 5, height 8)
+            width: 5px;
+            height: 8px;
+            // 오른쪽으로 뾰족 ▷
+            transform: rotate(90deg);
         }
     }
 
@@ -196,8 +209,10 @@
 
         &::after {
             left: -5px;
-            border-width: 4px 5px 4px 0; // 돌출부 5px, 위아래 4px (총 8px)
-            border-color: transparent var(--colors-grey-900) transparent transparent;
+            width: 5px;
+            height: 8px;
+            // 왼쪽으로 뾰족 ◁
+            transform: rotate(-90deg);
         }
     }
 
