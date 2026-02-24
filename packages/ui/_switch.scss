@@ -36,7 +36,7 @@
             background-color: var(--static-white, #FFFFFF);
             border-radius: var(--radius-full);
             transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-            @include elevation-ambient();
+            @include elevation-10();
         }
     }
 
@@ -69,19 +69,9 @@
     // States
     // ---------------------------------------------------------------------------
 
-    // Hover (Input Hover 상태) - 활성화 상태일 때만
-    &:hover &__input:not(:disabled)+&__track {
-        background-color: var(--refine-quaternary, #727476); // 좀 더 진한 회색
-    }
-
     // Checked (On) 상태
     &__input:checked+&__track {
         background-color: var(--static-primary, #006EFF); // 토큰의 메인 블루
-    }
-
-    // Checked + Hover - 활성화 상태일 때만
-    &:hover &__input:not(:disabled):checked+&__track {
-        background-color: var(--static-secondary, #2483FF); // 인터랙션 블루
     }
 
     // 썸 이동 애니메이션 (Checked)
