@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Showroom - Switches</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
+    <style>
+        .tooltip-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            gap: 20px;
+        }
+
+        .tooltip-box {
+            background-color: var(--color-gray-100, #f5f5f5);
+            padding: 8px 16px;
+            border-radius: var(--radius-s, 8px);
+            border: 1px solid var(--color-gray-300, #e0e0e0);
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar__list">
+                    <li><a href="colors.html" class="sidebar__link">Colors</a></li>
+                    <li><a href="buttons.html" class="sidebar__link">Buttons</a></li>
+                    <li><a href="dropdowns.html" class="sidebar__link">Dropdowns</a></li>
+                    <li><a href="typography.html" class="sidebar__link">Typography</a></li>
+                    <li><a href="inputs.html" class="sidebar__link">Inputs</a></li>
+                    <li><a href="tabs.html" class="sidebar__link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar__link">Segmented Controls</a></li>
+                    <li><a href="chips.html" class="sidebar__link">Chips</a></li>
+                    <li><a href="textareas.html" class="sidebar__link">Textareas</a></li>
+                    <li><a href="toasts.html" class="sidebar__link">Toasts</a></li>
+                    <li><a href="tooltips.html" class="sidebar__link">Tooltips</a></li>
+                    <li><a href="switches.html" class="sidebar__link sidebar__link--active">Switches</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <div class="showroom-header">
+                <h1 class="showroom-title">Switches</h1>
+                <p>스위치(토글) 컴포넌트는 사용자가 두 가지 상태(On/Off) 중 하나를 선택할 때 사용하는 컨트롤입니다. Medium(24px)과 Small(20px) 두 가지 크기를 제공합니다.
+                </p>
+            </div>
+
+            <section class="gallery-section">
+                <h2 class="gallery-title">Switch Variants</h2>
+
+                <!-- Medium Size -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="margin-bottom: 20px; font-size: 18px;">Medium (Height: 24px)</h3>
+                    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+
+                        <!-- Default (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Default (Off)</span>
+                            <label class="switch switch--m">
+                                <input type="checkbox" class="switch__input">
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                        <!-- Checked (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Checked (On)</span>
+                            <label class="switch switch--m">
+                                <input type="checkbox" class="switch__input" checked>
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled (Off)</span>
+                            <label class="switch switch--m">
+                                <input type="checkbox" class="switch__input" disabled>
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled (On)</span>
+                            <label class="switch switch--m">
+                                <input type="checkbox" class="switch__input" disabled checked>
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Small Size -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="margin-bottom: 20px; font-size: 18px;">Small (Height: 20px)</h3>
+                    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+
+                        <!-- Default (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Default (Off)</span>
+                            <label class="switch switch--s">
+                                <input type="checkbox" class="switch__input">
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                        <!-- Checked (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Checked (On)</span>
+                            <label class="switch switch--s">
+                                <input type="checkbox" class="switch__input" checked>
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled (Off)</span>
+                            <label class="switch switch--s">
+                                <input type="checkbox" class="switch__input" disabled>
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled (On)</span>
+                            <label class="switch switch--s">
+                                <input type="checkbox" class="switch__input" disabled checked>
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeDataIcons();
+        });
+    </script>
+</body>
+
+</html>

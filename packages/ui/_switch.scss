@@ -1,0 +1,130 @@
+@import "../core/index";
+
+.switch {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    // 숨김 처리된 실제 체크박스
+    &__input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+    }
+
+    // 트랙 (배경)
+    &__track {
+        display: inline-block;
+        position: relative;
+        background-color: var(--refine-quaternary, #A0A2A4);
+        border-radius: 999px; // 완전 둥근 원형
+        transition: background-color 0.2s ease;
+        flex-shrink: 0;
+
+        // 썸 (동그라미)
+        &::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background-color: var(--static-white, #FFFFFF);
+            border-radius: 50%;
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+            @include elevation-ambient();
+        }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Sizes
+    // ---------------------------------------------------------------------------
+
+    &--m &__track {
+        width: 44px;
+        height: 24px;
+
+        &::after {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &--s &__track {
+        width: 36px;
+        height: 20px;
+
+        &::after {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+
+    // ---------------------------------------------------------------------------
+    // States
+    // ---------------------------------------------------------------------------
+
+    // Hover (Input Hover 상태)
+    &:hover &__track {
+        background-color: var(--refine-tertiary, #727476); // 좀 더 진한 회색
+    }
+
+    // Checked (On) 상태
+    &__input:checked+&__track {
+        background-color: var(--static-primary, #006EFF); // 토큰의 메인 블루
+    }
+
+    // Checked + Hover
+    &:hover &__input:checked+&__track {
+        background-color: var(--static-secondary, #2483FF); // 인터랙션 블루
+    }
+
+    // 썸 이동 애니메이션 (Checked)
+    &--m &__input:checked+&__track::after {
+        transform: translateX(20px); // 44(전체) - 2(좌) - 20(썸) - 2(우여백) = 20px 이동
+    }
+
+    &--s &__input:checked+&__track::after {
+        transform: translateX(16px); // 36(전체) - 2(좌) - 16(썸) - 2(우여백) = 16px 이동
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled States
+    // ---------------------------------------------------------------------------
+
+    &__input:disabled {
+        cursor: not-allowed;
+    }
+
+    &__input:disabled~&__track {
+        cursor: not-allowed;
+        background-color: var(--interaction-disabled, rgba(56, 58, 58, 0.1));
+        opacity: 0.5;
+
+        &::after {
+            box-shadow: none; // 비활성화 시 그림자 제거
+        }
+    }
+
+    // Disabled + Checked
+    // 배경색은 유지하되 opacity로 흐리게 처리하거나 기획 스펙에 맞춤
+    &__input:disabled:checked~&__track {
+        background-color: var(--static-primary);
+        opacity: 0.4;
+    }
+
+    // 비활성화 시 Hover 이펙트 방지
+    &:hover &__input:disabled~&__track {
+        // 기존 상태 유지
+        background-color: var(--interaction-disabled, rgba(56, 58, 58, 0.1));
+    }
+
+    &:hover &__input:disabled:checked~&__track {
+        background-color: var(--static-primary);
+    }
+}
