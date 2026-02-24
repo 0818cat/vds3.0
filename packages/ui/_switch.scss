@@ -69,9 +69,9 @@
     // States
     // ---------------------------------------------------------------------------
 
-    // Hover (Input Hover 상태)
-    &:hover &__track {
-        background-color: var(--refine-tertiary, #727476); // 좀 더 진한 회색
+    // Hover (Input Hover 상태) - 활성화 상태일 때만
+    &:hover &__input:not(:disabled)+&__track {
+        background-color: var(--refine-quaternary, #727476); // 좀 더 진한 회색
     }
 
     // Checked (On) 상태
@@ -79,8 +79,8 @@
         background-color: var(--static-primary, #006EFF); // 토큰의 메인 블루
     }
 
-    // Checked + Hover
-    &:hover &__input:checked+&__track {
+    // Checked + Hover - 활성화 상태일 때만
+    &:hover &__input:not(:disabled):checked+&__track {
         background-color: var(--static-secondary, #2483FF); // 인터랙션 블루
     }
 
@@ -109,15 +109,5 @@
         &::after {
             box-shadow: none; // 비활성화 시 입체감 감쇄
         }
-    }
-
-    // 비활성화 시 Hover 시에도 색상이 진해지지 않도록
-    // (hover보다 disabled 선택자의 명시도를 높이거나, 색상을 강제로 기존 상태로 묶음)
-    &:hover &__input:disabled~&__track {
-        background-color: var(--refine-quinary, #D0D1D2);
-    }
-
-    &:hover &__input:disabled:checked~&__track {
-        background-color: var(--static-primary, #006EFF);
     }
 }
