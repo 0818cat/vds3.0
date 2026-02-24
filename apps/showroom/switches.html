@@ -68,6 +68,55 @@
                 </p>
             </div>
 
+            <!-- Interactive Playground 추가 -->
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">옵션을 조작하여 스위치 컴포넌트를 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas"
+                            style="display: flex; align-items: center; justify-content: center;">
+                            <label class="switch switch--m" id="playground-switch-wrapper">
+                                <input type="checkbox" class="switch__input" id="playground-switch-input">
+                                <span class="switch__track"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="switch--m">M</button>
+                                <button class="toggle-btn" data-value="switch--s">S</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">State</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-checked"> Checked
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-disabled"> Disabled
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code">&lt;label class="switch switch--m"&gt;
+    &lt;input type="checkbox" class="switch__input"&gt;
+    &lt;span class="switch__track"&gt;&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <div data-icon="ic_copy"></div>
+                    </button>
+                </div>
+            </section>
+
             <section class="gallery-section">
                 <h2 class="gallery-title">Switch Variants</h2>
 
@@ -165,8 +214,82 @@
 
     <script src="assets/js/theme.js"></script>
     <script>
+        function initSwitchPlayground() {
+            const wrapper = document.getElementById('playground-switch-wrapper');
+            const input = document.getElementById('playground-switch-input');
+            const sizeToggles = document.getElementById('size-toggles');
+            const stateChecked = document.getElementById('state-checked');
+            const stateDisabled = document.getElementById('state-disabled');
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
+
+            let state = {
+                size: 'switch--m',
+                checked: false,
+                disabled: false
+            };
+
+            function updateSwitch() {
+                // UI 업데이트
+                wrapper.className = `switch ${state.size}`;
+                input.checked = state.checked;
+                input.disabled = state.disabled;
+
+                // 코드 뷰어 업데이트
+                const checkedAttr = state.checked ? ' checked' : '';
+                const disabledAttr = state.disabled ? ' disabled' : '';
+
+                const codeStr = `<label class="switch ${state.size}">\n    <input type="checkbox" class="switch__input"${checkedAttr}${disabledAttr}>\n    <span class="switch__track"></span>\n</label>`;
+                generatedCode.innerText = codeStr;
+            }
+
+            // 사이즈 토글 이벤트
+            sizeToggles.addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-btn')) {
+                    sizeToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    state.size = e.target.dataset.value;
+                    updateSwitch();
+                }
+            });
+
+            // 내부 체크박스를 직접 클릭했을 때도 체크 상태 맞물리도록 동기화
+            input.addEventListener('change', (e) => {
+                state.checked = e.target.checked;
+                stateChecked.checked = state.checked; // 우측 패널 체크박스 싱크
+                updateSwitch();
+            });
+
+            // 옵션 체크박스 이벤트
+            stateChecked.addEventListener('change', (e) => {
+                state.checked = e.target.checked;
+                updateSwitch();
+            });
+
+            stateDisabled.addEventListener('change', (e) => {
+                state.disabled = e.target.checked;
+                updateSwitch();
+            });
+
+            // 코드 복사 버튼
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                    if (window.initializeDataIcons) initializeDataIcons();
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        if (window.initializeDataIcons) initializeDataIcons();
+                    }, 1500);
+                });
+            });
+
+            updateSwitch();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initializeDataIcons();
+            initSwitchPlayground();
         });
     </script>
 </body>
