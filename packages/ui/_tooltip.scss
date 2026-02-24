@@ -55,7 +55,7 @@
 
         &::after {
             bottom: -5px; // 툴팁 영역 바깥으로 빼기
-            border-width: 5px 4px 0 4px; // 위쪽 테두리만 색상 적용, 좌우 4px(합 8px)
+            border-width: 5px 8px 0 8px; // 넙적한 형태 (좌우 8px, 넓이 16px)
             border-color: var(--colors-grey-900) transparent transparent transparent;
         }
     }
@@ -66,7 +66,7 @@
         transform: translateX(-50%);
 
         &::after {
-            left: calc(50% - 4px); // 너비(8px)의 절반
+            left: calc(50% - 8px); // 너비(16px)의 절반인 8px로 కేంద్ర 보정
         }
     }
 
@@ -102,7 +102,7 @@
 
         &::after {
             top: -5px;
-            border-width: 0 4px 5px 4px; // 아래쪽 테두리에 색상
+            border-width: 0 8px 5px 8px; // 넙적한 형태
             border-color: transparent transparent var(--colors-grey-900) transparent;
         }
     }
@@ -113,7 +113,7 @@
         transform: translateX(-50%);
 
         &::after {
-            left: calc(50% - 4px);
+            left: calc(50% - 8px);
         }
     }
 
@@ -149,7 +149,7 @@
 
         &::after {
             right: -5px;
-            border-width: 4px 0 4px 5px; // 왼쪽 테두리에 색상. 상하 4px(높이 8px), 우측 돌출 5px
+            border-width: 8px 0 8px 5px; // 돌출부 5px, 상하 넓이 각각 8px(총 16px)
             border-color: transparent transparent transparent var(--colors-grey-900);
         }
     }
@@ -160,7 +160,7 @@
         transform: translateY(-50%);
 
         &::after {
-            top: calc(50% - 4px);
+            top: calc(50% - 8px);
         }
     }
 
@@ -196,7 +196,7 @@
 
         &::after {
             left: -5px;
-            border-width: 4px 5px 4px 0; // 오른쪽 테두리에 색상
+            border-width: 8px 5px 8px 0; // 넙적한 형태
             border-color: transparent var(--colors-grey-900) transparent transparent;
         }
     }
@@ -207,7 +207,7 @@
         transform: translateY(-50%);
 
         &::after {
-            top: calc(50% - 4px);
+            top: calc(50% - 8px);
         }
     }
 
