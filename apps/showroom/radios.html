@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDS 3.0 Showroom - Radios</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../packages/ui/dist/components.css">
+    <link rel="stylesheet" href="showroom.css">
+    <script src="assets/js/icons.js"></script>
+</head>
+
+<body>
+    <header class="showroom-header">
+        <div class="header-left">
+            <span class="logo">VDS 3.0 Gallery</span>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="btn-theme-toggle" title="테마 전환">🌓</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-menu">
+                    <li><a href="buttons.html" class="sidebar-link">Buttons</a></li>
+                    <li><a href="icon-buttons.html" class="sidebar-link">Icon Buttons</a></li>
+                    <li><a href="input-fields.html" class="sidebar-link">Input Fields</a></li>
+                    <li><a href="textarea.html" class="sidebar-link">Textarea</a></li>
+                    <li><a href="dropdowns.html" class="sidebar-link">Dropdowns</a></li>
+                    <li><a href="menus.html" class="sidebar-link">Menus</a></li>
+                    <li><a href="tabs.html" class="sidebar-link">Tabs</a></li>
+                    <li><a href="segmented-controls.html" class="sidebar-link">SegmentedControl</a></li>
+                    <li><a href="chips.html" class="sidebar-link">Chips</a></li>
+                    <li><a href="toasts.html" class="sidebar-link">Toasts</a></li>
+                    <li><a href="tooltips.html" class="sidebar-link">Tooltips</a></li>
+                    <li><a href="switches.html" class="sidebar-link">Switches</a></li>
+                    <li><a href="radios.html" class="sidebar-link active">Radios</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="showroom-main">
+            <section class="component-section" id="radio-overview" style="margin-bottom: 0; padding-bottom: 0;">
+                <h2 class="section-title">Radio Component</h2>
+                <p class="section-desc" style="margin-bottom: 0;">라디오 컴포넌트는 사용자가 여러 개의 옵션 중 단 하나만을 선택할 때 사용하는 컨트롤입니다.
+                    Medium(24px)과 Small(16px) 두 가지 크기를 제공합니다.</p>
+            </section>
+
+            <!-- Interactive Playground -->
+            <section class="component-section playground-section">
+                <h2 class="section-title">Interactive Playground</h2>
+                <p class="section-desc">옵션을 조작하여 라디오 컴포넌트를 테스트해보세요.</p>
+
+                <div class="playground-container">
+                    <div class="preview-area">
+                        <div class="preview-canvas"
+                            style="display: flex; align-items: center; justify-content: center; gap: 24px;">
+                            <label class="radio radio--m" id="playground-radio-wrapper-1">
+                                <input type="radio" name="playground_radio" class="radio__input"
+                                    id="playground-radio-input-1">
+                                <span class="radio__icon"></span>
+                                <span style="margin-left:8px; font-size:14px;">Option A</span>
+                            </label>
+
+                            <label class="radio radio--m" id="playground-radio-wrapper-2">
+                                <input type="radio" name="playground_radio" class="radio__input"
+                                    id="playground-radio-input-2">
+                                <span class="radio__icon"></span>
+                                <span style="margin-left:8px; font-size:14px;">Option B</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="controls-area">
+                        <div class="control-group">
+                            <label class="control-label">Size</label>
+                            <div class="toggle-group" id="size-toggles">
+                                <button class="toggle-btn active" data-value="radio--m">M</button>
+                                <button class="toggle-btn" data-value="radio--s">S</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">State</label>
+                            <div class="checkbox-group">
+                                <!-- 라디오는 클릭으로 토글이 안 되므로, 초기 상태만 조작하거나 Disabled를 주로 봅니다. -->
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="state-disabled"> Disabled
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-viewer">
+                    <pre><code id="generated-code">&lt;label class="radio radio--m"&gt;
+    &lt;input type="radio" name="example" class="radio__input"&gt;
+    &lt;span class="radio__icon"&gt;&lt;/span&gt;
+    &lt;span&gt;Option A&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                    <button class="copy-btn" id="copy-code-btn" title="Copy Code">
+                        <div data-icon="ic_copy"></div>
+                    </button>
+                </div>
+            </section>
+
+            <section class="gallery-section">
+                <h2 class="gallery-title">Radio Variants</h2>
+
+                <!-- Medium Size -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="margin-bottom: 20px; font-size: 18px;">Medium (Size: 24px)</h3>
+                    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+
+                        <!-- Default (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Unchecked</span>
+                            <label class="radio radio--m">
+                                <input type="radio" name="demo1" class="radio__input">
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Checked (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Checked</span>
+                            <label class="radio radio--m">
+                                <input type="radio" name="demo2" class="radio__input" checked>
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled Unchecked</span>
+                            <label class="radio radio--m">
+                                <input type="radio" name="demo3" class="radio__input" disabled>
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled Checked</span>
+                            <label class="radio radio--m">
+                                <input type="radio" name="demo4" class="radio__input" disabled checked>
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Negative (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--status-negative, #DC362E);">Negative</span>
+                            <label class="radio radio--m radio--negative">
+                                <input type="radio" name="demo_neg1" class="radio__input">
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Small Size -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="margin-bottom: 20px; font-size: 18px;">Small (Size: 16px)</h3>
+                    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+
+                        <!-- Default (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Unchecked</span>
+                            <label class="radio radio--s">
+                                <input type="radio" name="demo5" class="radio__input">
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Checked (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Checked</span>
+                            <label class="radio radio--s">
+                                <input type="radio" name="demo6" class="radio__input" checked>
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled Unchecked</span>
+                            <label class="radio radio--s">
+                                <input type="radio" name="demo7" class="radio__input" disabled>
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Disabled (On) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--colors-grey-500);">Disabled Checked</span>
+                            <label class="radio radio--s">
+                                <input type="radio" name="demo8" class="radio__input" disabled checked>
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                        <!-- Negative (Off) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <span style="font-size: 12px; color: var(--status-negative, #DC362E);">Negative</span>
+                            <label class="radio radio--s radio--negative">
+                                <input type="radio" name="demo_neg2" class="radio__input">
+                                <span class="radio__icon"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Use Case Section -->
+            <section class="gallery-section">
+                <h2 class="gallery-title">Use Case: Validation Error</h2>
+                <p class="section-desc"
+                    style="margin-bottom: 24px; color: var(--colors-grey-600); font-size: 14px; line-height: 1.5;">
+                    특정 라디오 버튼("기타" 등)을 선택한 후 연관된 필수 입력값이 누락되었거나 유효성 검사를 통과하지 못했을 때 사용하는 패턴입니다.
+                    <br>라디오 요소 전체(원형 라인 & 텍스트)와 연결된 인풋 필드를 일괄적으로 Negative(Error) 상태로 표시하여,
+                    사용자가 직관적으로 어떤 항목에 오류가 발생했는지 인지하도록 돕습니다.
+                </p>
+
+                <div
+                    style="display: flex; flex-direction: column; gap: 16px; max-width: 400px; padding: 24px; background-color: var(--fill-surface-primary); border-radius: 12px; border: 1px solid var(--line-tertiary);">
+
+                    <!-- 일반적인 라디오 버튼들 -->
+                    <label class="radio radio--m" style="margin-bottom: 4px;">
+                        <input type="radio" name="usecase_error" class="radio__input">
+                        <span class="radio__icon"></span>
+                        <span style="margin-left: 8px; font-size: 14px; font-weight: 500;">옵션 A</span>
+                    </label>
+
+                    <label class="radio radio--m" style="margin-bottom: 4px;">
+                        <input type="radio" name="usecase_error" class="radio__input">
+                        <span class="radio__icon"></span>
+                        <span style="margin-left: 8px; font-size: 14px; font-weight: 500;">옵션 B</span>
+                    </label>
+
+                    <!-- 에러 정적 예시 라디오 버튼 (체크 안됨 + 빨간 타원) -->
+                    <div>
+                        <label class="radio radio--m radio--negative" style="margin-bottom: 8px;">
+                            <input type="radio" name="usecase_error_static" class="radio__input">
+                            <span class="radio__icon"></span>
+                            <span
+                                style="margin-left: 8px; font-size: 14px; font-weight: 500; color: var(--label-primary, #1A1A1A);">기타
+                                (직접 입력)</span>
+                        </label>
+
+                        <div style="margin-left: 32px;"> <!-- 라디오 영역 크기를 고려한 들여쓰기 -->
+                            <div class="input input--medium input--error has-content">
+                                <div class="input__container">
+                                    <input type="text" class="input__input" value="ㅁㄴㅇㄹ">
+                                </div>
+                                <p class="input__helper-text" style="color: var(--status-negative, #DC362E);">입력이 불가능한
+                                    문자가 포함되어 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.initializeDataIcons) initializeDataIcons();
+
+            const wrapper1 = document.getElementById('playground-radio-wrapper-1');
+            const wrapper2 = document.getElementById('playground-radio-wrapper-2');
+            const input1 = document.getElementById('playground-radio-input-1');
+            const input2 = document.getElementById('playground-radio-input-2');
+            const sizeToggles = document.getElementById('size-toggles');
+            const stateDisabled = document.getElementById('state-disabled');
+            const generatedCode = document.getElementById('generated-code');
+            const copyBtn = document.getElementById('copy-code-btn');
+
+            let state = {
+                size: 'radio--m',
+                disabled: false
+            };
+
+            function updateUI() {
+                // UI 업데이트
+                wrapper1.className = `radio ${state.size}`;
+                wrapper2.className = `radio ${state.size}`;
+                input1.disabled = state.disabled;
+                input2.disabled = state.disabled;
+
+                // 코드 뷰어 업데이트
+                const disabledAttr = state.disabled ? ' disabled' : '';
+
+                const codeStr = `<label class="radio ${state.size}">\n    <input type="radio" name="example" class="radio__input"${disabledAttr}>\n    <span class="radio__icon"></span>\n    <span style="margin-left:8px;">Option A</span>\n</label>`;
+                generatedCode.innerText = codeStr;
+            }
+
+            // 초기 1번 Checked 상태 지정
+            input1.checked = true;
+
+            // 사이즈 토글 이벤트
+            if (sizeToggles) {
+                sizeToggles.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('toggle-btn')) {
+                        sizeToggles.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                        state.size = e.target.dataset.value;
+                        updateUI();
+                    }
+                });
+            }
+
+            // Disabled 체크박스 이벤트
+            if (stateDisabled) {
+                stateDisabled.addEventListener('change', (e) => {
+                    state.disabled = e.target.checked;
+                    updateUI();
+                });
+            }
+
+            // Copy 버튼 이벤트
+            if (copyBtn && generatedCode) {
+                copyBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(generatedCode.innerText).then(() => {
+                        const originalHTML = copyBtn.innerHTML;
+                        copyBtn.innerHTML = `<div data-icon="ic_check"></div>`;
+                        if (window.initializeDataIcons) initializeDataIcons();
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalHTML;
+                            if (window.initializeDataIcons) initializeDataIcons();
+                        }, 1500);
+                    });
+                });
+            }
+
+            [input1, input2].forEach(input => {
+                input.addEventListener('change', updateUI);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
